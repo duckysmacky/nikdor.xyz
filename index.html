@@ -1,81 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Nikita Doronin - Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Roboto:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
   </head>
-  <body>
-    <header class="navbar">
-      <nav>
-        <a href="index.html" class="nav-brand accent">NIKDOR</a>
-        <ul class="nav-links">
-          <li><a href="about.html">About</a></li>
-          <li><a href="skills.html">Skills</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="achievements.html">Achievements</a></li>
-          <li><a href="services.html">Services</a></li>
+  <body class="fade-ready">
+    <header class="site-header">
+      <nav class="nav">
+        <a class="brand accent" href="/index.html">NIKDOR</a>
+        <ul class="nav-list">
+          <li><a href="/about" data-link>About</a></li>
+          <li><a href="/skills" data-link>Skills</a></li>
+          <li><a href="/projects" data-link>Projects</a></li>
+          <li><a href="/achievements" data-link>Achievements</a></li>
+          <li><a href="/services" data-link>Services</a></li>
         </ul>
       </nav>
     </header>
 
-    <main class="container">
+    <main class="page page--home" id="page">
       <section class="hero">
-        <h1>Nikita Doronin</h1>
-        <p class="intro">
-          Designing and developing secure and reliable software systems - from
-          backend services to low-level developer tooling. Focused on measurable
-          performance, technical clarity and pragmatic engineering.
+        <h1 class="hero-title">Nikita Doronin</h1>
+        <h2 class="hero-subtitle">
+          System programming and software engineering
+        </h2>
+
+        <!-- TODO: improve hero description -->
+
+        <p class="hero-description">
+          I design and develop secure and reliable applications - from backend
+          services to low-level developer tooling.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/projects/" data-link
+            >View projects</a
+          >
+          <a class="btn btn-ghost" href="/about/" data-link>Learn more</a>
+        </div>
+      </section>
+
+      <section class="stats-row">
+        <div class="stat">
+          <div class="val">3+ years</div>
+          <div class="label">programming experience</div>
+        </div>
+        <div class="stat">
+          <div class="val">5+</div>
+          <div class="label">major projects developed</div>
+        </div>
+        <div class="stat">
+          <div class="val">100/100</div>
+          <div class="label">National IT exam score</div>
+        </div>
+      </section>
+
+      <section class="current-project small">
+        <div class="tag">currently working on</div>
+        <h2 class="project-title">Copper <span class="lang">Rust</span></h2>
+        <p class="project-desc">
+          Copper is a lightweight build system for C/C++ projects. It uses a
+          unit-based configuration (copper.toml) to auto-discover sources,
+          manage dependencies and produce reliable incremental builds.
+        </p>
+        <p class="project-cta">
+          <a class="link-accent" href="/projects/" data-link>> See details</a>
         </p>
       </section>
 
-      <section class="stats highlight">
-        <div class="stat-card">
-          <div class="stat-number">3+ years</div>
-          <div class="stat-label">Programming experience</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">5+</div>
-          <div class="stat-label">Major projects published</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">100/100</div>
-          <div class="stat-label">National Informatics exam score</div>
-        </div>
-      </section>
-
-      <section class="current-project-banner">
-        <p class="tag">Current Focus</p>
-        <h2 class="accent">Copper</h2>
-        <p>
-          A lightweight build system for C/C++ - auto-detecting source files,
-          handling dependencies, linking with precision and clarity.
-        </p>
-        <a class="accent-link" href="projects.html">View project</a>
-      </section>
-
-      <div class="social-section">
-        <h3>Connect</h3>
-        <div class="social-buttons">
-          <a class="social-btn" href="mailto:nikdorkir@gmail.com">
-            <img src="assets/icons/mail.svg" alt="" /> Email
-          </a>
+      <section class="connect">
+        <h3>Links</h3>
+        <div class="social">
           <a class="social-btn" href="https://github.com/duckysmacky">
-            <img src="assets/icons/github.svg" alt="" /> GitHub
+            <img src="/assets/icons/github.svg" alt="github" /> GitHub
+          </a>
+          <a class="social-btn" href="mailto:nikdorkir@gmail.com">
+            <img src="/assets/icons/mail.svg" alt="mail" /> Email
           </a>
           <a class="social-btn" href="https://t.me/nikita_ducky">
-            <img src="assets/icons/telegram.svg" alt="" /> Telegram
+            <img src="/assets/icons/telegram.svg" alt="telegram" /> Telegram
+          </a>
+          <a
+            class="social-btn"
+            href="https://connect.easystaff.io/easylancer/nikdor?ref=yjdkywy"
+          >
+            <img src="/assets/icons/briefcase.svg" alt="easystaff" /> EasyStaff
           </a>
         </div>
-      </div>
+      </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
       <small>© 2025 Nikita Doronin</small>
     </footer>
 

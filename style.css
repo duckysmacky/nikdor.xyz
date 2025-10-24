@@ -1,185 +1,560 @@
-/* === CORE THEME === */
+/* ==========================================================================
+   CSS Variables (Theme Colors)
+   ========================================================================== */
+
 :root {
   --bg: #0e1111;
-  --bg-alt: #1a1e1e;
-  --text: #e6e6e6;
+  --panel: #141818;
+  --muted: #9aa3a3;
+  --text: #e9efee;
   --accent: #00ff88;
   --accent-dark: #00cc6d;
-  --accent-glow: rgba(0, 255, 136, 0.28);
+  --glow: rgba(0, 255, 136, 0.18);
+  --card-border: #1e2222;
+  --radius: 10px;
+}
+
+/* ==========================================================================
+     Base Styles & Reset
+     ========================================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
   background: var(--bg);
   color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45;
 }
 
-/* === NAVIGATION === */
-nav {
+/* ==========================================================================
+     Page Transitions
+     ========================================================================== */
+
+.fade-ready {
+  opacity: 0;
+  transition: opacity 260ms ease-in-out;
+}
+
+.fade-ready.visible {
+  opacity: 1;
+}
+
+/* ==========================================================================
+     Navigation
+     ========================================================================== */
+
+.site-header {
+  border-bottom: 1px solid #0f1514;
+}
+
+.nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
   padding: 1rem 2rem;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-}
-
-nav a {
+.brand {
+  font-weight: 600;
+  letter-spacing: 0.6px;
   text-decoration: none;
   color: var(--text);
-  transition: .2s;
 }
 
-.nav-brand.accent {
+.brand.accent {
   color: var(--accent);
-  font-weight: 600;
-  font-size: 1.1rem;
+  text-shadow: 0 0 8px var(--glow);
 }
 
-nav a:hover {
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  color: var(--text);
+  text-decoration: none;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 500;
+  transition: color 0.18s;
+}
+
+.nav-list a:hover,
+.nav-list a.active {
   color: var(--accent);
-  text-shadow: 0px 0px 6px var(--accent-glow);
+  text-shadow: 0 0 6px var(--glow);
 }
 
-/* === HERO === */
+/* ==========================================================================
+     Layout & Containers
+     ========================================================================== */
+
+.page {
+  max-width: 980px;
+  margin: 1.6rem auto 4rem;
+  padding: 0 1.1rem;
+}
+
+/* ==========================================================================
+     Hero Section
+     ========================================================================== */
+
 .hero {
+  padding: 3.6rem 0 1.6rem;
   text-align: center;
-  padding: 7rem 1.5rem 3rem;
 }
 
-.hero h1 {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 3rem;
-  letter-spacing: -.5px;
+.hero-title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 2.8rem;
+  margin: 0;
 }
 
-.intro {
-  width: min(800px, 90%);
-  margin: 0.8rem auto 0;
-  opacity: .88;
-  font-size: 1.1rem;
+.hero-subtitle {
+  font-family: "Roboto", monospace;
+  font-size: 1.8rem;
+  margin: 0;
 }
 
-/* === STATS === */
-.stats {
+.hero-description {
+  opacity: 0.9;
+  max-width: 900px;
+  margin: 0.9rem auto 0;
+  font-size: 1.05rem;
+}
+
+.hero-actions {
+  margin-top: 1.2rem;
   display: flex;
   justify-content: center;
-  gap: 2.2rem;
-  padding: 2rem 1rem;
-  margin-top: 2rem;
+  gap: 0.8rem;
 }
 
-.stat-card {
-  background: var(--bg-alt);
-  padding: 1.4rem 2rem;
-  border-radius: 10px;
-  text-align: center;
+/* ==========================================================================
+     Buttons
+     ========================================================================== */
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--card-border);
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, var(--accent-dark), var(--accent));
+  color: #021;
+  font-weight: 700;
+}
+
+.btn-ghost {
+  background: transparent;
   border: 1px solid #1f2525;
-  box-shadow: 0 0 12px var(--accent-glow);
 }
 
-.stat-number {
-  font-size: 1.9rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 600;
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+     Stats Section
+     ========================================================================== */
+
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.6rem;
+  padding: 0.6rem;
+}
+
+.stat {
+  background: linear-gradient(180deg, var(--panel), #101414);
+  padding: 1.1rem 1.4rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 6px 22px var(--glow);
+  border: 1px solid var(--card-border);
+  min-width: 140px;
+}
+
+.val {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1.6rem;
   color: var(--accent);
 }
 
-.stat-label {
-  font-size: .95rem;
-  opacity: .85;
+.label {
+  font-size: 0.92rem;
+  opacity: 0.86;
+  margin-top: 0.35rem;
 }
 
-/* === CURRENT PROJECT === */
-.current-project-banner {
-  text-align: center;
-  padding: 3rem 1rem;
+/* ==========================================================================
+     Current Project Section
+     ========================================================================== */
+
+.current-project.small {
+  margin: 2rem auto;
+  padding: 1rem 1.1rem;
   border-left: 4px solid var(--accent);
-  margin: 3rem auto;
-  width: min(680px, 95%);
-  background: #0a1410;
+  background: #07120f;
   border-radius: 8px;
+  max-width: 780px;
 }
 
 .tag {
-  font-size: .9rem;
-  opacity: .8;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
+  opacity: 0.75;
+  font-size: 0.88rem;
+  margin-bottom: 0.2rem;
 }
 
-.current-project-banner h2 {
-  margin: .2rem 0;
-  font-size: 1.7rem;
-  font-family: 'JetBrains Mono', monospace;
+.project-title {
+  margin: 0.25rem 0;
+  font-family: "JetBrains Mono", monospace;
 }
 
-.accent {
-  color: var(--accent);
+.project-desc {
+  opacity: 0.9;
+  margin: 0.6rem 0;
 }
 
-.accent-link {
-  text-decoration: none;
-  color: var(--accent);
-  font-weight: 600;
-}
+/* ==========================================================================
+     Social Links
+     ========================================================================== */
 
-.accent-link:hover {
-  text-shadow: 0px 0px 6px var(--accent-glow);
-}
-
-/* === SOCIAL === */
-.social-section {
+.connect {
   text-align: center;
-  padding: 2rem 1rem;
+  margin-top: 2rem;
 }
 
-.social-buttons {
+.social {
   display: flex;
+  gap: 0.6rem;
   justify-content: center;
-  gap: .8rem;
-  margin-top: 1.2rem;
+  margin-top: 0.6rem;
 }
 
 .social-btn {
-  background: var(--bg-alt);
-  padding: .6rem 1rem;
-  border-radius: 7px;
+  display: inline-flex;
+  gap: 0.6rem;
+  align-items: center;
+  background: var(--panel);
+  padding: 0.55rem 0.85rem;
+  border-radius: 9px;
   text-decoration: none;
   color: var(--text);
-  font-family: 'JetBrains Mono', monospace;
-  display: flex;
-  gap: .6rem;
-  align-items: center;
-  border: 1px solid #222;
-  transition: .2s;
+  border: 1px solid var(--card-border);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.95rem;
+}
+
+.social-btn img {
+  width: 18px;
+  opacity: 0.9;
 }
 
 .social-btn:hover {
   background: var(--accent-dark);
-  color: #0d0d0d;
+  color: #0b130f;
 }
 
-.social-btn img {
-  width: 17px;
-  opacity: .85;
+/* ==========================================================================
+     About Page Styles
+     ========================================================================== */
+
+.about-intro p {
+  max-width: 880px;
 }
 
-/* === FOOTER === */
-footer {
+.timeline {
+  margin-top: 1.4rem;
+}
+
+.tl-entry {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin: 0.9rem 0;
+  padding: 0.6rem;
+  background: var(--panel);
+  border-radius: 9px;
+  border: 1px solid var(--card-border);
+}
+
+.tl-icon img {
+  width: 36px;
+  opacity: 0.95;
+}
+
+.tl-period {
+  font-family: "JetBrains Mono", monospace;
+  opacity: 0.8;
+}
+
+.tl-title {
+  font-weight: 700;
+  margin: 0.2rem 0;
+}
+
+.tl-desc {
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+     Experience Section
+     ========================================================================== */
+
+.exp-item {
+  margin-top: 1rem;
+  padding: 0.9rem;
+  background: linear-gradient(180deg, #0f1414, #0c1111);
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+}
+
+.exp-period {
+  font-family: "JetBrains Mono", monospace;
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+     Skills Grid
+     ========================================================================== */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.skill-card {
+  background: var(--panel);
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+}
+
+.skill-card h3 {
+  font-family: "JetBrains Mono", monospace;
+  margin: 0 0 0.6rem 0;
+}
+
+.skill-card ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.skill-card li {
+  margin-bottom: 0.45rem;
+  opacity: 0.95;
+}
+
+/* ==========================================================================
+     Projects Section
+     ========================================================================== */
+
+.project {
+  display: flex;
+  gap: 1.2rem;
+  padding: 1rem;
+  background: linear-gradient(180deg, #0e1412, #0e1111);
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  margin: 1rem 0;
+  align-items: center;
+}
+
+.project.alt {
+  flex-direction: row-reverse;
+}
+
+.project.highlight {
+  border-left: 5px solid var(--accent);
+  box-shadow: 0 8px 28px var(--glow);
+}
+
+.project-body {
+  flex: 1;
+}
+
+.project-name {
+  font-family: "JetBrains Mono", monospace;
+  margin: 0;
+}
+
+.lang {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-left: 0.5rem;
+}
+
+.project-text {
+  margin: 0.6rem 0 0 0;
+  opacity: 0.92;
+}
+
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.8rem;
+}
+
+.badges {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.badge {
+  background: #0e2920;
+  color: var(--accent);
+  padding: 0.28rem 0.45rem;
+  border-radius: 6px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.82rem;
+  border: 1px solid #07321b;
+}
+
+/* ==========================================================================
+     Achievements & Certifications
+     ========================================================================== */
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cert-card {
+  background: var(--panel);
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+}
+
+.cert-info strong {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.meta {
+  font-size: 0.88rem;
+  opacity: 0.75;
+  margin-bottom: 0.5rem;
+}
+
+.comp-card {
+  background: var(--panel);
+  padding: 0.85rem;
+  border-radius: 9px;
+  border: 1px solid var(--card-border);
+  margin: 0.7rem 0;
+}
+
+/* ==========================================================================
+     Services Grid
+     ========================================================================== */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.service-card {
+  background: var(--panel);
+  padding: 1.1rem;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+}
+
+.service-card h3 {
+  margin-top: 0;
+}
+
+/* ==========================================================================
+     Footer
+     ========================================================================== */
+
+.site-footer {
+  padding: 1.6rem;
   text-align: center;
-  padding: 2rem 0;
-  opacity: .66;
+  opacity: 0.7;
 }
 
-/* === RESPONSIVE === */
-@media (max-width: 720px) {
-  .stats {
-      flex-direction: column;
-      gap: 1rem;
+/* ==========================================================================
+     Utility Classes
+     ========================================================================== */
+
+.small {
+  font-size: 0.92rem;
+  opacity: 0.86;
+}
+
+.link-accent {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+/* ==========================================================================
+     Responsive Design
+     ========================================================================== */
+
+@media (max-width: 880px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav {
+    padding: 0.6rem 1rem;
+  }
+
+  .nav-list {
+    gap: 0.6rem;
+    font-size: 0.95rem;
+  }
+
+  .stats-row {
+    flex-direction: column;
+    align-items: center;
   }
 }

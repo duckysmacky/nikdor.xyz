@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Projects - Nikita Doronin</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="fade-ready">
+    <header class="site-header">
+      <nav class="nav">
+        <a class="brand accent" href="/index.html">NIKDOR</a>
+        <ul class="nav-list">
+          <li><a href="/about" data-link>About</a></li>
+          <li><a href="/skills" data-link>Skills</a></li>
+          <li><a href="/projects" class="active" data-link>Projects</a></li>
+          <li><a href="/achievements" data-link>Achievements</a></li>
+          <li><a href="/services" data-link>Services</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="page page--projects" id="page">
+      <h1>Projects</h1>
+
+      <!-- Pinned: Copper -->
+      <article class="project highlight">
+        <div class="project-body">
+          <h2 class="project-name">Copper <span class="lang">Rust</span></h2>
+          <p class="project-text">
+            A lightweight, unit-based build system for C and C++ projects.
+            Copper focuses on predictable, readable configuration (copper.toml),
+            automatic source discovery, and fast incremental builds. Designed to
+            be minimal and easy to maintain.
+          </p>
+          <div class="project-meta">
+            <div class="badges">
+              <span class="badge">cli</span>
+              <span class="badge">utility</span>
+              <span class="badge">build-system</span>
+            </div>
+            <a class="link-accent" href="https://github.com/duckysmacky/copper"
+              >> Repository</a
+            >
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-body">
+          <h3 class="project-name">Databoxer <span class="lang">Rust</span></h3>
+          <p class="project-text">
+            Cross-platform CLI tool to encrypt files into a custom archive
+            format with profile-based key management and password-protected
+            access. Focused on security and usability for personal data storage.
+          </p>
+          <div class="project-meta">
+            <div class="badges">
+              <span class="badge">cli</span>
+              <span class="badge">crypto</span>
+              <span class="badge">security</span>
+            </div>
+            <a class="link" href="https://github.com/duckysmacky/databoxer"
+              >> Repository</a
+            >
+          </div>
+        </div>
+      </article>
+
+      <article class="project alt">
+        <div class="project-body">
+          <h3 class="project-name">
+            Signsense <span class="lang">Java + Python</span>
+          </h3>
+          <p class="project-text">
+            Mobile application that recognizes fingerspelling (dactyl) and
+            converts it into written text using a trained machine learning model
+            for gesture recognition.
+          </p>
+          <div class="project-meta">
+            <div class="badges">
+              <span class="badge">android</span>
+              <span class="badge">machine-learning</span>
+              <span class="badge">machine-vision</span>
+            </div>
+            <a class="link" href="https://github.com/duckysmacky/signsense"
+              >> Repository</a
+            >
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-body">
+          <h3 class="project-name">Win-tools <span class="lang">C++</span></h3>
+          <p class="project-text">
+            A collection of Unix-like command-line utilities (ls, grep, head,
+            touch) for Windows implemented on top of the Windows API. Includes
+            an argument parsing library and path utilities.
+          </p>
+          <div class="project-meta">
+            <div class="badges">
+              <span class="badge">cli</span>
+              <span class="badge">utility</span>
+              <span class="badge">winapi</span>
+            </div>
+            <a class="link" href="https://github.com/duckysmacky/win-tools"
+              >> Repository</a
+            >
+          </div>
+        </div>
+      </article>
+
+      <article class="project alt">
+        <div class="project-body">
+          <h3 class="project-name">
+            Pasteshelf <span class="lang">Java</span>
+          </h3>
+          <p class="project-text">
+            A small Pastebin-style web app built with Spring Boot and
+            PostgreSQL. Offers a REST API for creating and retrieving pastes
+            with simple authentication.
+          </p>
+          <div class="project-meta">
+            <div class="badges">
+              <span class="badge">spring</span>
+              <span class="badge">rest-api</span>
+              <span class="badge">postgresql</span>
+            </div>
+            <a class="link" href="https://github.com/duckysmacky/pasteshelf"
+              >> Repository</a
+            >
+          </div>
+        </div>
+      </article>
+
+      <article class="project alt">
+        <div class="project-body">
+          <h3 class="project-name">
+            Feather chat <span class="lang">Java</span>
+          </h3>
+          <p class="project-text">
+            A light socket-based chat application with a JavaFX client and a
+            multithreaded server. Planned support for multiple users, private
+            messaging, and basic user authorization.
+          </p>
+          <div class="project-meta">
+            <div class="badges">
+              <span class="badge">sockets</span>
+              <span class="badge">networking</span>
+              <span class="badge">javafx</span>
+              <span class="badge">multithreading</span>
+            </div>
+            <a class="link" href="https://github.com/duckysmacky/feather-chat"
+              >> Repository</a
+            >
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <small>© 2025 Nikita Doronin</small>
+    </footer>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
