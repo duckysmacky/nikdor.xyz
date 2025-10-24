@@ -1,0 +1,166 @@
+/* Color Theme */
+:root {
+  --bg: #101012;
+  --bg-alt: #18181a;
+  --text: #e6e6e6;
+  --primary: #4aa3ff;
+}
+
+/* Reset */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: var(--bg-alt);
+}
+
+.navbar a {
+  color: var(--text);
+  margin-left: 1rem;
+  text-decoration: none;
+}
+
+/* Logo */
+.logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Layout */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem 1rem;
+}
+
+.hero {
+  text-align: center;
+}
+
+.title {
+  font-size: 2.8rem;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  opacity: 0.8;
+}
+
+/* Project + Skills cards */
+.skill-group,
+.project-card,
+.service-card,
+.current-project,
+.cert-card {
+  background: var(--bg-alt);
+  padding: 1.2rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+/* Buttons */
+.btn {
+  background: var(--primary);
+  color: #000;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  opacity: 0.6;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: .8rem;
+  margin-top: 2rem;
+}
+
+.social-btn {
+  background: var(--bg-alt);
+  padding: .5rem .9rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: .9rem;
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+
+.social-btn img {
+  width: 16px;
+  opacity: .85;
+}
+
+/* Stats row */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 1.4rem;
+  margin-top: 1.5rem;
+  opacity: .9;
+}
+
+/* Timeline */
+.timeline-entry {
+  display: flex;
+  margin-bottom: .8rem;
+}
+
+.timeline-entry .time {
+  width: 110px;
+  font-family: 'JetBrains Mono', monospace;
+  opacity: .7;
+}
+
+.timeline-entry .details {
+  padding-left: .6rem;
+}
+
+/* Project highlight */
+.project-card.current {
+  background: #2a2405;
+  border-left: 4px solid #f1c40f;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+/* Achievements */
+.achievement-card {
+  background: var(--bg-alt);
+  border-radius: 8px;
+  display: flex;
+  gap:1rem;
+  padding: .6rem;
+}
+
+.thumb {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.meta {
+  opacity: .7;
+  font-size: .85rem;
+}
