@@ -1,166 +1,185 @@
-/* Color Theme */
+/* === CORE THEME === */
 :root {
-  --bg: #101012;
-  --bg-alt: #18181a;
+  --bg: #0e1111;
+  --bg-alt: #1a1e1e;
   --text: #e6e6e6;
-  --primary: #4aa3ff;
+  --accent: #00ff88;
+  --accent-dark: #00cc6d;
+  --accent-glow: rgba(0, 255, 136, 0.28);
 }
 
-/* Reset */
 body {
   margin: 0;
+  font-family: 'Roboto', sans-serif;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', sans-serif;
 }
 
-/* Navbar */
-.navbar {
+/* === NAVIGATION === */
+nav {
   display: flex;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background: var(--bg-alt);
-}
-
-.navbar a {
-  color: var(--text);
-  margin-left: 1rem;
-  text-decoration: none;
-}
-
-/* Logo */
-.logo {
   font-family: 'JetBrains Mono', monospace;
-  font-weight: bold;
-  font-size: 1.2rem;
 }
 
-/* Layout */
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 2rem 1rem;
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
 }
 
+nav a {
+  text-decoration: none;
+  color: var(--text);
+  transition: .2s;
+}
+
+.nav-brand.accent {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+nav a:hover {
+  color: var(--accent);
+  text-shadow: 0px 0px 6px var(--accent-glow);
+}
+
+/* === HERO === */
 .hero {
   text-align: center;
+  padding: 7rem 1.5rem 3rem;
 }
 
-.title {
-  font-size: 2.8rem;
+.hero h1 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 3rem;
+  letter-spacing: -.5px;
 }
 
-.subtitle {
-  font-size: 1.3rem;
-  opacity: 0.8;
+.intro {
+  width: min(800px, 90%);
+  margin: 0.8rem auto 0;
+  opacity: .88;
+  font-size: 1.1rem;
 }
 
-/* Project + Skills cards */
-.skill-group,
-.project-card,
-.service-card,
-.current-project,
-.cert-card {
+/* === STATS === */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 2.2rem;
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+}
+
+.stat-card {
   background: var(--bg-alt);
-  padding: 1.2rem;
-  border-radius: 8px;
-  margin: 1rem 0;
-}
-
-/* Buttons */
-.btn {
-  background: var(--primary);
-  color: #000;
-  padding: 0.6rem 1rem;
-  text-decoration: none;
-  border-radius: 4px;
-}
-
-/* Footer */
-footer {
+  padding: 1.4rem 2rem;
+  border-radius: 10px;
   text-align: center;
-  padding: 2rem;
-  opacity: 0.6;
+  border: 1px solid #1f2525;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.stat-number {
+  font-size: 1.9rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.stat-label {
+  font-size: .95rem;
+  opacity: .85;
+}
+
+/* === CURRENT PROJECT === */
+.current-project-banner {
+  text-align: center;
+  padding: 3rem 1rem;
+  border-left: 4px solid var(--accent);
+  margin: 3rem auto;
+  width: min(680px, 95%);
+  background: #0a1410;
+  border-radius: 8px;
+}
+
+.tag {
+  font-size: .9rem;
+  opacity: .8;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.current-project-banner h2 {
+  margin: .2rem 0;
+  font-size: 1.7rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.accent-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.accent-link:hover {
+  text-shadow: 0px 0px 6px var(--accent-glow);
+}
+
+/* === SOCIAL === */
+.social-section {
+  text-align: center;
+  padding: 2rem 1rem;
 }
 
 .social-buttons {
   display: flex;
   justify-content: center;
   gap: .8rem;
-  margin-top: 2rem;
+  margin-top: 1.2rem;
 }
 
 .social-btn {
   background: var(--bg-alt);
-  padding: .5rem .9rem;
-  border-radius: 6px;
+  padding: .6rem 1rem;
+  border-radius: 7px;
   text-decoration: none;
   color: var(--text);
-  font-size: .9rem;
+  font-family: 'JetBrains Mono', monospace;
   display: flex;
-  gap: .5rem;
+  gap: .6rem;
   align-items: center;
+  border: 1px solid #222;
+  transition: .2s;
+}
+
+.social-btn:hover {
+  background: var(--accent-dark);
+  color: #0d0d0d;
 }
 
 .social-btn img {
-  width: 16px;
+  width: 17px;
   opacity: .85;
 }
 
-/* Stats row */
-.stats {
-  display: flex;
-  justify-content: center;
-  gap: 1.4rem;
-  margin-top: 1.5rem;
-  opacity: .9;
+/* === FOOTER === */
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  opacity: .66;
 }
 
-/* Timeline */
-.timeline-entry {
-  display: flex;
-  margin-bottom: .8rem;
-}
-
-.timeline-entry .time {
-  width: 110px;
-  font-family: 'JetBrains Mono', monospace;
-  opacity: .7;
-}
-
-.timeline-entry .details {
-  padding-left: .6rem;
-}
-
-/* Project highlight */
-.project-card.current {
-  background: #2a2405;
-  border-left: 4px solid #f1c40f;
-}
-
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.2rem;
-}
-
-/* Achievements */
-.achievement-card {
-  background: var(--bg-alt);
-  border-radius: 8px;
-  display: flex;
-  gap:1rem;
-  padding: .6rem;
-}
-
-.thumb {
-  width: 100px;
-  height: 70px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.meta {
-  opacity: .7;
-  font-size: .85rem;
+/* === RESPONSIVE === */
+@media (max-width: 720px) {
+  .stats {
+      flex-direction: column;
+      gap: 1rem;
+  }
 }

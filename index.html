@@ -2,46 +2,65 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nikita Doronin - Portfolio</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header class="navbar">
-      <div class="logo">NIKDOR</div>
       <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="skills.html">Skills</a>
-        <a href="projects.html">Projects</a>
-        <a href="achievements.html">Achievements</a>
-        <a href="services.html">Services</a>
+        <a href="index.html" class="nav-brand accent">NIKDOR</a>
+        <ul class="nav-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="achievements.html">Achievements</a></li>
+          <li><a href="services.html">Services</a></li>
+        </ul>
       </nav>
     </header>
 
     <main class="container">
       <section class="hero">
-        <h1 class="title">Software Developer</h1>
-        <h2 class="subtitle">Systems Programming • Backend • Automation</h2>
-
+        <h1>Nikita Doronin</h1>
         <p class="intro">
-          Building fast and reliable software systems - from backend services to
-          low-level tools and utilities. Focused on performance, clarity, and
-          problem-solving. Passionate about system programming, Linux and secure
-          engineering.
+          Designing and developing secure and reliable software systems - from
+          backend services to low-level developer tooling. Focused on measurable
+          performance, technical clarity and pragmatic engineering.
         </p>
+      </section>
 
-        <div class="stats">
-          <div><strong>3+ years</strong><br />programming experience</div>
-          <div><strong>5+</strong><br />major projects published</div>
-          <div><strong>100/100</strong><br />Informatics exam</div>
+      <section class="stats highlight">
+        <div class="stat-card">
+          <div class="stat-number">3+ years</div>
+          <div class="stat-label">Programming experience</div>
         </div>
+        <div class="stat-card">
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Major projects published</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100/100</div>
+          <div class="stat-label">National Informatics exam score</div>
+        </div>
+      </section>
 
-        <section class="current-project small-accent">
-          <h3>Current Focus</h3>
-          <strong>[Pinned Project Placeholder]</strong>
-          <a class="btn small" href="projects.html">View project</a>
-        </section>
+      <section class="current-project-banner">
+        <p class="tag">Current Focus</p>
+        <h2 class="accent">Copper</h2>
+        <p>
+          A lightweight build system for C/C++ - auto-detecting source files,
+          handling dependencies, linking with precision and clarity.
+        </p>
+        <a class="accent-link" href="projects.html">View project</a>
+      </section>
 
+      <div class="social-section">
+        <h3>Connect</h3>
         <div class="social-buttons">
           <a class="social-btn" href="mailto:nikdorkir@gmail.com">
             <img src="assets/icons/mail.svg" alt="" /> Email
@@ -53,7 +72,7 @@
             <img src="assets/icons/telegram.svg" alt="" /> Telegram
           </a>
         </div>
-      </section>
+      </div>
     </main>
 
     <footer>
