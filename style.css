@@ -12,6 +12,7 @@
   --glow: rgba(0, 255, 136, 0.18);
   --card-border: #1e2222;
   --radius: 10px;
+  --transition-speed: 0.1s;
 }
 
 /* ==========================================================================
@@ -127,16 +128,25 @@ body {
   margin: 0;
 }
 
+.hero-roles {
+  font-family: "JetBrains Mono", monospace;
+  color: var(--accent-color);
+  font-size: 14px;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
 .hero-subtitle {
-  font-family: "Roboto", monospace;
-  font-size: 1.8rem;
-  margin: 0;
+  margin-top: 14px;
+  font-size: 18px;
+  line-height: 1.45;
+  opacity: 0.9;
 }
 
 .hero-description {
   opacity: 0.9;
   max-width: 900px;
-  margin: 0.9rem auto 0;
+  margin: 30px auto;
   font-size: 1.05rem;
 }
 
@@ -159,6 +169,7 @@ body {
   color: var(--text);
   background: var(--panel);
   border: 1px solid var(--card-border);
+  transition: all var(--transition-speed);
 }
 
 .btn-primary {
@@ -174,6 +185,36 @@ body {
 
 .btn:hover {
   transform: translateY(-2px);
+}
+
+/* ==========================================================================
+     Tech Badges
+     ========================================================================== */
+
+.tech-badges {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  gap: 0.45rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.tech-badge {
+  background: #0e2920;
+  color: var(--accent);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid var(--accent-color);
+  transition: all var(--transition-speed);
+}
+
+.tech-badge:hover {
+  box-shadow: 0 0 12px rgba(120, 255, 120, 0.2);
 }
 
 /* ==========================================================================
@@ -196,6 +237,7 @@ body {
   box-shadow: 0 6px 22px var(--glow);
   border: 1px solid var(--card-border);
   min-width: 140px;
+  transition: all var(--transition-speed);
 }
 
 .val {
@@ -209,6 +251,11 @@ body {
   opacity: 0.86;
   margin-top: 0.35rem;
 }
+
+.stat:hover {
+  transform: translateY(-4px);
+}
+
 
 /* ==========================================================================
      Current Project Section
@@ -238,6 +285,45 @@ body {
 .project-desc {
   opacity: 0.9;
   margin: 0.6rem 0;
+}
+
+/* ==========================================================================
+     Freelance Work Callout
+     ========================================================================== */
+
+.freelance-card {
+  margin-top: 45px;
+  background: var(--card-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 10px;
+  padding: 20px 22px;
+  transition: transform var(--transition-speed),
+    box-shadow var(--transition-speed);
+}
+
+.freelance-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 12px rgba(120, 255, 120, 0.2);
+}
+
+.freelance-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.freelance-desc {
+  font-size: 16px;
+  opacity: 0.85;
+  margin: 6px 0 12px;
+}
+
+.freelance-link {
+  font-family: "JetBrains Mono", monospace;
+  color: var(--accent-color);
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 /* ==========================================================================
