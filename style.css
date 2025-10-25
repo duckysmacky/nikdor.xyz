@@ -391,10 +391,15 @@ body {
   opacity: 0.9;
   color: var(--accent);
   transition: color var(--transition-speed);
+  /* makes the svg green */
+  filter: invert(76%) sepia(55%) saturate(1683%) hue-rotate(92deg)
+    brightness(97%) contrast(109%);
 }
 
 .social-btn:hover > .social-btn-icon {
   color: black;
+  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(326deg) brightness(96%)
+    contrast(104%);
 }
 
 .social-btn:hover {
