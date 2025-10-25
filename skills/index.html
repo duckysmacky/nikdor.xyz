@@ -15,16 +15,20 @@
       <nav class="nav">
         <a class="brand accent" href="/">NIKDOR</a>
         <ul class="nav-list">
-          <li><a href="/about" data-link>About</a></li>
-          <li><a href="/skills" class="active" data-link>Skills</a></li>
-          <li><a href="/projects" data-link>Projects</a></li>
-          <li><a href="/achievements" data-link>Achievements</a></li>
-          <li><a href="/services" data-link>Services</a></li>
+          <li class="nav-item"><a href="/about" data-link>About</a></li>
+          <li class="nav-item active">
+            <a href="/skills" data-link>Skills</a>
+          </li>
+          <li class="nav-item"><a href="/projects" data-link>Projects</a></li>
+          <li class="nav-item">
+            <a href="/achievements" data-link>Achievements</a>
+          </li>
+          <li class="nav-item"><a href="/services" data-link>Services</a></li>
         </ul>
       </nav>
     </header>
 
-    <main class="page page--skills" id="page">
+    <main class="page page--skills">
       <h1>Skills</h1>
       <p>
         This page outlines my core technical skills and competencies in software
@@ -37,8 +41,9 @@
           <h3 class="brand accent">Programming Languages</h3>
           <ul>
             <li>
-              <strong>Rust</strong> - CLI tools, bots and automation. My go-to
-              language for new projects and general applications.
+              <strong>Rust</strong><br />
+              CLI tools, bots and automation. My go-to language for new projects
+              and general applications.
             </li>
             <li>
               <strong>Java</strong> - primary language for backend development
