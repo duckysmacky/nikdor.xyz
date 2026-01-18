@@ -620,6 +620,8 @@ body {
 .cert-info strong {
   display: block;
   margin-bottom: 0.2rem;
+  color: var(--accent);
+  text-shadow: 0 0 6px var(--glow);
 }
 
 .meta {
@@ -642,18 +644,58 @@ body {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35), 0 0 18px var(--glow);
 }
 
-.cert-preview {
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid #1f2525;
-  background: #0d1111;
+.cert-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 10, 10, 0.86);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 30;
 }
 
-.cert-preview iframe {
+.cert-modal:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cert-modal-body {
+  width: min(960px, 100%);
+  max-height: 90vh;
+  background: var(--panel);
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+.cert-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cert-modal-header h3 {
+  margin: 0;
+  color: var(--accent);
+  text-shadow: 0 0 6px var(--glow);
+  font-family: "JetBrains Mono", monospace;
+}
+
+.cert-modal iframe {
   width: 100%;
-  height: 220px;
+  height: 70vh;
   border: 0;
-  display: block;
+  background: #0d1111;
+  border-radius: 8px;
 }
 
 .comp-list {
@@ -670,6 +712,8 @@ body {
 .comp-title {
   font-family: "JetBrains Mono", monospace;
   font-weight: 600;
+  color: var(--accent);
+  text-shadow: 0 0 6px var(--glow);
 }
 
 .comp-meta {
@@ -682,6 +726,23 @@ body {
   margin-top: 0.35rem;
   font-size: 0.92rem;
   opacity: 0.86;
+}
+
+.comp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.comp-tag {
+  font-size: 0.78rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: #0e2920;
+  color: var(--accent);
+  border: 1px solid #07321b;
+  font-family: "JetBrains Mono", monospace;
 }
 
 /* ==========================================================================
