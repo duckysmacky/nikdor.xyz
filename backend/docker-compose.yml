@@ -1,6 +1,7 @@
 services:
-  postgres:
+  db:
     image: postgres:17
+    container_name: nikdor.xyz-db
     env_file:
       - .env
     ports:
