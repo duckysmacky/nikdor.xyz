@@ -3,6 +3,7 @@ mod dto;
 mod error;
 mod model;
 mod handlers;
+mod bot;
 
 use axum::routing::{get, post, delete};
 use std::sync::Arc;
@@ -18,13 +19,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     use tokio::net::TcpListener;
 
     dotenv::dotenv().ok();
-
-    let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
-    let listener = TcpListener::bind(addr).await.expect("Failed to bind to address");
-    println!("Listening on port {}", addr.port());
+    pretty_env_logger::init();
+    bot::init_bot().await?;
+    let db_pool = db::init_pool().await?;
 
     let state = Arc::new(AppState {
-        db_pool: db::init_pool().await?,
+        db_pool,
     });
 
     let app = axum::Router::new()
@@ -33,6 +33,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .route("/api/orders", post(handlers::create_order))
         .route("/api/orders/{id}", delete(handlers::delete_order))
         .with_state(state);
+
+    let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
+    let listener = TcpListener::bind(addr).await.expect("Failed to bind to address");
+    println!("Listening on port {}", addr.port());
 
     axum::serve(listener, app).await?;
 
