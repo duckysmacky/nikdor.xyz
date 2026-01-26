@@ -5,7 +5,7 @@ mod model;
 mod handlers;
 mod bot;
 
-use axum::routing::{get, post, delete};
+use axum::{Router, routing::{delete, get, post}};
 use teloxide::types::UserId;
 use std::{env, sync::Arc};
 use tower_http::cors::{Any, CorsLayer};
@@ -59,24 +59,34 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     });
 
-    let cors = CorsLayer::new()
-        .allow_origin(Any)
-        .allow_methods(Any)
-        .allow_headers(Any);
+    let app = create_app(state);
 
-    let app = axum::Router::new()
-        .route("/api/orders", get(handlers::get_orders))
-        .route("/api/orders/{id}", get(handlers::get_order))
-        .route("/api/orders", post(handlers::create_order))
-        .route("/api/orders/{id}", delete(handlers::delete_order))
-        .layer(cors)
-        .with_state(state);
+    let addr = {
+        let port = env::var("APP_PORT")
+            .map(|port| port.parse().expect("APP_PORT is not a valid integer"))
+            .unwrap_or(8000);
+        SocketAddr::from(([127, 0, 0, 1], port))
+    };
 
-    let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
     let listener = TcpListener::bind(addr).await.expect("Failed to bind to address");
     println!("Listening on port {}", addr.port());
 
     axum::serve(listener, app).await?;
 
     Ok(())
+}
+
+fn create_app(state: Arc<AppState>) -> Router {
+    let cors = CorsLayer::new()
+        .allow_origin(Any)
+        .allow_methods(Any)
+        .allow_headers(Any);
+
+    axum::Router::new()
+        .route("/api/orders", get(handlers::get_orders))
+        .route("/api/orders/{id}", get(handlers::get_order))
+        .route("/api/orders", post(handlers::create_order))
+        .route("/api/orders/{id}", delete(handlers::delete_order))
+        .layer(cors)
+        .with_state(state)
 }
