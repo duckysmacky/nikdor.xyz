@@ -6,11 +6,18 @@ mod handlers;
 mod bot;
 
 use axum::routing::{get, post, delete};
-use std::sync::Arc;
+use teloxide::types::UserId;
+use std::{env, sync::Arc};
+
+struct BotConfig {
+    target_user_id: UserId
+}
 
 #[allow(dead_code)]
 struct AppState {
     db_pool: sqlx::PgPool,
+    tg_bot: teloxide::Bot,
+    bot_config: BotConfig
 }
 
 #[tokio::main]
@@ -20,11 +27,34 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     dotenv::dotenv().ok();
     pretty_env_logger::init();
-    bot::init_bot().await?;
-    let db_pool = db::init_pool().await?;
+
+    let user_id = {
+        let user_id = env::var("TELEGRAM_TARGET_USER_ID").expect("TELEGRAM_TARGET_USER_ID is not set");
+        let user_id = user_id.parse().expect("TELEGRAM_TARGET_USER_ID is not a valid integer");
+        UserId(user_id)
+    };
+
+    let tg_bot = match bot::init_bot().await {
+        Ok(bot) => bot,
+        Err(err) => {
+            eprintln!("Failed to initialize Telegram bot: {}", err);
+            std::process::exit(1);
+        }
+    };
+    let db_pool = match db::init_pool().await {
+        Ok(pool) => pool,
+        Err(err) => {
+            eprintln!("Failed to initialize database pool: {}", err);
+            std::process::exit(1);
+        }
+    };
 
     let state = Arc::new(AppState {
         db_pool,
+        tg_bot,
+        bot_config: BotConfig {
+            target_user_id: user_id,
+        }
     });
 
     let app = axum::Router::new()
@@ -32,6 +62,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .route("/api/orders/{id}", get(handlers::get_order))
         .route("/api/orders", post(handlers::create_order))
         .route("/api/orders/{id}", delete(handlers::delete_order))
+        .route("/api/send", post(handlers::send_message))
         .with_state(state);
 
     let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
