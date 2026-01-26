@@ -81,7 +81,7 @@
         }
     });
 
-    const DEV_MODE = true;
+    const DEV_MODE = false;
     const API_BASE = DEV_MODE ? "http://127.0.0.1:8080" : "";
 
     form.addEventListener("submit", async (event) => {

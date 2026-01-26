@@ -1,0 +1,52 @@
+/* ========================================================================== 
+   Projects Page
+   ========================================================================== */
+
+.project {
+  display: flex;
+  gap: 1.2rem;
+  padding: 1rem;
+  background: linear-gradient(180deg, #0e1412, #0e1111);
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  margin: 1rem 0;
+  align-items: center;
+}
+
+.project.alt {
+  flex-direction: row-reverse;
+}
+
+.project.highlight {
+  border-left: 5px solid var(--accent);
+  box-shadow: 0 8px 28px var(--glow);
+}
+
+.project-body {
+  flex: 1;
+}
+
+.project-name {
+  font-family: "JetBrains Mono", monospace;
+  margin: 0;
+}
+
+.lang {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-left: 0.5rem;
+}
+
+.project-text {
+  margin: 0.6rem 0 0 0;
+  opacity: 0.92;
+}
+
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.8rem;
+}

@@ -1,0 +1,343 @@
+/* ========================================================================== 
+   Theme + Base
+   ========================================================================== */
+
+:root {
+  --bg: #0e1111;
+  --panel: #141818;
+  --muted: #9aa3a3;
+  --text: #e9efee;
+  --accent: #00ff88;
+  --accent-dark: #00cc6d;
+  --glow: rgba(0, 255, 136, 0.18);
+  --card-border: #1e2222;
+  --radius: 10px;
+  --transition-speed: 0.1s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45;
+}
+
+/* ========================================================================== 
+   Page Transitions
+   ========================================================================== */
+
+.fade-ready {
+  opacity: 0;
+  transition: opacity 260ms ease-in-out;
+}
+
+.fade-ready.visible {
+  opacity: 1;
+}
+
+/* ========================================================================== 
+   Navigation
+   ========================================================================== */
+
+.site-header {
+  border-bottom: 1px solid #0f1514;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.brand {
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.brand.accent {
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--glow);
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item a {
+  color: var(--text);
+  text-decoration: none;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 500;
+  transition: color var(--transition-speed);
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-item::after {
+  left: 0;
+  bottom: 0;
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent);
+  transition: width var(--transition-speed);
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+  width: 100%;
+}
+
+.nav-item:hover a,
+.nav-item.active a {
+  color: var(--accent);
+  text-shadow: 0 0 6px var(--glow);
+}
+
+/* ========================================================================== 
+   Layout & Containers
+   ========================================================================== */
+
+.page {
+  max-width: 980px;
+  margin: 1.6rem auto 4rem;
+  padding: 0 1.1rem;
+}
+
+.section-intro {
+  font-size: 18px;
+  line-height: 1.5;
+  opacity: 0.85;
+  margin-bottom: 32px;
+}
+
+/* ========================================================================== 
+   Buttons
+   ========================================================================== */
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--card-border);
+  transition: all var(--transition-speed);
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, var(--accent-dark), var(--accent));
+  color: #021;
+  font-weight: 700;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid #1f2525;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ========================================================================== 
+   Tech Badges (shared)
+   ========================================================================== */
+
+.tech-badges {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  gap: 0.45rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.tech-badge {
+  background: #0e2920;
+  color: var(--accent);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid var(--accent-color);
+  transition: all var(--transition-speed);
+}
+
+.tech-badge:hover {
+  box-shadow: 0 0 12px rgba(120, 255, 120, 0.2);
+}
+
+/* ========================================================================== 
+   Badges (shared)
+   ========================================================================== */
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.badge {
+  background: #0e2920;
+  color: var(--accent);
+  padding: 0.28rem 0.45rem;
+  border-radius: 6px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.82rem;
+  border: 1px solid #07321b;
+}
+
+/* ========================================================================== 
+   Social Links
+   ========================================================================== */
+
+.connect {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-top: 0.6rem;
+}
+
+.social-btn {
+  display: inline-flex;
+  gap: 0.6rem;
+  align-items: center;
+  background: var(--panel);
+  padding: 0.55rem 0.85rem;
+  border-radius: 9px;
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid var(--card-border);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.95rem;
+  transition: color var(--transition-speed),
+    background-color var(--transition-speed);
+}
+
+.social-btn img {
+  width: 18px;
+  opacity: 0.9;
+  color: green;
+}
+
+.social-btn-icon {
+  width: 18px;
+  opacity: 0.9;
+  color: var(--accent);
+  transition: color var(--transition-speed);
+  filter: invert(76%) sepia(55%) saturate(1683%) hue-rotate(92deg)
+    brightness(97%) contrast(109%);
+}
+
+.social-btn:hover > .social-btn-icon {
+  color: black;
+  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(326deg) brightness(96%)
+    contrast(104%);
+}
+
+.social-btn:hover {
+  background: var(--accent-dark);
+  color: #0b130f;
+}
+
+/* ========================================================================== 
+   Footer
+   ========================================================================== */
+
+.site-footer {
+  padding: 1.6rem;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* ========================================================================== 
+   Utility Classes
+   ========================================================================== */
+
+.small {
+  font-size: 0.92rem;
+  opacity: 0.86;
+}
+
+.link-accent {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+/* ========================================================================== 
+   Responsive Design (base)
+   ========================================================================== */
+
+@media (max-width: 880px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav {
+    padding: 0.6rem 1rem;
+  }
+
+  .nav-list {
+    gap: 0.6rem;
+    font-size: 0.95rem;
+  }
+
+  .stats-row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .nav {
+    flex-direction: column;
+  }
+}

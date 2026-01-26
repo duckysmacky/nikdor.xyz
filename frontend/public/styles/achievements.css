@@ -1,0 +1,150 @@
+/* ========================================================================== 
+   Achievements Page
+   ========================================================================== */
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cert-card {
+  background: var(--panel);
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: transform 0.16s ease, box-shadow 0.16s ease,
+    border-color 0.16s ease;
+}
+
+.cert-info strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--accent);
+  text-shadow: 0 0 6px var(--glow);
+}
+
+.meta {
+  font-size: 0.88rem;
+  opacity: 0.75;
+  margin-bottom: 0.5rem;
+}
+
+.comp-card {
+  background: var(--panel);
+  padding: 0.85rem;
+  border-radius: 9px;
+  border: 1px solid var(--card-border);
+  margin: 0.7rem 0;
+}
+
+.cert-card:hover {
+  transform: translateY(-4px);
+  border-color: #2a3a37;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35), 0 0 18px var(--glow);
+}
+
+.cert-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 10, 10, 0.86);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 30;
+}
+
+.cert-modal:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cert-modal-body {
+  width: min(960px, 100%);
+  max-height: 90vh;
+  background: var(--panel);
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+.cert-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cert-modal-header h3 {
+  margin: 0;
+  color: var(--accent);
+  text-shadow: 0 0 6px var(--glow);
+  font-family: "JetBrains Mono", monospace;
+}
+
+.cert-modal iframe {
+  width: 100%;
+  height: 70vh;
+  border: 0;
+  background: #0d1111;
+  border-radius: 8px;
+}
+
+.comp-list {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.comp-item {
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed #1f2525;
+}
+
+.comp-title {
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 600;
+  color: var(--accent);
+  text-shadow: 0 0 6px var(--glow);
+}
+
+.comp-meta {
+  font-size: 0.88rem;
+  opacity: 0.75;
+  margin-top: 0.2rem;
+}
+
+.comp-note {
+  margin-top: 0.35rem;
+  font-size: 0.92rem;
+  opacity: 0.86;
+}
+
+.comp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.comp-tag {
+  font-size: 0.78rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: #0e2920;
+  color: var(--accent);
+  border: 1px solid #07321b;
+  font-family: "JetBrains Mono", monospace;
+}

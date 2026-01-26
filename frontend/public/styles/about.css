@@ -1,0 +1,55 @@
+/* ========================================================================== 
+   About Page
+   ========================================================================== */
+
+.about-intro p {
+  max-width: 880px;
+}
+
+.timeline {
+  margin-top: 1.4rem;
+}
+
+.tl-entry {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin: 0.9rem 0;
+  padding: 0.6rem;
+  background: var(--panel);
+  border-radius: 9px;
+  border: 1px solid var(--card-border);
+}
+
+.tl-icon img {
+  width: 36px;
+  opacity: 0.95;
+}
+
+.tl-period {
+  font-family: "JetBrains Mono", monospace;
+  opacity: 0.8;
+}
+
+.tl-title {
+  font-weight: 700;
+  margin: 0.2rem 0;
+}
+
+.tl-desc {
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.exp-item {
+  margin-top: 1rem;
+  padding: 0.9rem;
+  background: linear-gradient(180deg, #0f1414, #0c1111);
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+}
+
+.exp-period {
+  font-family: "JetBrains Mono", monospace;
+  opacity: 0.75;
+}

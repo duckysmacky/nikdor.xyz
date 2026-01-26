@@ -1,0 +1,293 @@
+/* ========================================================================== 
+   Services Page + Order Modal
+   ========================================================================== */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.services-section {
+  margin: 2.4rem 0;
+}
+
+.services-section .section-intro {
+  margin-bottom: 1.2rem;
+}
+
+.service-card {
+  background: var(--panel);
+  padding: 1.1rem;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: transform 0.16s ease, box-shadow 0.16s ease,
+    border-color 0.16s ease;
+}
+
+.service-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.service-title {
+  margin: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1.05rem;
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--glow);
+}
+
+.service-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid #1b2221;
+}
+
+.service-desc {
+  margin: 0;
+  opacity: 0.92;
+}
+
+.service-detail {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.service-detail span {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.service-tags {
+  margin-top: auto;
+}
+
+.service-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #1b2221;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.88rem;
+}
+
+.service-price-label {
+  color: var(--muted);
+}
+
+.service-price-value {
+  color: var(--text);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #1f2a28;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.28);
+}
+
+.service-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: #2a3a37;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35), 0 0 18px var(--glow);
+}
+
+.order-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+.btn-order {
+  cursor: pointer;
+  background: linear-gradient(180deg, #00f08a, #00c96e);
+  color: #021;
+  font-weight: 700;
+  border: 1px solid rgba(0, 255, 136, 0.4);
+  box-shadow: 0 10px 20px rgba(0, 255, 136, 0.18);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+}
+
+.btn-order:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 16px 30px rgba(0, 255, 136, 0.24);
+}
+
+/* ========================================================================== 
+   Order Modal
+   ========================================================================== */
+
+.order-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.4rem;
+  background: rgba(5, 8, 8, 0.78);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 40;
+}
+
+.order-modal.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.order-modal-backdrop {
+  position: absolute;
+  inset: 0;
+}
+
+.order-modal-card {
+  position: relative;
+  width: min(640px, 96vw);
+  background: linear-gradient(180deg, #141a1a, #0f1313);
+  border-radius: 14px;
+  border: 1px solid #222828;
+  padding: 1.4rem 1.5rem 1.2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 22px var(--glow);
+  z-index: 1;
+}
+
+.order-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.order-modal-header h3 {
+  margin: 0;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--glow);
+}
+
+.order-close {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color var(--transition-speed), transform var(--transition-speed);
+}
+
+.order-close:hover {
+  color: var(--accent);
+  transform: scale(1.05);
+}
+
+.order-form {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.order-form.is-hidden {
+  display: none;
+}
+
+.order-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+}
+
+.order-field span {
+  color: var(--muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+}
+
+.order-field input,
+.order-field textarea {
+  background: #0c1111;
+  border: 1px solid #1f2525;
+  color: var(--text);
+  border-radius: 10px;
+  padding: 0.7rem 0.8rem;
+  font-size: 0.95rem;
+  transition: border-color var(--transition-speed),
+    box-shadow var(--transition-speed);
+}
+
+.order-field input:focus,
+.order-field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(0, 255, 136, 0.15);
+}
+
+.order-field--message textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+.order-form-error {
+  display: none;
+  background: rgba(255, 73, 73, 0.12);
+  border: 1px solid rgba(255, 73, 73, 0.5);
+  color: #ffb8b8;
+  padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+}
+
+.order-form-error.is-visible {
+  display: block;
+}
+
+.order-success {
+  display: none;
+  text-align: center;
+  padding: 1.1rem 0.6rem 0.4rem;
+}
+
+.order-success.is-visible {
+  display: block;
+}
+
+.order-success-title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1.2rem;
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--glow);
+  margin-bottom: 0.4rem;
+}
+
+.order-success-id {
+  margin-top: 0.9rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.order-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+}
+
+.order-actions .btn-primary {
+  box-shadow: 0 12px 24px rgba(0, 255, 136, 0.15);
+}
+
+.modal-open {
+  overflow: hidden;
+}
