@@ -8,6 +8,7 @@ mod bot;
 use axum::routing::{get, post, delete};
 use teloxide::types::UserId;
 use std::{env, sync::Arc};
+use tower_http::cors::{Any, CorsLayer};
 
 struct BotConfig {
     target_user_id: UserId
@@ -41,6 +42,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             std::process::exit(1);
         }
     };
+
     let db_pool = match db::init_pool().await {
         Ok(pool) => pool,
         Err(err) => {
@@ -57,11 +59,17 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     });
 
+    let cors = CorsLayer::new()
+        .allow_origin(Any)
+        .allow_methods(Any)
+        .allow_headers(Any);
+
     let app = axum::Router::new()
         .route("/api/orders", get(handlers::get_orders))
         .route("/api/orders/{id}", get(handlers::get_order))
         .route("/api/orders", post(handlers::create_order))
         .route("/api/orders/{id}", delete(handlers::delete_order))
+        .layer(cors)
         .with_state(state);
 
     let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
