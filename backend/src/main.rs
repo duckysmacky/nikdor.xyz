@@ -62,7 +62,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .route("/api/orders/{id}", get(handlers::get_order))
         .route("/api/orders", post(handlers::create_order))
         .route("/api/orders/{id}", delete(handlers::delete_order))
-        .route("/api/send", post(handlers::send_message))
         .with_state(state);
 
     let addr = SocketAddr::from(([127, 0, 0, 1], 8080));

@@ -3,9 +3,10 @@ use axum::{
     Json,
 };
 use chrono::Utc;
-use teloxide::prelude::Requester;
 use uuid::Uuid;
 use std::sync::Arc;
+use crate::bot;
+
 use super::{model, dto, error};
 use super::error::APIError;
 use super::AppState;
@@ -75,6 +76,9 @@ pub async fn create_order(
         .await
         .map_err(error::map_internal_error("Failed to create order"))?;
 
+    bot::send_notification(&state.tg_bot, &state.bot_config, &order).await
+        .map_err(|e| APIError::InternalServerError(format!("Failed to send notification: {}", e)))?;
+
     Ok(Json(order))
 }
 
@@ -92,18 +96,6 @@ pub async fn delete_order(
         .execute(&state.db_pool)
         .await
         .map_err(error::map_internal_error("Failed to delete order"))?;
-
-    Ok(())
-}
-
-pub async fn send_message(
-    State(state): State<Arc<AppState>>,
-) -> Result<(), APIError> {
-    let bot = &state.tg_bot;
-    let target_user = &state.bot_config.target_user_id;
-    let message = "Hello, this is a test message!";
-
-    bot.send_message(target_user.clone(), message).await.map_err(|e| APIError::InternalServerError(e.to_string()))?;
 
     Ok(())
 }
