@@ -1,53 +1,68 @@
 [
   {
+    "title": "Databoxer",
+    "languages": ["Rust"],
+    "description": "A cross-platform command-line file encryption utility focused on speed, safety, and usability. Files are encrypted into a custom .box file format with per-file nonces, checksums and additional security measures to ensure data integrity and confidentiality. Intended as a lightweight alternative for protecting local files, removable drives, and transferred data.",
+    "tags": ["cybersecurity", "cryptography", "cli", "encryption"],
+    "link": "https://github.com/duckysmacky/databoxer",
+    "linkLabel": "Repository",
+    "pinned": true
+  },
+  {
     "title": "Copper",
     "languages": ["Rust"],
-    "description": "A lightweight, unit-based build system for C and C++ projects. Copper focuses on predictable, readable configuration (copper.toml), automatic source discovery, and fast incremental builds. Designed to be minimal and easy to maintain.",
-    "tags": ["cli", "utility", "build-system"],
+    "description": "A lightweight build system for C and C++ projects designed as a simpler alternative to CMake and Makefiles. Copper uses a single configuration file and automatically discovers and compiles sources while still allowing detailed control over compilation and linking. Built around modular “units” to keep large projects readable and maintainable.",
+    "tags": ["build-system", "cli", "developer-tools"],
     "link": "https://github.com/duckysmacky/copper",
     "linkLabel": "Repository",
     "pinned": true
   },
   {
-    "title": "Databoxer",
-    "languages": ["Rust"],
-    "description": "Cross-platform CLI tool to encrypt files into a custom archive format with profile-based key management and password-protected access. Focused on security and usability for personal data storage.",
-    "tags": ["cli", "crypto", "security"],
-    "link": "https://github.com/duckysmacky/databoxer",
+    "title": "Feather Chat",
+    "languages": ["Java"],
+    "description": "A lightweight multithreaded client-server chat application built on raw TCP sockets. A central server routes real-time messages between connected clients, supporting direct messaging and planned chat rooms and encryption. Designed to explore networking, concurrency, and scalable message handling without heavy frameworks.",
+    "tags": ["networking", "sockets", "multithreading", "client-server", "desktop"],
+    "link": "https://github.com/duckysmacky/feather-chat",
+    "linkLabel": "Repository"
+  },
+  {
+    "title": "Pasteshelf",
+    "languages": ["Java"],
+    "description": "A Pastebin-style web backend that allows users to create accounts and store shareable text pastes identified by unique hash IDs. Exposes a REST API for creating, retrieving, and managing pastes with authentication and database persistence. Can run locally or through Docker with a bundled PostgreSQL instance.",
+    "tags": ["webapp", "rest-api", "spring-boot", "backend", "postgres", "docker"],
+    "link": "https://github.com/duckysmacky/pasteshelf",
     "linkLabel": "Repository"
   },
   {
     "title": "Signsense",
     "languages": ["Java", "Python"],
-    "description": "Mobile application that recognizes fingerspelling (dactyl) and converts it into written text using a trained machine learning model for gesture recognition.",
-    "tags": ["android", "machine-learning", "machine-vision"],
+    "description": "An Android mobile application that translates finger-spelling sign language into readable text using real-time camera recognition. The app uses a custom-trained machine learning model to detect dactyl hand gestures and converts recognized symbols into words directly on the device. Includes live detection, multilingual UI, and configurable recognition settings.",
+    "tags": ["android", "machine-learning", "computer-vision", "opencv"],
     "link": "https://github.com/duckysmacky/signsense",
-    "linkLabel": "Repository",
-    "pinned": true
-  },
-  {
-    "title": "Win-tools",
-    "languages": ["C++"],
-    "description": "A collection of Unix-like command-line utilities (ls, grep, head, touch) for Windows implemented on top of the Windows API. Includes an argument parsing library and path utilities.",
-    "tags": ["cli", "utility", "winapi"],
-    "link": "https://github.com/duckysmacky/win-tools",
-    "linkLabel": "Repository",
-    "private": true
-  },
-  {
-    "title": "Pasteshelf",
-    "languages": ["Java"],
-    "description": "A small Pastebin-style web app built with Spring Boot and PostgreSQL. Offers a REST API for creating and retrieving pastes with simple authentication.",
-    "tags": ["spring", "rest-api", "postgresql"],
-    "link": "https://github.com/duckysmacky/pasteshelf",
     "linkLabel": "Repository"
   },
   {
-    "title": "Feather chat",
+    "title": "Win-Tools",
+    "languages": ["C", "C++"],
+    "description": "A collection of native Windows command-line utilities that re-implement popular UNIX tools such as ls, grep, head, and touch. Built directly on the Windows API to provide better performance and a more native experience than typical ports. Focuses on systems programming, performance, and platform-specific tooling.",
+    "tags": ["systems-programming", "windows-api", "native-tools", "cli"],
+    "link": "https://github.com/duckysmacky/win-tools",
+    "linkLabel": "Repository"
+  },
+  {
+    "title": "Simple Rust Kernel",
+    "languages": ["Rust"],
+    "description": "A hobby operating system kernel written entirely in Rust and runnable inside QEMU. The project explores low-level systems programming, memory handling, and boot processes using the Rust bootloader ecosystem and custom test runner. Demonstrates OS fundamentals including kernel startup, hardware abstraction, and bare-metal execution.",
+    "tags": ["operating-systems", "bare-metal", "low-level", "qemu", "systems-programming"],
+    "link": "https://github.com/duckysmacky/simple-rust-kernel",
+    "linkLabel": "Repository"
+  },
+  {
+    "title": "Java DSA",
     "languages": ["Java"],
-    "description": "A light socket-based chat application with a JavaFX client and a multithreaded server. Planned support for multiple users, private messaging, and basic user authorization.",
-    "tags": ["sockets", "networking", "javafx", "multithreading"],
-    "link": "https://github.com/duckysmacky/feather-chat",
+    "description": "A study and reference project implementing classical data structures and algorithms with a custom interface hierarchy. Structures such as stacks, lists, and collections are implemented with multiple underlying representations (e.g., array-based and linked versions) to demonstrate design tradeoffs. Designed similarly to the Java Collections framework to emphasize abstraction and reusability.",
+    "tags": ["algorithms", "data-structures", "library"],
+    "link": "https://github.com/duckysmacky/dsa-java",
     "linkLabel": "Repository"
   }
 ]

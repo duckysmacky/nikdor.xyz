@@ -28,6 +28,7 @@
 }
 
 .lang {
+  font-family: "JetBrains Mono", monospace;
   font-size: 0.9rem;
   opacity: 0.8;
   margin-left: 0.5rem;

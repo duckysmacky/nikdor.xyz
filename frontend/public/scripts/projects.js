@@ -12,7 +12,6 @@
 
     article.className = classes.join(' ');
 
-    const titleTag = project.pinned ? 'h2' : 'h3';
     const languages = Array.isArray(project.languages) ? project.languages : [];
     const languagesText = languages.filter(Boolean).join(', ');
     const lang = languagesText ? `<span class="lang">${languagesText}</span>` : '';
@@ -26,7 +25,7 @@
 
     article.innerHTML = `
       <div class="project-body">
-        <${titleTag} class="project-name">${project.title} ${lang}</${titleTag}>
+        <h2 class="project-name">${project.title} ${lang}</h2>
         <p class="project-text">${project.description}</p>
         <div class="project-meta">
           <div class="badges">
