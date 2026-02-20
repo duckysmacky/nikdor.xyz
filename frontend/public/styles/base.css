@@ -296,9 +296,15 @@ body {
 }
 
 .link-accent {
+  display: inline-block;
   color: var(--accent);
   text-decoration: none;
   font-weight: 600;
+  transition: transform var(--transition-speed)
+}
+
+.link-accent:hover {
+  transform: translateY(-1px) scale(1.05);
 }
 
 .link {

@@ -1,0 +1,53 @@
+[
+  {
+    "title": "Copper",
+    "languages": ["Rust"],
+    "description": "A lightweight, unit-based build system for C and C++ projects. Copper focuses on predictable, readable configuration (copper.toml), automatic source discovery, and fast incremental builds. Designed to be minimal and easy to maintain.",
+    "tags": ["cli", "utility", "build-system"],
+    "link": "https://github.com/duckysmacky/copper",
+    "linkLabel": "Repository",
+    "pinned": true
+  },
+  {
+    "title": "Databoxer",
+    "languages": ["Rust"],
+    "description": "Cross-platform CLI tool to encrypt files into a custom archive format with profile-based key management and password-protected access. Focused on security and usability for personal data storage.",
+    "tags": ["cli", "crypto", "security"],
+    "link": "https://github.com/duckysmacky/databoxer",
+    "linkLabel": "Repository"
+  },
+  {
+    "title": "Signsense",
+    "languages": ["Java", "Python"],
+    "description": "Mobile application that recognizes fingerspelling (dactyl) and converts it into written text using a trained machine learning model for gesture recognition.",
+    "tags": ["android", "machine-learning", "machine-vision"],
+    "link": "https://github.com/duckysmacky/signsense",
+    "linkLabel": "Repository",
+    "pinned": true
+  },
+  {
+    "title": "Win-tools",
+    "languages": ["C++"],
+    "description": "A collection of Unix-like command-line utilities (ls, grep, head, touch) for Windows implemented on top of the Windows API. Includes an argument parsing library and path utilities.",
+    "tags": ["cli", "utility", "winapi"],
+    "link": "https://github.com/duckysmacky/win-tools",
+    "linkLabel": "Repository",
+    "private": true
+  },
+  {
+    "title": "Pasteshelf",
+    "languages": ["Java"],
+    "description": "A small Pastebin-style web app built with Spring Boot and PostgreSQL. Offers a REST API for creating and retrieving pastes with simple authentication.",
+    "tags": ["spring", "rest-api", "postgresql"],
+    "link": "https://github.com/duckysmacky/pasteshelf",
+    "linkLabel": "Repository"
+  },
+  {
+    "title": "Feather chat",
+    "languages": ["Java"],
+    "description": "A light socket-based chat application with a JavaFX client and a multithreaded server. Planned support for multiple users, private messaging, and basic user authorization.",
+    "tags": ["sockets", "networking", "javafx", "multithreading"],
+    "link": "https://github.com/duckysmacky/feather-chat",
+    "linkLabel": "Repository"
+  }
+]
