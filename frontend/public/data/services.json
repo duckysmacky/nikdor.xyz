@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Project Assistance",
+    "description": "Pairing, feature implementation, and code reviews for existing projects. I can jump into your repo and help ship milestones.",
+    "detailsLabel": "Includes",
+    "details": "feature implementation, bug fixes, code reviews.",
+    "tags": ["Rust", "Java", "C++"],
+    "orderLink": "Project Assistance",
+    "price": "Hourly",
+    "category": "software-development"
+  },
+  {
+    "title": "Custom Software Solutions",
+    "description": "Full delivery of custom software: backend services, CLI tools, desktop apps, and automation utilities.",
+    "detailsLabel": "Includes",
+    "details": "requirements, architecture plan, delivery + docs.",
+    "tags": ["Java", "Rust", "C++"],
+    "orderLink": "Custom Software Solutions",
+    "price": "Per project / hourly",
+    "category": "software-development"
+  },
+  {
+    "title": "Backend API Development",
+    "description": "REST APIs with authentication, database integrations, and clean routing. Ideal for MVPs and internal tools.",
+    "detailsLabel": "Includes",
+    "details": "auth flows, schema design, API docs.",
+    "tags": ["Spring Boot", "Axum", "Actix Web", "PostgreSQL", "Docker"],
+    "orderLink": "Backend API Development",
+    "price": "Per project / hourly",
+    "category": "software-development"
+  },
+  {
+    "title": "CLI Tools & System Utilities",
+    "description": "Fast, reliable command-line tools for internal workflows, automation, and platform utilities.",
+    "detailsLabel": "Includes",
+    "details": "arg parsing, packaging, release builds.",
+    "tags": ["Rust", "C++"],
+    "orderLink": "CLI Tools & System Utilities",
+    "price": "Per project / hourly",
+    "category": "software-development"
+  },
+  {
+    "title": "Automated Bot Development",
+    "description": "Custom bots for different platforms with database integration and command workflows.",
+    "detailsLabel": "Includes",
+    "details": "command flows, persistence, complete logic",
+    "tags": ["Rust", "Tokio", "Telegram", "Discord"],
+    "orderLink": "Automated Bot Development",
+    "price": "Per project / hourly",
+    "category": "software-development"
+  },
+  {
+    "title": "Vibecoding Cleanup",
+    "description": "I turn chaotic prototypes into maintainable code by cleaning up structure, naming, and project organization.",
+    "detailsLabel": "Includes",
+    "details": "refactors, naming cleanup, project organization",
+    "tags": ["Java", "Rust", "C++", "Python"],
+    "orderLink": "Vibecoding Cleanup",
+    "price": "Hourly",
+    "category": "software-development"
+  },
+  {
+    "title": "Minecraft Mod Development",
+    "description": "Custom items, mechanics, and gameplay systems for modded clients. I help you design the feature set and deliver clean, documented builds.",
+    "detailsLabel": "Features",
+    "details": "feature design, textures, models, animations",
+    "tags": ["Java", "Fabric", "Forge"],
+    "orderLink": "Minecraft Mod Development",
+    "price": "Per project / hourly",
+    "category": "game-development"
+  },
+  {
+    "title": "Minecraft Plugin Development",
+    "description": "Spigot/Paper server plugins for custom commands, moderation tools, economy systems, and gameplay enhancements.",
+    "detailsLabel": "Features",
+    "details": "commands, permissions, gameplay additions, custom idems",
+    "tags": ["Java", "Bukkit", "Spigot", "Paper"],
+    "orderLink": "Minecraft Plugin Development",
+    "price": "Per project / hourly",
+    "category": "game-development"
+  },
+  {
+    "title": "Video Editing",
+    "description": "Quick-turn, dynamic editing for short-form and long-form content. I add motion, text, smooth transitions, and fun visuals to keep viewers engaged.",
+    "detailsLabel": "Includes",
+    "details": "cuts, pacing, captions, sound design.",
+    "tags": ["Premiere Pro"],
+    "orderLink": "Video Editing",
+    "price": "Per video / hourly",
+    "category": "content-creation"
+  },
+  {
+    "title": "Thumbnail Creation",
+    "description": "Eye-catching YouTube thumbnails designed to boost click-through rates. I create bold, colorful designs that stand out in feeds.",
+    "detailsLabel": "Includes",
+    "details": "image cutouts, visual effects, text placement",
+    "tags": ["Photoshop", "YouTube", "Brand Kit"],
+    "orderLink": "Thumbnail Creation",
+    "price": "Per thumbnail",
+    "category": "content-creation"
+  }
+]
