@@ -5,8 +5,6 @@
     const errorBox = modal ? modal.querySelector(".order-form-error") : null;
     const successBox = modal ? modal.querySelector(".order-success") : null;
     const successId = modal ? modal.querySelector("#order-success-id") : null;
-    const triggers = Array.from(document.querySelectorAll(".order-trigger"));
-
     const closeButtons = modal
         ? Array.from(modal.querySelectorAll("[data-order-close]"))
         : [];
@@ -65,10 +63,10 @@
         errorBox.classList.add("is-visible");
     };
 
-    triggers.forEach((button) => {
-        button.addEventListener("click", () => {
-            openModal(button.getAttribute("data-service"));
-        });
+    document.addEventListener("click", (event) => {
+        const trigger = event.target.closest(".order-trigger");
+        if (!trigger) return;
+        openModal(trigger.getAttribute("data-service"));
     });
 
     closeButtons.forEach((button) => {
