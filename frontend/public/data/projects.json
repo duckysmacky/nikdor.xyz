@@ -64,5 +64,13 @@
     "tags": ["algorithms", "data-structures", "library"],
     "link": "https://github.com/duckysmacky/dsa-java",
     "linkLabel": "Repository"
+  },
+  {
+      "title": "Bybit Bot",
+      "languages": ["Rust"],
+      "description": "An automated crypto trading bot that streamlines Bybit P2P transactions by programmatically handling order processing and payment execution. The system connects to the official Bybit API to monitor incoming and outgoing P2P orders, extract transaction details, and automatically complete payments through Payeer. A key feature is a fully reverse-engineered Payeer integration, including manual reconstruction of private API endpoints, session handling, CSRF tokens, and signature generation. Designed for high reliability and asynchronous performance using Tokio.",
+      "tags": ["fintech", "automation", "crypto", "trading", "api-integration", "reverse-engineering"],
+      "linkLabel": "Closed-source",
+      "private": true
   }
 ]
