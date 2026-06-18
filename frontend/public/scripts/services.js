@@ -23,8 +23,8 @@
       <p class="service-detail">
         <span>${detailsLabel}:</span> ${service.details}
       </p>
-      <div class="service-tags badges">
-        ${tags.map(tag => `<span class="badge">${tag}</span>`).join('')}
+      <div class="service-tags">
+        ${tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
       </div>
       <div class="service-price">
         <span class="service-price-label">Price</span>

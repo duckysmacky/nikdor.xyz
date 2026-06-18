@@ -1,19 +1,47 @@
-/* ========================================================================== 
-   Theme + Base
+/* ==========================================================================
+   nikdor.xyz — Design System Core
+   "Warm Phosphor Terminal" — monospace, raw-but-modern, amber on near-black.
    ========================================================================== */
 
 :root {
-  --bg: #0e1111;
-  --panel: #141818;
-  --muted: #9aa3a3;
-  --text: #e9efee;
-  --accent: #00ff88;
-  --accent-dark: #00cc6d;
-  --glow: rgba(0, 255, 136, 0.18);
-  --card-border: #1e2222;
-  --radius: 10px;
-  --transition-speed: 0.1s;
+  /* Color — warm analogous amber phosphor */
+  --bg: #0d0e0f;
+  --panel: #141310;
+  --surface: #1b1813;
+  --border: #2a2620;
+  --border-bright: #3a342a;
+  --text: #e8e6df;
+  --muted: #8a877d;
+  --ink: #0d0e0f;
+
+  --accent: #ffb454; /* amber — global primary */
+  --accent-2: #ff8c42; /* warm orange — secondary emphasis */
+  --accent-3: #e0664f; /* ember red — tertiary / negative states */
+
+  /* Radius */
+  --r-card: 2px;
+  --r-control: 2px;
+  --r-tag: 0px;
+
+  /* Motion */
+  --t: 120ms;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+
+  /* Spacing rhythm */
+  --s1: 0.4rem;
+  --s2: 0.8rem;
+  --s3: 1.2rem;
+  --s4: 1.8rem;
+  --s5: 2.6rem;
+  --s6: 4rem;
+  --maxw: 980px;
+
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", "Consolas", monospace;
 }
+
+/* ==========================================================================
+   Reset & Base
+   ========================================================================== */
 
 * {
   box-sizing: border-box;
@@ -26,34 +54,99 @@ body {
 
 body {
   margin: 0;
-  font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial;
-  background: var(--bg);
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.65;
+  background-color: var(--bg);
+  /* faint blueprint dot texture — replaces glow as the source of depth */
+  background-image: radial-gradient(
+    rgba(255, 180, 84, 0.035) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.45;
 }
 
-/* ========================================================================== 
-   Page Transitions
+::selection {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+img {
+  display: block;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+h1,
+h2,
+h3 {
+  font-family: var(--mono);
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 1.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 var(--s4);
+  padding-bottom: var(--s2);
+  border-bottom: 1px solid var(--border);
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin: var(--s5) 0 var(--s3);
+}
+
+/* terminal-style section marker */
+h2::before {
+  content: "// ";
+  color: var(--accent);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.02rem;
+  margin: 0 0 var(--s2);
+}
+
+p {
+  margin: 0 0 var(--s3);
+}
+
+a {
+  color: var(--accent);
+}
+
+strong {
+  color: var(--text);
+}
+
+/* ==========================================================================
+   Page Transition (cross-fade — site.js)
    ========================================================================== */
 
 .fade-ready {
   opacity: 0;
-  transition: opacity 260ms ease-in-out;
+  transition: opacity 220ms var(--ease);
 }
 
 .fade-ready.visible {
   opacity: 1;
 }
 
-/* ========================================================================== 
+/* ==========================================================================
    Navigation
    ========================================================================== */
 
 .site-header {
-  border-bottom: 1px solid #0f1514;
+  border-bottom: 1px solid var(--border);
 }
 
 .nav {
@@ -61,250 +154,196 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  padding: 1rem 2rem;
-  font-family: "JetBrains Mono", monospace;
+  padding: 0.9rem 2rem;
+  max-width: var(--maxw);
+  margin: 0 auto;
 }
 
+/* brand = inverted heavy-accent block */
 .brand {
-  font-weight: 600;
-  letter-spacing: 0.6px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   text-decoration: none;
-  color: var(--text);
+  background: var(--accent);
+  color: var(--ink);
+  padding: 0.15rem 0.5rem;
+  transition: background-color var(--t) var(--ease);
 }
 
-.brand.accent {
-  color: var(--accent);
-  text-shadow: 0 0 8px var(--glow);
+.brand:hover {
+  background: var(--accent-2);
 }
 
 .nav-list {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 1.2rem;
+  gap: 1.3rem;
   margin: 0;
   padding: 0;
 }
 
 .nav-item a {
-  color: var(--text);
-  text-decoration: none;
-  font-family: "JetBrains Mono", monospace;
-  font-weight: 500;
-  transition: color var(--transition-speed);
-}
-
-.nav-item {
   position: relative;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--t) var(--ease);
 }
 
-.nav-item::after {
-  left: 0;
-  bottom: 0;
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background-color: var(--accent);
-  transition: width var(--transition-speed);
+.nav-item a:hover {
+  color: var(--text);
 }
 
-.nav-item:hover::after,
-.nav-item.active::after {
-  width: 100%;
-}
-
-.nav-item:hover a,
+/* active item: amber with a terminal prompt marker */
 .nav-item.active a {
   color: var(--accent);
-  text-shadow: 0 0 6px var(--glow);
 }
 
-/* ========================================================================== 
-   Layout & Containers
+.nav-item.active a::before {
+  content: ">";
+  margin-right: 0.35rem;
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   Layout
    ========================================================================== */
 
 .page {
-  max-width: 980px;
-  margin: 1.6rem auto 4rem;
-  padding: 0 1.1rem;
+  max-width: var(--maxw);
+  margin: var(--s5) auto var(--s6);
+  padding: 0 1.4rem;
 }
 
 .section-intro {
-  font-size: 18px;
-  line-height: 1.5;
-  opacity: 0.85;
-  margin-bottom: 32px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: var(--s4);
+  max-width: 70ch;
 }
 
-/* ========================================================================== 
+/* ==========================================================================
    Buttons
    ========================================================================== */
 
 .btn {
-  display: inline-block;
-  padding: 0.6rem 0.9rem;
-  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: var(--r-control);
   text-decoration: none;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
   color: var(--text);
   background: var(--panel);
-  border: 1px solid var(--card-border);
-  transition: all var(--transition-speed);
+  border: 1px solid var(--border);
+  transition: color var(--t) var(--ease), border-color var(--t) var(--ease),
+    background-color var(--t) var(--ease), transform var(--t) var(--ease);
 }
 
+.btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* primary = inverted accent block */
 .btn-primary {
-  background: linear-gradient(180deg, var(--accent-dark), var(--accent));
-  color: #021;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
   font-weight: 700;
+}
+
+.btn-primary:hover {
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+  color: var(--ink);
 }
 
 .btn-ghost {
   background: transparent;
-  border: 1px solid #1f2525;
 }
 
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-/* ========================================================================== 
-   Tech Badges (shared)
+/* ==========================================================================
+   Tags (single unified component — brackets, no box)
    ========================================================================== */
 
-.tech-badges {
-  margin-top: 25px;
-  margin-bottom: 25px;
-  gap: 0.45rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-
-.tech-badge {
-  background: #0e2920;
-  color: var(--accent);
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 16px;
-  font-weight: 500;
-  border: 1px solid var(--accent-color);
-  transition: all var(--transition-speed);
-}
-
-.tech-badge:hover {
-  box-shadow: 0 0 12px rgba(120, 255, 120, 0.2);
-}
-
-/* ========================================================================== 
-   Badges (shared)
-   ========================================================================== */
-
+.tags,
 .badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.45rem 0.9rem;
 }
 
-.badge {
-  background: #0e2920;
+.tag {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: color var(--t) var(--ease);
+}
+
+.tag::before {
+  content: "[";
   color: var(--accent);
-  padding: 0.28rem 0.45rem;
-  border-radius: 6px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.82rem;
-  border: 1px solid #07321b;
+  margin-right: 0.3rem;
 }
 
-/* ========================================================================== 
-   Social Links
-   ========================================================================== */
-
-.connect {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.social {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  justify-content: center;
-  margin-top: 0.6rem;
-}
-
-.social-btn {
-  display: inline-flex;
-  gap: 0.6rem;
-  align-items: center;
-  background: var(--panel);
-  padding: 0.55rem 0.85rem;
-  border-radius: 9px;
-  text-decoration: none;
-  color: var(--text);
-  border: 1px solid var(--card-border);
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.95rem;
-  transition: color var(--transition-speed),
-    background-color var(--transition-speed);
-}
-
-.social-btn img {
-  width: 18px;
-  opacity: 0.9;
-  color: green;
-}
-
-.social-btn-icon {
-  width: 18px;
-  opacity: 0.9;
+.tag::after {
+  content: "]";
   color: var(--accent);
-  transition: color var(--transition-speed);
-  filter: invert(76%) sepia(55%) saturate(1683%) hue-rotate(92deg)
-    brightness(97%) contrast(109%);
+  margin-left: 0.3rem;
 }
 
-.social-btn:hover > .social-btn-icon {
-  color: black;
-  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(326deg) brightness(96%)
-    contrast(104%);
+.tag--accent {
+  color: var(--accent);
 }
 
-.social-btn:hover {
-  background: var(--accent-dark);
-  color: #0b130f;
-}
-
-/* ========================================================================== 
-   Footer
+/* ==========================================================================
+   Highlight Helpers
    ========================================================================== */
 
-.site-footer {
-  padding: 1.6rem;
-  text-align: center;
-  opacity: 0.7;
+/* inverted heavy-accent block */
+.block {
+  background: var(--accent);
+  color: var(--ink);
+  padding: 0.1em 0.4em;
+  font-weight: 700;
 }
 
-/* ========================================================================== 
-   Utility Classes
+/* accent left-bar for marked content blocks */
+.bar {
+  border-left: 2px solid var(--accent);
+  padding-left: var(--s3);
+}
+
+/* ==========================================================================
+   Links
    ========================================================================== */
-
-.small {
-  font-size: 0.92rem;
-  opacity: 0.86;
-}
 
 .link-accent {
-  display: inline-block;
+  display: inline-flex;
+  align-items: baseline;
   color: var(--accent);
   text-decoration: none;
   font-weight: 600;
-  transition: transform var(--transition-speed)
+  transition: color var(--t) var(--ease);
+}
+
+.link-accent::before {
+  content: ">";
+  margin-right: 0.45rem;
+  color: var(--accent);
 }
 
 .link-accent:hover {
-  transform: translateY(-1px) scale(1.05);
+  color: var(--accent-2);
 }
 
 .link {
@@ -312,8 +351,76 @@ body {
   text-decoration: none;
 }
 
-/* ========================================================================== 
-   Responsive Design (base)
+/* ==========================================================================
+   Social Links
+   ========================================================================== */
+
+.connect {
+  margin-top: var(--s5);
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: var(--s2);
+}
+
+.social-btn {
+  display: inline-flex;
+  gap: 0.55rem;
+  align-items: center;
+  background: var(--panel);
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--r-control);
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+  transition: color var(--t) var(--ease), border-color var(--t) var(--ease),
+    transform var(--t) var(--ease);
+}
+
+.social-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.social-btn-icon {
+  width: 18px;
+  height: 18px;
+  opacity: 0.85;
+  /* render currentColor SVGs as a neutral light glyph */
+  filter: brightness(0) invert(0.85);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.site-footer {
+  padding: var(--s4);
+  text-align: center;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+
+.small {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.accent {
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   Responsive
    ========================================================================== */
 
 @media (max-width: 880px) {
@@ -321,8 +428,8 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .hero-title {
-    font-size: 1.9rem;
+  h1 {
+    font-size: 1.6rem;
   }
 }
 
@@ -332,18 +439,19 @@ body {
   }
 
   .nav-list {
-    gap: 0.6rem;
-    font-size: 0.95rem;
+    gap: 0.9rem;
+    font-size: 0.92rem;
   }
 
   .stats-row {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
   }
 }
 
 @media (max-width: 520px) {
   .nav {
     flex-direction: column;
+    align-items: flex-start;
   }
 }

@@ -21,7 +21,7 @@
     const link = project.link || '#';
     const linkMarkup = isPrivate
       ? `<span class="link link-disabled">${linkLabel}</span>`
-      : `<a class="link-accent" href="${link}">> ${linkLabel}</a>`;
+      : `<a class="link-accent" href="${link}">${linkLabel}</a>`;
 
     article.innerHTML = `
       <div class="project-body">
@@ -29,7 +29,7 @@
         <p class="project-text">${project.description}</p>
         <div class="project-meta">
           <div class="badges">
-            ${tags.map(tag => `<span class="badge">${tag}</span>`).join('')}
+            ${tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
           </div>
           ${linkMarkup}
         </div>

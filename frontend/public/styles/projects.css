@@ -1,42 +1,45 @@
-/* ========================================================================== 
+/* ==========================================================================
    Projects Page
    ========================================================================== */
 
 .project {
-  display: flex;
-  gap: 1.2rem;
-  padding: 1rem;
-  background: linear-gradient(180deg, #0e1412, #0e1111);
-  border-radius: 10px;
-  border: 1px solid var(--card-border);
-  margin: 1rem 0;
-  align-items: center;
+  padding: var(--s4);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  margin: var(--s3) 0;
+  transition: border-color var(--t) var(--ease), transform var(--t) var(--ease);
 }
 
+.project:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* pinned/highlighted: ember left-bar instead of a glow */
 .project.highlight {
-  border-left: 5px solid var(--accent);
-  box-shadow: 0 8px 28px var(--glow);
-}
-
-.project-body {
-  flex: 1;
+  border-left: 2px solid var(--accent-2);
 }
 
 .project-name {
-  font-family: "JetBrains Mono", monospace;
   margin: 0;
+  font-size: 1.15rem;
+}
+
+.project-name::before {
+  content: none;
 }
 
 .lang {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.9rem;
-  opacity: 0.8;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--muted);
   margin-left: 0.5rem;
 }
 
 .project-text {
-  margin: 0.6rem 0 0 0;
-  opacity: 0.92;
+  margin: var(--s2) 0 0;
+  color: var(--muted);
 }
 
 .project-meta {
@@ -44,11 +47,15 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  margin-top: 0.8rem;
+  gap: var(--s3);
+  margin-top: var(--s3);
 }
 
 .link-disabled {
-  opacity: 0.65;
+  color: var(--accent-3);
   cursor: not-allowed;
+}
+
+.link-disabled::before {
+  content: "× ";
 }

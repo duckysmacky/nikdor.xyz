@@ -1,34 +1,47 @@
-/* ========================================================================== 
+/* ==========================================================================
    About Page
    ========================================================================== */
 
 .about-intro p {
-  max-width: 880px;
+  max-width: 80ch;
+  color: var(--muted);
+}
+
+.about-intro p:first-of-type {
+  color: var(--text);
 }
 
 .timeline {
-  margin-top: 1.4rem;
+  margin-top: var(--s4);
 }
 
 .tl-entry {
   display: flex;
-  gap: 1rem;
+  gap: var(--s3);
   align-items: flex-start;
-  margin: 0.9rem 0;
-  padding: 0.6rem;
+  margin: var(--s2) 0;
+  padding: var(--s3);
   background: var(--panel);
-  border-radius: 9px;
-  border: 1px solid var(--card-border);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  transition: border-color var(--t) var(--ease), transform var(--t) var(--ease);
+}
+
+.tl-entry:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
 }
 
 .tl-icon img {
-  width: 36px;
-  opacity: 0.95;
+  width: 30px;
+  height: 30px;
+  opacity: 0.9;
+  filter: brightness(0) invert(0.85);
 }
 
 .tl-period {
-  font-family: "JetBrains Mono", monospace;
-  opacity: 0.8;
+  font-size: 0.85rem;
+  color: var(--accent);
 }
 
 .tl-title {
@@ -37,19 +50,26 @@
 }
 
 .tl-desc {
-  opacity: 0.9;
-  font-size: 0.95rem;
+  color: var(--muted);
+  font-size: 0.92rem;
 }
 
 .exp-item {
-  margin-top: 1rem;
-  padding: 0.9rem;
-  background: linear-gradient(180deg, #0f1414, #0c1111);
-  border-radius: 10px;
-  border: 1px solid var(--card-border);
+  margin-top: var(--s3);
+  padding: var(--s3) var(--s3) var(--s3) var(--s4);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--r-card);
 }
 
 .exp-period {
-  font-family: "JetBrains Mono", monospace;
-  opacity: 0.75;
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin-bottom: 0.2rem;
+}
+
+.exp-body p {
+  color: var(--muted);
+  margin: 0.5rem 0 0;
 }

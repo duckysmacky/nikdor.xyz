@@ -1,50 +1,55 @@
-/* ========================================================================== 
+/* ==========================================================================
    Skills Page
    ========================================================================== */
 
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: var(--s3);
+  margin-top: var(--s4);
 }
 
 .skill-card {
   background: var(--panel);
-  padding: 1rem;
-  border-radius: 10px;
-  border: 1px solid var(--card-border);
+  padding: var(--s4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  transition: border-color var(--t) var(--ease), transform var(--t) var(--ease);
+}
+
+.skill-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
 }
 
 .skill-card h3 {
-  font-family: "JetBrains Mono", monospace;
-  margin: 0 0 0.6rem 0;
+  margin: 0 0 var(--s3);
+  padding-bottom: var(--s2);
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
 }
 
 .skill-item {
-  margin-bottom: 14px;
+  margin-bottom: var(--s3);
+}
+
+.skill-item:last-child {
+  margin-bottom: 0;
 }
 
 .skill-name {
-  font-size: 17px;
-  color: var(--accent-color);
-  font-family: "JetBrains Mono", monospace;
-  font-weight: bold;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.skill-name::before {
+  content: "> ";
+  color: var(--muted);
 }
 
 .skill-desc {
-  font-size: 15px;
-  opacity: 0.7;
-  margin-left: 4px;
-  margin-top: 2px;
-}
-
-.skill-card ul {
-  margin: 0;
-  padding-left: 1rem;
-}
-
-.skill-card li {
-  margin-bottom: 0.45rem;
-  opacity: 0.95;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
 }
