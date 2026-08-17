@@ -4,29 +4,32 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Services</title>
-    <link rel="stylesheet" href="/styles/base.css" />
-    <link rel="stylesheet" href="/styles/services.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/styles/services.css" />
   </head>
   <body class="fade-ready">
     <header class="site-header">
       <nav class="nav">
         <a class="brand" href="/">NIKDOR</a>
         <ul class="nav-list">
-          <li class="nav-item"><a href="/about.html" data-link>About</a></li>
-          <li class="nav-item"><a href="/skills.html" data-link>Skills</a></li>
-          <li class="nav-item"><a href="/projects.html" data-link>Projects</a></li>
-          <li class="nav-item"><a href="/achievements.html" data-link>Achievements</a></li>
-          <li class="nav-item active"><a href="/services.html" data-link>Services</a></li>
+          <li class="nav-item"><a href="/about.html" data-link>about</a></li>
+          <li class="nav-item"><a href="/skills.html" data-link>skills</a></li>
+          <li class="nav-item"><a href="/projects.html" data-link>projects</a></li>
+          <li class="nav-item"><a href="/achievements.html" data-link>achievements</a></li>
+          <li class="nav-item active"><a href="/services.html" data-link>services</a></li>
         </ul>
       </nav>
     </header>
 
     <main class="page page--services">
-      <h1>Services</h1>
+      <p class="eyebrow">// freelance</p>
+      <h1>services</h1>
 
       <p class="section-intro">
         In addition to my core expertise in system programming and backend
@@ -36,7 +39,12 @@
       </p>
 
       <section class="services-section">
-        <h2>Software Development</h2>
+        <div class="section-head">
+          <h2>software development</h2>
+          <span class="section-count" data-count="software-development"
+            >loading</span
+          >
+        </div>
         <p class="section-intro">
           Hands-on development support or full delivery for backend and systems
           projects.
@@ -45,7 +53,12 @@
       </section>
 
       <section class="services-section">
-        <h2>Game Development</h2>
+        <div class="section-head">
+          <h2>game development</h2>
+          <span class="section-count" data-count="game-development"
+            >loading</span
+          >
+        </div>
         <p class="section-intro">
           Custom gameplay and server features for Minecraft.
         </p>
@@ -53,7 +66,12 @@
       </section>
 
       <section class="services-section">
-        <h2>Content Creation for YouTube</h2>
+        <div class="section-head">
+          <h2>content creation for youtube</h2>
+          <span class="section-count" data-count="content-creation"
+            >loading</span
+          >
+        </div>
         <p class="section-intro">
           Fast-turnaround edits and visuals focused on gaming creators.
         </p>
@@ -61,7 +79,9 @@
       </section>
 
       <section class="services-section services-section--ordering">
-        <h2>Order & Payments</h2>
+        <div class="section-head">
+          <h2>order &amp; payments</h2>
+        </div>
         <p class="section-intro">
           I take orders independently (Visa Direct or PayPal) or via EasyStaff
           for secure payments and order management. If you already know the
@@ -72,32 +92,55 @@
             class="btn btn-primary"
             href="https://connect.easystaff.io/easylancer/nikdor?ref=yjdkywy"
             target="_blank"
-            >Order on EasyStaff</a
           >
+            order on easystaff
+            <span class="btn-cursor" aria-hidden="true"></span>
+          </a>
           <a class="btn btn-ghost" href="mailto:nikdorkir@gmail.com"
-            >Request a quote</a
+            >request a quote</a
           >
         </div>
         <p class="small">Payment methods: Visa Direct, PayPal, or EasyStaff.</p>
       </section>
 
-      <h2>Contact me</h2>
-
-      <p class="section-intro">
-        I strongly recommend reaching out via my business email or Telegram for
-        any questions regarding my services or to discuss a custom project.
-        This way I can respond faster, provide more detailed information about
-        a specific service, and discuss your requirements.
-      </p>
-
       <section class="connect">
+        <div class="section-head">
+          <h2>contact me</h2>
+          <span class="section-count">02 channels</span>
+        </div>
+
+        <p class="section-intro">
+          I strongly recommend reaching out via my business email or Telegram for
+          any questions regarding my services or to discuss a custom project.
+          This way I can respond faster, provide more detailed information about
+          a specific service, and discuss your requirements.
+        </p>
+
         <div class="social">
           <a class="social-btn" href="mailto:nikdorkir@gmail.com">
-            <img src="/assets/icons/mail.svg" class="social-btn-icon" />
+            <svg
+              class="social-btn-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M19 4H5a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-.67 2L12 10.75 5.67 6zM19 18H5a1 1 0 0 1-1-1V7.25l7.4 5.55a1 1 0 0 0 .6.2 1 1 0 0 0 .6-.2L20 7.25V17a1 1 0 0 1-1 1z"
+              />
+            </svg>
             Email
           </a>
           <a class="social-btn" href="https://t.me/nikita_ducky">
-            <img src="/assets/icons/telegram.svg" class="social-btn-icon" />
+            <svg
+              class="social-btn-icon"
+              viewBox="0 0 16 16"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"
+              />
+            </svg>
             Telegram
           </a>
         </div>
@@ -112,7 +155,7 @@
           aria-labelledby="order-modal-title"
         >
           <div class="order-modal-header">
-            <h3 id="order-modal-title">Place an order</h3>
+            <h3 id="order-modal-title">place an order</h3>
             <button class="order-close" type="button" data-order-close>
               ✕
             </button>
@@ -121,7 +164,7 @@
           <div class="order-form-error" role="alert"></div>
 
           <div class="order-success" aria-live="polite">
-            <div class="order-success-title">Order received</div>
+            <div class="order-success-title">order received</div>
             <p>
               Thanks! I will reach out soon to discuss the details.
             </p>
@@ -189,10 +232,10 @@
 
             <div class="order-actions">
               <button class="btn btn-ghost" type="button" data-order-close>
-                Cancel
+                cancel
               </button>
               <button class="btn btn-primary" type="submit">
-                Order
+                order
               </button>
             </div>
           </form>
@@ -201,7 +244,10 @@
     </main>
 
     <footer class="site-footer">
-      <small>© 2026 Nikita Doronin</small>
+      <div class="site-footer-inner">
+        <small>© 2026 Nikita Doronin</small>
+        <a href="mailto:nikdorkir@gmail.com">nikdorkir@gmail.com</a>
+      </div>
     </footer>
 
     <script src="/scripts/site.js"></script>

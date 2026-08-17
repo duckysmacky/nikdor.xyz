@@ -4,34 +4,51 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Projects</title>
-    <link rel="stylesheet" href="/styles/base.css" />
-    <link rel="stylesheet" href="/styles/projects.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/styles/projects.css" />
   </head>
   <body class="fade-ready">
     <header class="site-header">
       <nav class="nav">
         <a class="brand" href="/">NIKDOR</a>
         <ul class="nav-list">
-          <li class="nav-item"><a href="/about.html" data-link>About</a></li>
-          <li class="nav-item"><a href="/skills.html" data-link>Skills</a></li>
-          <li class="nav-item active"><a href="/projects.html" data-link>Projects</a></li>
-          <li class="nav-item"><a href="/achievements.html" data-link>Achievements</a></li>
-          <li class="nav-item"><a href="/services.html" data-link>Services</a></li>
+          <li class="nav-item"><a href="/about.html" data-link>about</a></li>
+          <li class="nav-item"><a href="/skills.html" data-link>skills</a></li>
+          <li class="nav-item active"><a href="/projects.html" data-link>projects</a></li>
+          <li class="nav-item"><a href="/achievements.html" data-link>achievements</a></li>
+          <li class="nav-item"><a href="/services.html" data-link>services</a></li>
         </ul>
       </nav>
     </header>
 
     <main class="page page--projects">
-      <h1>Projects</h1>
-      <section id="projects-list" aria-live="polite"></section>
+      <p class="eyebrow">// index</p>
+      <h1>projects</h1>
+
+      <p class="section-intro">
+        Personal and open-source work, pinned entries first. Each card links to
+        its repository where the source is public.
+      </p>
+
+      <div class="section-head">
+        <h2>selected work</h2>
+        <span class="section-count" id="projects-count">loading</span>
+      </div>
+
+      <section class="projects-grid" id="projects-list" aria-live="polite"></section>
     </main>
 
     <footer class="site-footer">
-      <small>© 2026 Nikita Doronin</small>
+      <div class="site-footer-inner">
+        <small>© 2026 Nikita Doronin</small>
+        <a href="mailto:nikdorkir@gmail.com">nikdorkir@gmail.com</a>
+      </div>
     </footer>
 
     <script src="/scripts/site.js"></script>

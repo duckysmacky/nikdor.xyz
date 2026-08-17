@@ -2,41 +2,52 @@
   const container = document.getElementById('projects-list');
   if (!container) return;
 
+  const countLabel = document.getElementById('projects-count');
   const dataUrl = '/data/projects.json';
 
-  const renderProject = (project) => {
+  const pad = (n) => String(n).padStart(3, '0');
+
+  const renderProject = (project, position) => {
     const article = document.createElement('article');
-    const classes = ['project'];
-
-    if (project.pinned) classes.push('highlight');
-
-    article.className = classes.join(' ');
+    article.className = 'project card--ink';
 
     const languages = Array.isArray(project.languages) ? project.languages : [];
-    const languagesText = languages.filter(Boolean).join(', ');
-    const lang = languagesText ? `<span class="lang">${languagesText}</span>` : '';
+    const langMarkup = languages
+      .filter(Boolean)
+      .map(language => `<span class="tag">${language}</span>`)
+      .join('');
     const tags = Array.isArray(project.tags) ? project.tags : [];
     const isPrivate = Boolean(project.private);
-    const linkLabel = project.linkLabel || (isPrivate ? 'Private' : 'Repository');
+    const linkLabel = (project.linkLabel || (isPrivate ? 'private' : 'repository')).toLowerCase();
     const link = project.link || '#';
     const linkMarkup = isPrivate
-      ? `<span class="link link-disabled">${linkLabel}</span>`
+      ? `<span class="link-disabled">${linkLabel}</span>`
       : `<a class="link-accent" href="${link}">${linkLabel}</a>`;
+    const featured = project.pinned
+      ? '<span class="kicker">featured</span>'
+      : '';
 
     article.innerHTML = `
-      <div class="project-body">
-        <h2 class="project-name">${project.title} ${lang}</h2>
-        <p class="project-text">${project.description}</p>
-        <div class="project-meta">
-          <div class="badges">
-            ${tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-          </div>
-          ${linkMarkup}
+      ${featured}
+      <div class="card-head">
+        <h2 class="project-name">${project.title}</h2>
+        <span class="index-num">${pad(position)}</span>
+      </div>
+      <div class="tags project-langs">${langMarkup}</div>
+      <p class="project-text">${project.description}</p>
+      <div class="card-foot">
+        <div class="tags">
+          ${tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
         </div>
+        ${linkMarkup}
       </div>
     `;
 
     return article;
+  };
+
+  const setCount = (text) => {
+    if (countLabel) countLabel.textContent = text;
   };
 
   const loadProjects = async () => {
@@ -59,14 +70,18 @@
         })
         .map(({ project }) => project);
 
-      sorted.forEach(project => {
-        container.appendChild(renderProject(project));
+      sorted.forEach((project, index) => {
+        container.appendChild(renderProject(project, index + 1));
       });
+
+      setCount(`${String(sorted.length).padStart(2, '0')} items`);
     } catch (error) {
       console.error(error);
-      
+
+      setCount('unavailable');
+
       container.innerHTML = `
-        <p class="project-text">
+        <p class="projects-empty">
           Projects are unavailable right now. Please try again later.
         </p>
       `;

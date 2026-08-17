@@ -1,18 +1,24 @@
 // Soft cross-fade for multipage navigation
 (() => {
-  const body = document.documentElement;
   const links = Array.from(document.querySelectorAll('a[data-link]'));
   const fadeClass = 'visible';
 
-  // on load show
-  window.addEventListener('load', () => {
+  // reveal as soon as the DOM is parsed — waiting for `load` would keep the
+  // page hidden until every certificate iframe finished downloading
+  const reveal = () => {
     requestAnimationFrame(() => {
-      document.body.classList.add('visible');
-      document.documentElement.classList.add('visible');
+      document.body.classList.add(fadeClass);
+      document.documentElement.classList.add(fadeClass);
     });
 
     setActiveNav();
-  });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', reveal);
+  } else {
+    reveal();
+  }
 
   // intercept links with data-link for soft fade
   links.forEach(a => {
@@ -35,11 +41,12 @@
     const path = window.location.pathname;
 
     document.querySelectorAll('.nav-list a').forEach(a=>{
-      a.classList.remove('active');
+      const item = a.closest('.nav-item') || a;
+      item.classList.remove('active');
       const href = a.getAttribute('href');
 
       if(href === path || (href.endsWith('/') && path.startsWith(href))){
-        a.classList.add('active');
+        item.classList.add('active');
       }
     });
   }

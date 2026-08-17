@@ -111,7 +111,7 @@
 
         if (submitButton) {
             submitButton.disabled = true;
-            submitButton.textContent = "Sending...";
+            submitButton.textContent = "sending...";
         }
 
         try {
