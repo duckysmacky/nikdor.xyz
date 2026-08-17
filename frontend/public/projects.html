@@ -11,6 +11,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/styles/modal.css" />
+    <link rel="stylesheet" href="/styles/project-card.css" />
     <link rel="stylesheet" href="/styles/projects.css" />
   </head>
   <body class="fade-ready">
@@ -32,8 +34,90 @@
       <h1>projects</h1>
 
       <p class="section-intro">
-        Personal and open-source work, pinned entries first. Each card links to
-        its repository where the source is public.
+        Personal and open-source work, grouped by what each project is for.
+        Pick a category below, then open a card for the full write-up.
+      </p>
+
+      <div class="cat-select">
+        <div
+          class="cat-track"
+          id="cat-track"
+          role="tablist"
+          aria-label="project categories"
+          style="--cat-count: 5; --cat-index: 2;"
+        >
+          <span class="cat-thumb" aria-hidden="true"></span>
+
+          <button
+            class="cat-seg"
+            type="button"
+            role="tab"
+            id="cat-tab-product"
+            data-category="product"
+            aria-selected="false"
+            aria-controls="projects-list"
+            tabindex="-1"
+          >
+            products <span class="cat-num" data-count="product">00</span>
+          </button>
+
+          <button
+            class="cat-seg"
+            type="button"
+            role="tab"
+            id="cat-tab-learning"
+            data-category="learning"
+            aria-selected="false"
+            aria-controls="projects-list"
+            tabindex="-1"
+          >
+            learning <span class="cat-num" data-count="learning">00</span>
+          </button>
+
+          <button
+            class="cat-seg"
+            type="button"
+            role="tab"
+            id="cat-tab-featured"
+            data-category="featured"
+            aria-selected="true"
+            aria-controls="projects-list"
+            tabindex="0"
+          >
+            featured <span class="cat-num" data-count="featured">00</span>
+          </button>
+
+          <button
+            class="cat-seg"
+            type="button"
+            role="tab"
+            id="cat-tab-experiment"
+            data-category="experiment"
+            aria-selected="false"
+            aria-controls="projects-list"
+            tabindex="-1"
+          >
+            experiments <span class="cat-num" data-count="experiment">00</span>
+          </button>
+
+          <button
+            class="cat-seg"
+            type="button"
+            role="tab"
+            id="cat-tab-ai"
+            data-category="ai"
+            aria-selected="false"
+            aria-controls="projects-list"
+            tabindex="-1"
+          >
+            ai <span class="cat-num" data-count="ai">00</span>
+          </button>
+        </div>
+      </div>
+
+      <p class="cat-desc" id="cat-desc">
+        <span class="eyebrow">// featured</span>
+        Hand-picked best of the above. The work worth reading first.
       </p>
 
       <div class="section-head">
@@ -41,7 +125,15 @@
         <span class="section-count" id="projects-count">loading</span>
       </div>
 
-      <section class="projects-grid" id="projects-list" aria-live="polite"></section>
+      <section
+        class="projects-grid"
+        id="projects-list"
+        role="tabpanel"
+        aria-labelledby="cat-tab-featured"
+        tabindex="0"
+      ></section>
+
+      <p class="visually-hidden" id="projects-status" role="status" aria-live="polite"></p>
     </main>
 
     <footer class="site-footer">
@@ -51,7 +143,30 @@
       </div>
     </footer>
 
+    <div class="modal" id="project-modal" aria-hidden="true" inert>
+      <div class="modal-backdrop" data-modal-close></div>
+      <div
+        class="modal-card modal-card--ink modal-card--lg"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-modal-title"
+      >
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow">// project</p>
+            <h3 id="project-modal-title"></h3>
+          </div>
+          <button class="modal-close" type="button" data-modal-close aria-label="close">
+            ✕
+          </button>
+        </div>
+        <div class="modal-body" id="project-modal-body"></div>
+      </div>
+    </div>
+
     <script src="/scripts/site.js"></script>
+    <script src="/scripts/modal.js"></script>
+    <script src="/scripts/project-card.js"></script>
     <script src="/scripts/projects.js"></script>
   </body>
 </html>

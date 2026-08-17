@@ -1,0 +1,152 @@
+/* ==========================================================================
+   Shared modal shell — paper by default, .modal-card--ink for the dark variant
+   ========================================================================== */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s4);
+  background: rgba(26, 26, 26, 0.8);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s var(--ease);
+  z-index: 40;
+}
+
+.modal.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+}
+
+.modal-card {
+  position: relative;
+  z-index: 1;
+  width: min(640px, 96vw);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--paper);
+  border: var(--rule-w) solid var(--ink);
+  border-radius: var(--radius);
+  padding: var(--s4);
+}
+
+/* dark variant: ink fill needs a paper edge — an ink border would vanish
+   into the 80% ink backdrop */
+.modal-card--ink {
+  background: var(--ink);
+  color: var(--on-ink);
+  border-color: var(--paper);
+}
+
+/* size modifier for modals carrying more content (e.g. the project modal) */
+.modal-card--lg {
+  width: min(760px, 96vw);
+  padding: var(--s5);
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s3);
+  margin-bottom: var(--s4);
+  padding-bottom: var(--s3);
+  border-bottom: var(--rule-w) solid var(--ink);
+}
+
+.modal-header h3 {
+  margin: 0;
+}
+
+.modal-body {
+  display: grid;
+  gap: var(--s4);
+}
+
+.modal-card--ink .modal-header {
+  border-bottom-color: var(--paper);
+}
+
+.modal-card--ink h3,
+.modal-card--ink strong {
+  color: var(--on-ink);
+}
+
+.modal-card--ink .eyebrow,
+.modal-card--ink .index-num {
+  color: var(--muted-on-ink);
+}
+
+.modal-card--ink .kicker {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.modal-card--ink .tag {
+  color: var(--muted-on-ink);
+}
+
+.modal-card--ink .tag::before,
+.modal-card--ink .tag::after {
+  color: var(--on-ink);
+}
+
+.modal-card--ink .tag--lang {
+  color: var(--on-ink);
+  font-weight: 700;
+}
+
+.modal-card--ink .link-disabled {
+  color: var(--muted-on-ink);
+}
+
+.modal-card--ink .btn-ghost {
+  color: var(--on-ink);
+  border-color: var(--rule-on-ink);
+}
+
+.modal-close {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color var(--t) var(--ease);
+}
+
+.modal-close:hover {
+  color: var(--ink);
+}
+
+.modal-card--ink .modal-close {
+  color: var(--muted-on-ink);
+}
+
+.modal-card--ink .modal-close:hover {
+  color: var(--on-ink);
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+/* the card under the cursor when a modal opens keeps matching :hover (the
+   pointer hasn't moved) even after it goes `inert`, so its hover transform
+   freezes mid-offset until the mouse moves again — force it back explicitly
+   while a modal is open */
+body.modal-open .card--ink:hover,
+body.modal-open .project:hover,
+body.modal-open .project:focus-within {
+  transform: none;
+  box-shadow: none;
+}

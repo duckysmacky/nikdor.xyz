@@ -64,12 +64,17 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+html {
   height: 100%;
 }
 
+/* footer stays pinned to the bottom of the viewport on short pages (e.g. an
+   empty category) instead of floating above it with bare paper underneath —
+   the gap this opens up lands above the footer, inside the page, not below it */
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   margin: 0;
   font-family: var(--font-mono);
   font-size: 16px;
@@ -513,6 +518,13 @@ strong {
   font-weight: 700;
 }
 
+/* language tag — brighter and heavier than a regular bracket tag, so
+   Rust/Java/etc read as a different kind of fact from a topic tag */
+.card--ink .tag--lang {
+  color: var(--on-ink);
+  font-weight: 700;
+}
+
 /* ==========================================================================
    Highlight Helpers
    ========================================================================== */
@@ -622,6 +634,7 @@ strong {
    ========================================================================== */
 
 .site-footer {
+  margin-top: auto;
   background: var(--ink);
   color: var(--paper);
   border-top: var(--rule-w) solid var(--ink);
@@ -658,6 +671,18 @@ strong {
 
 .muted {
   color: var(--muted);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ==========================================================================

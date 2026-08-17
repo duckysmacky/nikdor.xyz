@@ -11,6 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/styles/project-card.css" />
     <link rel="stylesheet" href="/styles/home.css" />
   </head>
   <body class="fade-ready">
@@ -96,6 +97,14 @@
       </section>
 
       <!-- TODO: add "currently learning" card -->
+
+      <section class="featured-projects">
+        <div class="section-head">
+          <h2>featured work</h2>
+          <span class="section-count" id="featured-count">loading</span>
+        </div>
+        <div class="projects-grid" id="featured-list"></div>
+      </section>
 
       <article class="freelance-card card--ink">
         <div class="card-head">
@@ -197,5 +206,7 @@
     </footer>
 
     <script src="/scripts/site.js"></script>
+    <script src="/scripts/project-card.js"></script>
+    <script src="/scripts/home-projects.js"></script>
   </body>
 </html>

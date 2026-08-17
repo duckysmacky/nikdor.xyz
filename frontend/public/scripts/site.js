@@ -1,6 +1,5 @@
 // Soft cross-fade for multipage navigation
 (() => {
-  const links = Array.from(document.querySelectorAll('a[data-link]'));
   const fadeClass = 'visible';
 
   // reveal as soon as the DOM is parsed — waiting for `load` would keep the
@@ -20,20 +19,21 @@
     reveal();
   }
 
-  // intercept links with data-link for soft fade
-  links.forEach(a => {
-    a.addEventListener('click', (e) => {
-      const href = a.getAttribute('href');
-      // only intercept internal links
-      if (!href || href.startsWith('http') || href.startsWith('mailto:')) return;
-      e.preventDefault();
-      // fade out
-      document.documentElement.classList.remove('visible');
+  // intercept links with data-link for soft fade — delegated on document so
+  // this also covers cards injected later by JSON-driven pages
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[data-link]');
+    if (!a) return;
+    const href = a.getAttribute('href');
+    // only intercept internal links
+    if (!href || href.startsWith('http') || href.startsWith('mailto:')) return;
+    e.preventDefault();
+    // fade out
+    document.documentElement.classList.remove('visible');
 
-      setTimeout(() => {
-        window.location.href = href;
-      }, 100);
-    });
+    setTimeout(() => {
+      window.location.href = href;
+    }, 100);
   });
 
   // set active nav item based on path

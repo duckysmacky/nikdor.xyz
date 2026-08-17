@@ -1,81 +1,307 @@
 /* ==========================================================================
    About Page
+
+   Two timelines, deliberately unalike:
+   experience = ink cards on a dark dashed rail
+   education  = paper annotations on a solid rail that fades into the past
    ========================================================================== */
+
+/* ----- Bio ----------------------------------------------------------------
+   the rail thins as the prose becomes secondary: 3px ink bar on the lead,
+   1px hairline on the rest. 3+10 == 1+12, so both text columns line up. */
+
+.about-intro {
+  margin-bottom: var(--s5);
+}
 
 .about-intro p {
   max-width: 66ch;
+}
+
+/* .bar (base.css) supplies the 3px ink border + 10px padding */
+.about-intro > .bar {
+  color: var(--ink);
+  margin-bottom: var(--s3);
+}
+
+.about-body {
+  border-left: 1px solid var(--rule);
+  padding-left: 12px;
+}
+
+.about-body p {
   color: var(--muted);
 }
 
-.about-intro p:first-of-type {
-  color: var(--ink);
+.about-body p:last-child {
+  margin-bottom: 0; /* stop the hairline overshooting the last line */
 }
 
-/* ----- Timeline ----- */
+/* ==========================================================================
+   Experience — ink cards, dotted rail
+   ========================================================================== */
 
-.timeline-list,
 .experience-list {
+  --rail-x: 8px; /* rail offset from the section's left edge */
+  --rail-gutter: 30px; /* space reserved for the rail */
+
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 var(--rail-gutter);
   display: grid;
   gap: var(--gap-card);
 }
 
-.tl-entry {
-  flex-direction: row;
-  align-items: flex-start;
-  gap: var(--s3);
+/* Dark dashed rail: a plain border, rendered by every engine as a stack of
+   small rectangles (unlike `dotted`, which Blink draws as circles — this
+   system has no circles). Empty content + top/bottom stretches it to
+   exactly the list's own height, so it spans first-card-top to
+   last-card-bottom and can never overshoot. */
+.experience-list::before {
+  content: "";
+  position: absolute;
+  left: var(--rail-x);
+  top: 0;
+  bottom: 0;
+  border-left: var(--rule-w) dashed var(--ink);
+  pointer-events: none;
 }
 
-.tl-icon {
+.exp-entry {
+  list-style: none;
+}
+
+.exp-empty {
+  color: var(--muted);
+  border-left: var(--rule-w) solid var(--ink);
+  padding-left: 10px;
+}
+
+.exp-card {
+  gap: var(--s2);
+  overflow-wrap: break-word;
+}
+
+.exp-role {
+  margin: 0; /* h3 already gives 17px / 700 / .01em */
+}
+
+/* employment kind — mirrors home's `.project-title .lang` suffix */
+.exp-kind {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--muted-on-ink);
+  margin-left: 0.6rem;
+}
+
+.exp-dates {
   flex: none;
-  padding-top: 2px;
-}
-
-.tl-icon svg {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
-}
-
-.tl-body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.tl-period,
-.exp-period {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.18em;
   line-height: 1;
   text-transform: uppercase;
   color: var(--muted-on-ink);
+  white-space: nowrap;
 }
 
-.tl-title {
-  font-size: 17px;
+.exp-org {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.exp-company {
   font-weight: 700;
-  letter-spacing: 0.01em;
-  line-height: 1.3;
+  color: var(--on-ink);
 }
 
-.tl-desc {
+.exp-place {
+  color: var(--muted-on-ink);
+}
+
+.exp-place::before {
+  content: " / ";
+  color: var(--rule-on-ink);
+}
+
+.exp-summary {
+  font-size: 14px;
+  line-height: 1.6;
+  /* slightly dimmer than the standard --muted-on-ink secondary tone — the
+     long-form summary read as glary/washed-out at that weight */
+  color: color-mix(in srgb, var(--muted-on-ink) 75%, var(--ink) 25%);
+  margin: 0;
+}
+
+.exp-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
   font-size: 14px;
   line-height: 1.6;
   color: var(--muted-on-ink);
 }
 
-/* ----- Experience ----- */
-
-.exp-body strong {
-  display: block;
-  font-size: 17px;
-  margin-top: 0.35rem;
+.exp-points li {
+  position: relative;
+  padding-left: 1.2em;
 }
 
-.exp-body p {
+/* plain ASCII bullet, brighter than the text it marks — same relationship
+   the bracket tags use ('[' is --on-ink, the label is --muted-on-ink).
+   '>' is deliberately not reused: skills.css already owns it for named items. */
+.exp-points li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  color: var(--on-ink);
+}
+
+/* ==========================================================================
+   Education — paper annotations, solid rail with time direction
+   ========================================================================== */
+
+.education-list {
+  --edu-gap: var(--s5);
+  --edu-rail-x: 8px;
+  --edu-gutter: 30px;
+  --edu-node-y: 5px; /* optical centre of the first (dates) line */
+
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 var(--edu-gutter);
+  display: grid;
+  gap: var(--edu-gap);
+}
+
+.edu-entry {
+  position: relative;
+  overflow-wrap: break-word;
+
+  /* time direction without an arrow glyph: the rail and its tick step down
+     in weight as entries get older. Newest reads as "now". */
+  --edu-rail: var(--ink);
+}
+
+.edu-entry:nth-child(2) {
+  --edu-rail: var(--muted);
+}
+
+.edu-entry:nth-child(n + 3) {
+  --edu-rail: var(--rule);
+}
+
+/* vertical segment: this entry's top edge down into the gap below it.
+   The ::before is positioned against the entry's padding box, which starts
+   --edu-gutter in from the list edge, hence the negative left. */
+.edu-entry::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--edu-rail-x) - var(--edu-gutter));
+  top: 0;
+  bottom: calc(var(--edu-gap) * -1);
+  border-left: var(--rule-w) solid var(--edu-rail);
+}
+
+/* trim both ends so the rail starts and stops at a node, never overshooting */
+.edu-entry:first-child::before {
+  top: var(--edu-node-y);
+}
+
+.edu-entry:last-child::before {
+  bottom: auto;
+  height: var(--edu-node-y);
+}
+
+.edu-entry:first-child:last-child::before {
+  display: none; /* a single entry has nothing to connect to */
+}
+
+/* horizontal tick joining the rail to the entry */
+.edu-entry::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--edu-rail-x) - var(--edu-gutter));
+  top: var(--edu-node-y);
+  width: calc(var(--edu-gutter) - var(--edu-rail-x) - 8px);
+  border-top: var(--rule-w) solid var(--edu-rail);
+}
+
+.edu-dates {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 var(--s2);
+}
+
+.edu-school {
+  margin: 0;
+}
+
+.edu-meta {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0.35rem 0 0;
+}
+
+.edu-program {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.edu-place {
+  color: var(--muted);
+}
+
+.edu-place::before {
+  content: " / ";
+  color: var(--rule);
+}
+
+.edu-desc {
   font-size: 14px;
   line-height: 1.6;
-  color: var(--muted-on-ink);
+  color: var(--muted);
+  max-width: 60ch;
   margin: var(--s2) 0 0;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 720px) {
+  .education-list {
+    --edu-gap: var(--s4);
+  }
+}
+
+@media (max-width: 520px) {
+  .experience-list {
+    --rail-gutter: 20px;
+    --rail-x: 4px;
+  }
+
+  .education-list {
+    --edu-gutter: 20px;
+    --edu-rail-x: 4px;
+  }
+
+  .exp-card {
+    padding: var(--s3);
+  }
+
+  .exp-card .card-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s1);
+  }
 }
