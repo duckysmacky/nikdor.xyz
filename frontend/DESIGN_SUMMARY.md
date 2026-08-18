@@ -91,8 +91,8 @@ enough that 46ch would read as an unreadably narrow ribbon.
 
 Every card on the site inverts (solid `--ink` fill, `--on-ink` text,
 `--rule-on-ink` hairlines): project cards, service cards, skill cards,
-certificate cards, competition cards, timeline/experience entries, the
-freelance card, the stats row.
+certificate cards, competition cards, experience entries, the freelance
+card, the stats row.
 
 Also inverted: the `NIKDOR` brand mark, the footer slab, the primary
 button, the `open for work` / `currently working on` kicker, the hero
@@ -101,10 +101,11 @@ no color for status — a message either inverts or it isn't shown).
 
 Not inverted: page background, the nav bar, all headings and prose on
 paper, the meta strip, the `current-project` annotation (paper with a 3px
-ink left-border, not a card), form inputs, and the order/certificate
-modal surfaces (paper — the certificate modal wraps a white PDF).
+ink left-border, not a card), the education timeline (paper annotations
+on a left rule, same idea), form inputs, and the order/certificate modal
+surfaces (paper — the certificate modal wraps a white PDF).
 
-A control that sits on top of an ink card (Order button, View PDF button)
+A control that sits on top of an ink card (Order button, View button)
 uses `.btn-invert`: paper fill, ink text — the inverse of `.btn-primary`.
 
 ---
@@ -112,7 +113,7 @@ uses `.btn-invert`: paper fill, ink text — the inverse of `.btn-primary`.
 ## 5. Components
 
 - **Nav** — brand left, slash-lowercase links right (`/ about`, `/
-  skills`, `/ projects`, `/ achievements`, `/ services`). Active link:
+  skills`, `/ projects`, `/ portfolio`, `/ services`). Active link:
   `border-bottom: 2px solid currentColor`, heavier weight.
 - **Section head** — `// title` left, `NN items` count right, sitting on
   a 3px ink rule.
@@ -134,6 +135,15 @@ uses `.btn-invert`: paper fill, ink text — the inverse of `.btn-primary`.
   they inherit `currentColor` on both paper and the footer.
 - **Footer slab** — inverted, copyright left, email right, uppercase
   tracked.
+- **Timelines** — two deliberately unalike connectors on the About page.
+  Experience entries (ink cards) are joined by a bold dashed `var(--ink)`
+  rail (`border-left: var(--rule-w) dashed`) — dashed renders as a stack
+  of rectangles in every engine, unlike `dotted`, which Blink draws as
+  circles (this system has no circles). Education entries (paper
+  annotations) are joined by a solid `--rule-w` rule with a horizontal
+  tick per entry; the rail and tick step down in weight (`--ink` →
+  `--muted` → `--rule`) from newest to oldest, reading as a fade into the
+  past instead of an arrow glyph.
 
 ---
 
@@ -155,10 +165,12 @@ ink/density/contrast meters on the live site.
 Lowercase, terse, technical. `//` and `/` as punctuation — section
 markers, nav links, and the separator inside a single line of related
 facts (e.g. `Aug 2024 / Codecademy / Certificate`, `Digital operations /
-Software solutions / Video editing`). No em dash or bullet (`•`) as a
-separator, no arrow glyphs (`→`) anywhere, including inside links — an
-underline alone marks a link as active. No exclamation marks, no
-marketing adjectives, no emoji.
+Software solutions / Video editing`). `/` is also the date-range
+separator (`jun 2025 / sep 2025`, `mar 2022 / present`) — never an em
+dash or a hyphen. No em dash or bullet (`•`) as a separator, no arrow
+glyphs (`→`) anywhere, including inside links — an underline alone marks
+a link as active. No exclamation marks, no marketing adjectives, no
+emoji.
 
 ---
 
@@ -169,18 +181,23 @@ marketing adjectives, no emoji.
    `open for work` kicker), stats row (inverted, 3 stats), current-project
    annotation, freelance card, links section (5 inline-SVG social
    buttons).
-2. **About** (`/about.html`) — eyebrow + h1, bio (5 paragraphs, 66ch),
-   education timeline (2 inverted entries with inline mortarboard icon),
-   experience (1 inverted entry linking to Projects).
+2. **About** (`/about.html`) — eyebrow + h1, bio (lead paragraph on a 3px
+   bar, remaining paragraphs on a hairline rail, 66ch), experience
+   (data-driven from `data/experience.json`, ink cards on a dashed rail,
+   role/dates/company/location/summary/tags, no links), education
+   (hardcoded, paper annotations on a ticked rail that fades from `--ink`
+   to `--rule` as entries get older).
 3. **Skills** (`/skills.html`) — 7 inverted category cards in a 2-col
    grid, each with an index number and a `> name` / description list.
 4. **Projects** (`/projects.html`) — data-driven from
    `data/projects.json`, pinned entries first with a `featured` kicker,
    2-col grid of inverted cards (index, languages as tags, description,
    tag row, repository link or `[ closed-source ]`).
-5. **Achievements** (`/achievements.html`) — certificate grid (5 inverted
-   cards, `view pdf` opens a paper `:target` modal with an iframe),
-   competition list (4 inverted cards).
+5. **Portfolio** (`/portfolio.html`) — data-driven from
+   `data/certificates.json` and `data/events.json`. Certificate grid
+   (inverted cards, centred `view` button opens a paper modal with a PDF
+   iframe, `download` plus an optional `open` to the credential source),
+   events list (inverted cards, date/result, tag row).
 6. **Services** (`/services.html`) — data-driven from
    `data/services.json`, 3 category grids of inverted cards (price +
    `order` button), order/payment info, contact links, and the order
