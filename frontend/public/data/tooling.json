@@ -1,22 +1,14 @@
 [
   {
-    "label": "editor",
-    "value": "Neovim as my primary editor, with IntelliJ IDEA and RustRover for larger projects."
+    "label": "editors",
+    "value": "Neovim, VSCode, JetBrains IDEs"
   },
   {
     "label": "os",
-    "value": "Arch Linux, daily. Comfortable in the shell and the usual CLI toolchain."
+    "value": "Arch Linux, Windows 11"
   },
   {
-    "label": "build",
-    "value": "Cargo, Gradle, Maven, Make."
-  },
-  {
-    "label": "vcs",
-    "value": "Git and GitHub, on every project."
-  },
-  {
-    "label": "planning",
-    "value": "Trello and Todoist."
+    "label": "project management",
+    "value": "Trello, Jira, Todoist"
   }
 ]

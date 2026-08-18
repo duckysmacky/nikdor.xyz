@@ -4,27 +4,39 @@
     "skills": [
       {
         "name": "Rust",
-        "description": "CLI tooling, secure systems, automation. It is my go-to language for new projects and general applications (and also my favorite)."
-      },
-      {
-        "name": "Java",
-        "description": "Backend engineering, REST APIs and desktop applications. The language I am most proficient with."
+        "description": "My primary language in which I am highly proficient at and develop most of my projects in. I use it in high-load and concurrent systems, backend applications, low-level applications, automation and bots and general programming"
       },
       {
         "name": "C++",
-        "description": "Low-level development, performance-critical systems. This is the language I want to improve my skills at the most."
+        "description": "This is my second best choice for writing various applications. Strong proficiency in using it for low-level, desktop application and general development."
       },
       {
-        "name": "SQL (PostgreSQL)",
-        "description": "Basic schema design and queries for PostgreSQL databases. Used it in my backend projects."
+        "name": "C",
+        "description": "I also have deep technical expertise in C. I've been using it specifically in close-to-hardware environment, firmware development and embedded systems."
+      },
+      {
+        "name": "Java",
+        "description": "I have a strong track record with Java and spent a lot of time building backend applications with it. However, my focus has shifted toward low-level development, so Java has taken a backseat to languages like Rust and C++."
+      },
+      {
+        "name": "Assembly",
+        "description": "Ability to easly read x64_86 assembly and write simple applications and utilities in it."
+      },
+      {
+        "name": "Python",
+        "description": "I possess general knowledge for writing scripts, small applications and tooling."
+      },
+      {
+        "name": "SQL",
+        "description": "Experience writing queries of various sizes, complexy and optimisation level. Able to easly write PSQL functions, indexes, view and other database-related logic."
       }
     ]
   },
   {
-    "title": "Tools & Technologies",
+    "title": "Tools",
     "skills": [
       {
-        "name": "Git & Github",
+        "name": "Git",
         "description": "Branching, pull requests, collaboration and CI pipelines. I use it in all of my projects for version control."
       },
       {
@@ -33,32 +45,28 @@
       },
       {
         "name": "Build systems",
-        "description": "Maven, Gradle, Cargo, Make - familiar with various build tools across languages."
+        "description": "Maven, Gradle, Cargo, Make, CMake - familiar with various build tools across languages, can easly setup and configure any project."
       }
     ]
   },
   {
-    "title": "Frameworks & Ecosystems",
+    "title": "AI",
     "skills": [
       {
-        "name": "Spring Boot",
-        "description": "Experience building backend services and REST APIs with Spring Boot, as well as integrating with databases and security."
+        "name": "Claude Code",
+        "description": "My go-to agentic coding tool, which I use on daily basis. Additionally familiar with context management, subagents and multi-session communication"
       },
       {
-        "name": "JavaFX",
-        "description": "Built desktop applications with JavaFX, focusing on UI design and user experience."
+        "name": "Codex",
+        "description": "I use Codex for more specialized tasks, like deep code review, security audits and in combination with Claude Code to split work across different agents and providers."
       },
       {
-        "name": "Tokio",
-        "description": "Used it for asynchronous programming in Rust and building automated bots."
+        "name": "Agent Skills",
+        "description": "Frequent user of various skills to increase output quality, provide specialized instructions and use token-saving mechanisms. Additionally, I have created my own custom agent skills to use in specialized scenarios."
       },
       {
-        "name": "Windows API",
-        "description": "Familiar with low-level Windows programming using the Windows API for building utilities and system tools."
-      },
-      {
-        "name": "Minecraft Plugins",
-        "description": "Experience developing Minecraft server plugins using the Spigot API."
+        "name": "MCP",
+        "description": "Familiar with concept of MCP, having used different connectors to connect my agents to various services and enable automation chains."
       }
     ]
   },
@@ -82,11 +90,7 @@
         "description": "Familiar with concurrent programming concepts, thread safety, synchronization, and asynchronous programming paradigms."
       },
       {
-        "name": "OOP",
-        "description": "Strong understanding of object-oriented programming principles such as encapsulation, inheritance, and polymorphism. My primary paradigm when working with most of my languages."
-      },
-      {
-        "name": "Security basics",
+        "name": "Cybersecurity",
         "description": "Understanding of encryption algorithms, secure storage practices, and basic security principles in software development."
       }
     ]
