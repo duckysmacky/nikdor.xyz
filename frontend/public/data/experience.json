@@ -2,29 +2,36 @@
   {
     "role": "BIOS Developer",
     "kind": "internship",
-    "company": "Company name",
-    "place": "Moscow / on-site",
-    "dateFrom": "2025-06",
-    "dateTo": "2025-09",
-    "summary": "Firmware work in C on BIOS components: platform initialisation paths, hardware bring-up and the tooling around building and flashing images.",
+    "company": "Aquarius",
+    "place": "Moscow (on-site)",
+    "dateFrom": "2026-03",
+    "dateTo": "2026-08",
+    "summary": "Developed and debugged UEFI firmware for Intel-based server and workstation platforms, focusing on hardware support, system reliability, device discovery, inventory reporting, and BIOS user-interface improvements.",
     "highlights": [
-      "Wrote and debugged low-level C modules against vendor firmware sources.",
-      "Reproduced and traced boot-stage failures on real hardware.",
-      "Automated parts of the build and flash cycle."
+		"Developed IPMI/FRU, SMBIOS, and HII inventory features.",
+		"Diagnosed PCIe bifurcation, riser, and slot-mapping issues.",
+		"Built bounded PCIe recovery using retries, bus resets, and device quarantine.",
+		"Ported firmware features across Intel platforms and hardware SKUs.",
+			"Enabled a dual-socket, 96-drive NVMe/JBOF topology through PCI bus reallocation."
     ],
     "languages": ["C"],
-    "tags": ["firmware", "BIOS"]
+    "tags": ["firmware", "BIOS", "EFI", "EDK2"]
   },
   {
-    "role": "Software Developer",
+    "role": "Rust Developer",
     "kind": "freelance",
     "company": "Self-employed",
     "place": "remote",
-    "dateFrom": "2022-03",
-    "dateTo": null,
-    "summary": "Personal projects and freelance assignments to gain practical experience. Focus areas: CLI applications, automation tools, backend services and APIs.",
-    "highlights": [],
-    "languages": ["Rust", "Java"],
-    "tags": ["cli", "backend"]
+    "dateFrom": "2025-06",
+    "dateTo": "2026-03",
+    "summary": "Developed Rust backend and automation solutions for freelance clients, including trading bots, distributed services, API integrations, and infrastructure management tools.",
+    "highlights": [
+		"Built asynchronous crypto trading automation integrating Bybit and Payeer.",
+		"Reverse-engineered undocumented APIs, authentication flows, and request signing.",
+		"Secured communication between distributed services with mutual TLS.",
+		"Converted client requirements into maintainable, deployable Rust systems."
+	],
+    "languages": ["Rust"],
+    "tags": ["cli", "backend", "bots", "crypto"]
   }
 ]
