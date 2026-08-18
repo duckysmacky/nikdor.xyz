@@ -4,35 +4,44 @@
     "title": "\"Professionals\" National Championship - IoT track",
     "date": "2025-04",
     "result": "1st place",
-    "location": null,
+    "location": "Moscow, Russia",
     "description": "Final interregional stage - Winner in IoT track. Teams of one.",
-    "tags": ["IoT", "National", "Solo"]
+    "tags": ["championship", "national", "solo", "winner"]
   },
   {
-    "id": "event-olympiad-infosec-2025",
-    "title": "All-Russian Olympiad - Information Security track",
+    "id": "event-olympiad-cybersecurity-2025",
+    "title": "All-Russian Olympiad - Cybersecurity track",
     "date": "2025-03",
-    "result": "Prize-winner",
-    "location": null,
-    "description": "Regional stage prize-winner in information security.",
-    "tags": ["InfoSec", "Regional", "Olympiad"]
+    "result": "Region-winner",
+    "location": "Moscow, Russia",
+    "description": "Regional stage prize-winner in cybersecurity, participant in the national stage",
+    "tags": ["olympiad", "national", "solo", "cybersecurity"]
   },
   {
     "id": "event-professionals-2024",
     "title": "\"Professionals\" National Championship - IoT track",
     "date": "2024-05",
     "result": "2nd place",
-    "location": null,
+    "location": "Moscow, Russia",
     "description": "Final interregional stage - Prize-winner in IoT track. Teams of two.",
-    "tags": ["IoT", "National", "Team of two"]
+    "tags": ["championship", "national", "teams", "winner"]
   },
   {
     "id": "event-golden-dozen-2024",
-    "title": "\"Golden Dozen\" project competition - Russian Technological University (MIREA)",
+    "title": "\"Golden Dozen\" project competition by Russian Technological University (MIREA)",
     "date": "2024-04",
     "result": "Winner",
-    "location": null,
+    "location": "Moscow, Russia",
     "description": "Final stage winner in the information technology category.",
-    "tags": ["Project", "IT", "University"]
+    "tags": ["conference", "projects", "university", "teams", "winner"]
+  },
+  {
+    "id": "event-engineers-of-the-future-2024",
+    "title": "\"Engineers of the Future\" science conference",
+    "date": "2024-03",
+    "result": "Winner",
+    "location": "Moscow, Russia",
+    "description": "Winner title for the project \"Signsense\" in the information technology category.",
+    "tags": ["conference", "projects", "teams", "winner"]
   }
 ]
