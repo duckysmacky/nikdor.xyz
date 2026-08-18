@@ -85,25 +85,47 @@ enough that 46ch would read as an unreadably narrow ribbon.
   hover — used identically on every card, every button, every social
   button, and the brand mark. One hover pattern, everywhere.
 
+### Texture — halftone
+
+The one texture in the system, and the only `background-image` anywhere in
+the codebase: `radial-gradient(var(--ink) 1.6px, transparent 1.7px)` tiled
+at `background-size: 9px 9px` (`.halftone` in base.css). A single ink dot
+drawn once and repeated — roughly 11% ink coverage, reading as a mid-grey
+field from a distance and hard black dots up close. The 1.6px→1.7px stop
+gap is a 0.1px transition that keeps the dot edge crisp rather than
+feathered, which is what keeps it brutalist rather than decorative.
+
+Cell size is the only knob, and it maps to ink coverage: `6px` ≈ 22%
+(coarse, aggressive), `9px` ≈ 11% (current, mid grey), `14px` ≈ 4% (faint,
+wide-spaced). Only the 9px default ships today.
+
+It must never sit directly under body copy — mono glyphs at 13-14px read
+poorly against the dot grid, so any surface using it wraps its text in a
+solid inner card (see the Languages panel on About). And it appears once
+or twice per page, never as wallpaper: today that's the hero accent block
+on Home and the Languages panel on About.
+
 ---
 
 ## 4. Inversion — what's ink, what's paper
 
 Every card on the site inverts (solid `--ink` fill, `--on-ink` text,
 `--rule-on-ink` hairlines): project cards, service cards, skill cards,
-certificate cards, competition cards, experience entries, the freelance
-card, the stats row.
+certificate cards, experience entries, the freelance card, the stats row.
 
 Also inverted: the `NIKDOR` brand mark, the footer slab, the primary
 button, the `open for work` / `currently working on` kicker, the hero
-accent block, and the order-form's error/success states (this system has
-no color for status — a message either inverts or it isn't shown).
+accent block (halftone, not solid — see §3), and the order-form's
+error/success states (this system has no color for status — a message
+either inverts or it isn't shown).
 
 Not inverted: page background, the nav bar, all headings and prose on
 paper, the meta strip, the `current-project` annotation (paper with a 3px
 ink left-border, not a card), the education timeline (paper annotations
-on a left rule, same idea), form inputs, and the order/certificate modal
-surfaces (paper — the certificate modal wraps a white PDF).
+on a left rule, same idea), the events list (paper annotations, black
+surfacing only as an inverted result chip and full-ink tags), form
+inputs, and the order/certificate modal surfaces (paper — the certificate
+modal wraps a white PDF).
 
 A control that sits on top of an ink card (Order button, View button)
 uses `.btn-invert`: paper fill, ink text — the inverse of `.btn-primary`.
@@ -113,7 +135,7 @@ uses `.btn-invert`: paper fill, ink text — the inverse of `.btn-primary`.
 ## 5. Components
 
 - **Nav** — brand left, slash-lowercase links right (`/ about`, `/
-  skills`, `/ projects`, `/ portfolio`, `/ services`). Active link:
+  projects`, `/ portfolio`, `/ services`). Active link:
   `border-bottom: 2px solid currentColor`, heavier weight.
 - **Section head** — `// title` left, `NN items` count right, sitting on
   a 3px ink rule.
@@ -135,15 +157,19 @@ uses `.btn-invert`: paper fill, ink text — the inverse of `.btn-primary`.
   they inherit `currentColor` on both paper and the footer.
 - **Footer slab** — inverted, copyright left, email right, uppercase
   tracked.
-- **Timelines** — two deliberately unalike connectors on the About page.
-  Experience entries (ink cards) are joined by a bold dashed `var(--ink)`
-  rail (`border-left: var(--rule-w) dashed`) — dashed renders as a stack
-  of rectangles in every engine, unlike `dotted`, which Blink draws as
-  circles (this system has no circles). Education entries (paper
-  annotations) are joined by a solid `--rule-w` rule with a horizontal
-  tick per entry; the rail and tick step down in weight (`--ink` →
-  `--muted` → `--rule`) from newest to oldest, reading as a fade into the
-  past instead of an arrow glyph.
+- **Timelines** — two deliberately unalike connectors, now on two
+  different pages. Experience entries on Portfolio (ink cards) are joined
+  by a bold dashed `var(--ink)` rail (`border-left: var(--rule-w)
+  dashed`) — dashed renders as a stack of rectangles in every engine,
+  unlike `dotted`, which Blink draws as circles. Circles are not a UI
+  shape in this system — the halftone field (§3) is the sole exception,
+  and it is a printed tone, not an element: it never has a border, never
+  carries a click target, and never appears at a size where an individual
+  dot resolves as a shape. Education entries on About (paper annotations)
+  are joined by a solid `--rule-w` rule with a horizontal tick per entry;
+  the rail and tick step down in weight (`--ink` → `--muted` → `--rule`)
+  from newest to oldest, reading as a fade into the past instead of an
+  arrow glyph.
 
 ---
 
@@ -157,6 +183,12 @@ spacing is always `gap`, never margin, inside flex/grid containers.
 Page section order is per-page (see below), not a fixed template — there
 is no ticker, no marquee, no component-lab demo block, and no
 ink/density/contrast meters on the live site.
+
+The skills section on About is the one region on the site that scrolls
+horizontally on desktop — a deliberate departure from the otherwise
+all-vertical, all-grid layout. Its scrollbar stays visible (unlike the
+project category selector's mobile-only, hidden-scrollbar overflow),
+because there scrolling is the primary interaction, not a fallback.
 
 ---
 
@@ -182,23 +214,26 @@ emoji.
    annotation, freelance card, links section (5 inline-SVG social
    buttons).
 2. **About** (`/about.html`) — eyebrow + h1, bio (lead paragraph on a 3px
-   bar, remaining paragraphs on a hairline rail, 66ch), experience
-   (data-driven from `data/experience.json`, ink cards on a dashed rail,
-   role/dates/company/location/summary/tags, no links), education
-   (hardcoded, paper annotations on a ticked rail that fades from `--ink`
-   to `--rule` as entries get older).
-3. **Skills** (`/skills.html`) — 7 inverted category cards in a 2-col
-   grid, each with an index number and a `> name` / description list.
-4. **Projects** (`/projects.html`) — data-driven from
+   bar, remaining paragraphs on a hairline rail, 66ch) beside a right rail
+   (Languages on a halftone panel, Soft Skills on an ink bar), skills
+   (data-driven from `data/skills.json`, 4 inverted category cards in a
+   horizontally-scrolling strip, `> name` / description list, per-card
+   item count), tooling (data-driven from `data/tooling.json`, a ruled
+   `dt`/`dd` spec sheet), education (hardcoded, paper annotations on a
+   ticked rail that fades from `--ink` to `--rule` as entries get older).
+3. **Projects** (`/projects.html`) — data-driven from
    `data/projects.json`, pinned entries first with a `featured` kicker,
    2-col grid of inverted cards (index, languages as tags, description,
    tag row, repository link or `[ closed-source ]`).
-5. **Portfolio** (`/portfolio.html`) — data-driven from
-   `data/certificates.json` and `data/events.json`. Certificate grid
-   (inverted cards, centred `view` button opens a paper modal with a PDF
-   iframe, `download` plus an optional `open` to the credential source),
-   events list (inverted cards, date/result, tag row).
-6. **Services** (`/services.html`) — data-driven from
+4. **Portfolio** (`/portfolio.html`) — experience (data-driven from
+   `data/experience.json`, ink cards on a dashed rail,
+   role/dates/company/location/summary/tags, no links), certificates
+   (data-driven from `data/certificates.json`, inverted cards, centred
+   `view` button opens a paper modal with a PDF iframe, `download` plus
+   an optional `open` to the credential source), events (data-driven from
+   `data/events.json`, paper annotations on an ink bar with an inverted
+   result chip, date/tag row — black as decoration, not fill).
+5. **Services** (`/services.html`) — data-driven from
    `data/services.json`, 3 category grids of inverted cards (price +
    `order` button), order/payment info, contact links, and the order
    modal (paper surface, inverted error/success states).
