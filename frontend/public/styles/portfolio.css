@@ -1,0 +1,86 @@
+/* ==========================================================================
+   Portfolio Page
+   ========================================================================== */
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--gap-card);
+}
+
+.cert-card h3,
+.event-title {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  margin: 0;
+}
+
+/* scoped: `.meta` is a generic name and this page is its only consumer */
+.cert-card .meta,
+.event-card .meta {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--muted-on-ink);
+}
+
+.cert-card .small,
+.event-note {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted-on-ink);
+  margin: 0;
+}
+
+/* the card foot holds one lone button — base .card-foot is space-between,
+   which would pin it left */
+.cert-card .card-foot {
+  justify-content: center;
+}
+
+.portfolio-empty {
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ----- Events ----- */
+
+.event-list {
+  display: grid;
+  gap: var(--gap-card);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   Certificate modal — paper surface, it wraps a white document
+   ========================================================================== */
+
+.cert-frame {
+  width: 100%;
+  height: 60vh;
+  min-height: 260px;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+/* paper surface, so the divider is --rule, not the ink card's --rule-on-ink */
+.cert-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s2);
+  padding-top: var(--s3);
+  border-top: 1px solid var(--rule);
+}
+
+.cert-actions-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+}

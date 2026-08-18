@@ -3,7 +3,7 @@
   const fadeClass = 'visible';
 
   // reveal as soon as the DOM is parsed — waiting for `load` would keep the
-  // page hidden until every certificate iframe finished downloading
+  // page hidden until webfonts and JSON-driven sections finished loading
   const reveal = () => {
     requestAnimationFrame(() => {
       document.body.classList.add(fadeClass);

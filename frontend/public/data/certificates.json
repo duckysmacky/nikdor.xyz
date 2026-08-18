@@ -1,0 +1,52 @@
+[
+  {
+    "id": "cert-cybersecurity",
+    "title": "Introduction to Cybersecurity",
+    "date": "2024-08",
+    "source": "Codecademy",
+    "type": "Certificate",
+    "description": "Basics of cybersecurity, attack surfaces and defensive coding.",
+    "file": "/assets/certificates/Codecademy Introduction to Cybersecurity Course completion (07.08.2024) certificate - Nikita Doronin.pdf",
+    "credentialLink": null
+  },
+  {
+    "id": "cert-spring",
+    "title": "Java Spring Course",
+    "date": "2024-08",
+    "source": "Codecademy",
+    "type": "Certificate",
+    "description": "Spring Boot essentials: REST, dependency injection and persistence.",
+    "file": "/assets/certificates/Codecademy Learn Spring Course completion (05.08.2024) certificate - Nikita Doronin.pdf",
+    "credentialLink": null
+  },
+  {
+    "id": "cert-intermediate-java",
+    "title": "Intermediate Java Course",
+    "date": "2024-08",
+    "source": "Codecademy",
+    "type": "Certificate",
+    "description": "Advanced language features, generics, streams and multithreading.",
+    "file": "/assets/certificates/Codecademy Learn Intermediate Java Course completion (03.08.2024) certificate - Nikita Doronin.pdf",
+    "credentialLink": null
+  },
+  {
+    "id": "cert-java",
+    "title": "Java Course",
+    "date": "2023-06",
+    "source": "Codecademy",
+    "type": "Certificate",
+    "description": "Core Java concepts: OOP, data structures, error handling and design patterns.",
+    "file": "/assets/certificates/Codecademy Learn Java Course completion (18.06.2023) certificate - Nikita Doronin.pdf",
+    "credentialLink": null
+  },
+  {
+    "id": "cert-cpp",
+    "title": "C++ Course",
+    "date": "2022-07",
+    "source": "Codecademy",
+    "type": "Certificate",
+    "description": "Fundamentals of C++: syntax, OOP, pointers and memory management.",
+    "file": "/assets/certificates/Codecademy Learn C++ Course completion (29.07.2022) certificate - Nikita Doronin.pdf",
+    "credentialLink": null
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "event-professionals-2025",
+    "title": "\"Professionals\" National Championship - IoT track",
+    "date": "2025-04",
+    "result": "1st place",
+    "location": null,
+    "description": "Final interregional stage - Winner in IoT track. Teams of one.",
+    "tags": ["IoT", "National", "Solo"]
+  },
+  {
+    "id": "event-olympiad-infosec-2025",
+    "title": "All-Russian Olympiad - Information Security track",
+    "date": "2025-03",
+    "result": "Prize-winner",
+    "location": null,
+    "description": "Regional stage prize-winner in information security.",
+    "tags": ["InfoSec", "Regional", "Olympiad"]
+  },
+  {
+    "id": "event-professionals-2024",
+    "title": "\"Professionals\" National Championship - IoT track",
+    "date": "2024-05",
+    "result": "2nd place",
+    "location": null,
+    "description": "Final interregional stage - Prize-winner in IoT track. Teams of two.",
+    "tags": ["IoT", "National", "Team of two"]
+  },
+  {
+    "id": "event-golden-dozen-2024",
+    "title": "\"Golden Dozen\" project competition - Russian Technological University (MIREA)",
+    "date": "2024-04",
+    "result": "Winner",
+    "location": null,
+    "description": "Final stage winner in the information technology category.",
+    "tags": ["Project", "IT", "University"]
+  }
+]

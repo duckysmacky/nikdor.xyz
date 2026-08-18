@@ -52,6 +52,12 @@
   padding: var(--s5);
 }
 
+/* widest variant — the certificate modal wraps a full-page document preview */
+.modal-card--xl {
+  width: min(960px, 96vw);
+  padding: var(--s5);
+}
+
 .modal-header {
   display: flex;
   align-items: flex-start;
