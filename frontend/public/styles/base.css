@@ -35,9 +35,18 @@
   --rule-w: 3px; /* structural rules — ink balance is at 80% */
   --offset: 4px 4px 0 var(--rule); /* the only shadow in the system */
 
-  /* Accent geometry — solid block */
-  --accent-bg: var(--ink);
+  /* Accent geometry */
   --accent-border: 2px solid var(--ink);
+
+  /* Halftone — the one texture in the system. A single ink dot drawn once
+     and tiled; cell size is the only knob and it maps to ink coverage:
+     6px ~22% (coarse) / 9px ~11% (mid grey) / 14px ~4% (faint).
+     The 1.6 -> 1.7px stop gap is a 0.1px transition: it keeps the dot edge
+     hard instead of feathering, which is what keeps this brutalist.
+     A printed tone, not a UI shape — see the circles note in DESIGN_SUMMARY. */
+  --halftone-cell: 9px;
+  --halftone-dot: 1.6px;
+  --halftone-stop: 1.7px;
 
   /* Motion */
   --t: 120ms;
@@ -542,6 +551,15 @@ strong {
 .bar {
   border-left: var(--rule-w) solid var(--ink);
   padding-left: 10px;
+}
+
+/* halftone field — ink dots on paper */
+.halftone {
+  background-image: radial-gradient(
+    var(--ink) var(--halftone-dot),
+    transparent var(--halftone-stop)
+  );
+  background-size: var(--halftone-cell) var(--halftone-cell);
 }
 
 /* ==========================================================================

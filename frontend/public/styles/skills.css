@@ -1,12 +1,13 @@
 /* ==========================================================================
-   Skills Page
-   ========================================================================== */
+   Skills section (About page) — horizontal scroller
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--gap-card);
-}
+   The only element on the site that scrolls horizontally on desktop. It is a
+   deliberate departure from the all-vertical grid language: the cards are
+   landscape, one-and-a-bit fit at a time, and the clipped right edge is the
+   affordance. Scrollbar stays VISIBLE (unlike .cat-track in projects.css,
+   which hides it) because here scrolling is the primary interaction, not a
+   mobile fallback.
+   ========================================================================== */
 
 .skill-card {
   gap: var(--s3);
@@ -39,8 +40,145 @@
   margin-top: 0.15rem;
 }
 
+/* Full-bleed: breaks the scroll area out of the centered 980px column to
+   reach the viewport edges (the same `calc(50% - 50vw)` trick as any other
+   full-bleed section). `overflow-x: hidden` on the frame guards against the
+   classic 100vw-includes-the-scrollbar rounding overflow, without touching
+   .skills-scroll's own independent horizontal scrolling. */
+.skills-frame {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 0 var(--pad-x);
+  overflow-x: hidden;
+}
+
+/* vertical end-stops — mark where the scroll area starts and stops, so
+   content disappearing into whitespace at the edge reads as a wall, not an
+   accident. Positioned on the FRAME, not the scrolling element, so they
+   stay put while cards scroll past underneath (z-index above the cards). */
+.skills-frame::before,
+.skills-frame::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  bottom: 14px; /* clears the visible scrollbar gutter */
+  width: var(--rule-w);
+  background: var(--ink);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.skills-frame::before {
+  left: var(--pad-x);
+}
+
+.skills-frame::after {
+  right: var(--pad-x);
+}
+
+/* decorative "< ---- >" rule, bookending a plain-language scroll hint —
+   dashed to match the experience rail's rectangle-dash vocabulary */
+.skills-hint {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  margin-top: var(--s3);
+}
+
+.skills-hint-rule {
+  flex: 1;
+  border-top: 1px dashed var(--rule);
+}
+
+.skills-hint-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.skills-scroll {
+  --skill-card-w: 560px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity; /* proximity, not mandatory — mandatory
+                                     fights keyboard arrow scrolling */
+  scroll-padding-left: 4px;
+
+  /* room for the .card--ink hover lift (-2px) and its 4px offset shadow,
+     which the scroll container would otherwise clip */
+  padding: 4px 6px 6px 4px;
+
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--ink) var(--paper);
+}
+
+.skills-scroll:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* WebKit / Blink — a printed gauge, not a rounded pill */
+.skills-scroll::-webkit-scrollbar {
+  height: 10px;
+}
+
+.skills-scroll::-webkit-scrollbar-track {
+  background: var(--paper);
+  border-top: 1px solid var(--rule);
+}
+
+.skills-scroll::-webkit-scrollbar-thumb {
+  background: var(--ink);
+  border-radius: var(--radius);
+}
+
+.skills-track {
+  --skills-min-h: 480px;
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--skill-card-w);
+  align-items: stretch; /* this is what actually stops the page height
+                            changing as you scroll: every card equalises to
+                            the tallest one. min-height is only a floor. */
+  gap: var(--gap-card);
+  min-height: var(--skills-min-h);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.skill-entry {
+  display: grid; /* let the card fill the stretched row */
+  scroll-snap-align: start;
+}
+
+.skills-empty {
+  color: var(--muted);
+}
+
 @media (max-width: 720px) {
-  .skills-grid {
-    grid-template-columns: 1fr;
+  .skills-scroll {
+    --skill-card-w: min(86vw, 460px);
+  }
+
+  .skills-track {
+    --skills-min-h: 0; /* stretch already equalises */
+  }
+}
+
+@media (max-width: 520px) {
+  .skills-scroll {
+    --skill-card-w: 88vw;
+  }
+
+  .skill-card {
+    padding: var(--s3); /* mirrors .exp-card at ≤520 */
   }
 }

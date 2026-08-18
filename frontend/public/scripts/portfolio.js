@@ -128,20 +128,25 @@
     if (entry.id) li.id = entry.id;
 
     const date = timeTag(entry.date, formatDate(entry.date));
-    const rest = [entry.location, entry.result].filter(Boolean).map(esc);
-    const meta = [date, ...rest].join(' / ');
+    const place = entry.location
+      ? `<p class="event-place">${esc(entry.location)}</p>`
+      : '';
+    const result = entry.result
+      ? `<span class="kicker event-result">${esc(entry.result)}</span>`
+      : '';
 
+    // paper annotation, not a card — .bar supplies the ink spine
     li.innerHTML = `
-      <article class="event-card card--ink">
-        <div class="card-head">
-          <h3 class="event-title">${esc(entry.title)}</h3>
+      <article class="event-card bar">
+        <div class="event-head">
           <span class="index-num">${pad(position)}</span>
+          <span class="event-date">${date}</span>
         </div>
-        <div class="meta">${meta}</div>
+        <h3 class="event-title">${esc(entry.title)}</h3>
+        ${place}
+        ${result}
         <p class="event-note">${esc(entry.description || '')}</p>
-        <div class="card-foot">
-          <div class="tags">${tagMarkup(entry.tags)}</div>
-        </div>
+        <div class="tags">${tagMarkup(entry.tags)}</div>
       </article>
     `;
     return li;

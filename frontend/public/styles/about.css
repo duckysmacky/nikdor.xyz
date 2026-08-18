@@ -1,20 +1,34 @@
 /* ==========================================================================
    About Page
 
-   Two timelines, deliberately unalike:
-   experience = ink cards on a dark dashed rail
-   education  = paper annotations on a solid rail that fades into the past
+   Experience moved to Portfolio; this page keeps education, which is a
+   paper annotation on a solid rail that fades into the past.
    ========================================================================== */
 
-/* ----- Bio ----------------------------------------------------------------
+/* ----- Bio + rail ----------------------------------------------------------
+   The grid lives on the WRAPPER (.about-lede), not on .about-intro — column
+   1's content box is still the page's content box, so the alignment below
+   is untouched. Do not move the grid onto .about-intro.
+
    the rail thins as the prose becomes secondary: 3px ink bar on the lead,
    1px hairline on the rest. 3+10 == 1+12, so both text columns line up. */
 
-.about-intro {
+.about-lede {
+  display: grid;
+  grid-template-columns: minmax(0, 66ch) minmax(200px, 1fr);
+  align-items: start;
+  gap: var(--s5);
   margin-bottom: var(--s5);
 }
 
-.about-intro p {
+.about-intro {
+  margin-bottom: 0; /* the wrapper owns the margin now */
+}
+
+/* was `.about-intro p` — descendant scope would now also hit the rail's
+   paragraphs across the grid gutter */
+.about-intro > .bar,
+.about-body p {
   max-width: 66ch;
 }
 
@@ -37,129 +51,129 @@
   margin-bottom: 0; /* stop the hairline overshooting the last line */
 }
 
-/* ==========================================================================
-   Experience — ink cards, dotted rail
-   ========================================================================== */
-
-.experience-list {
-  --rail-x: 8px; /* rail offset from the section's left edge */
-  --rail-gutter: 30px; /* space reserved for the rail */
-
-  position: relative;
-  list-style: none;
-  margin: 0;
-  padding: 0 0 0 var(--rail-gutter);
+.about-rail {
   display: grid;
-  gap: var(--gap-card);
+  gap: var(--s5);
+  align-content: start;
 }
 
-/* Dark dashed rail: a plain border, rendered by every engine as a stack of
-   small rectangles (unlike `dotted`, which Blink draws as circles — this
-   system has no circles). Empty content + top/bottom stretches it to
-   exactly the list's own height, so it spans first-card-top to
-   last-card-bottom and can never overshoot. */
-.experience-list::before {
-  content: "";
-  position: absolute;
-  left: var(--rail-x);
-  top: 0;
-  bottom: 0;
-  border-left: var(--rule-w) dashed var(--ink);
-  pointer-events: none;
+.rail-head {
+  margin-bottom: var(--s3);
 }
 
-.exp-entry {
-  list-style: none;
-}
-
-.exp-empty {
-  color: var(--muted);
-  border-left: var(--rule-w) solid var(--ink);
-  padding-left: 10px;
-}
-
-.exp-card {
-  gap: var(--s2);
-  overflow-wrap: break-word;
-}
-
-.exp-role {
-  margin: 0; /* h3 already gives 17px / 700 / .01em */
-}
-
-/* employment kind — mirrors home's `.project-title .lang` suffix */
-.exp-kind {
+/* subordinate section title — same register as .kicker, without the block.
+   nowrap so "// " never breaks onto its own line in the narrow rail column */
+.rail-title {
   font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: var(--muted-on-ink);
-  margin-left: 0.6rem;
-}
-
-.exp-dates {
-  flex: none;
-  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.18em;
-  line-height: 1;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted-on-ink);
   white-space: nowrap;
+  margin: 0; /* base h2 ships var(--s5) top */
 }
 
-.exp-org {
-  font-size: 14px;
-  line-height: 1.5;
-  margin: 0;
+/* ----- Languages panel — the halftone field -------------------------------
+   The dots are a 10px band around the panel; the text sits on a solid paper
+   inner. The grid must never fall under mono glyphs at 13-14px. */
+
+.lang-panel {
+  background-color: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 10px;
 }
 
-.exp-company {
-  font-weight: 700;
-  color: var(--on-ink);
+.lang-panel-inner {
+  background: var(--paper);
+  border-radius: var(--radius);
+  padding: var(--s3);
 }
 
-.exp-place {
-  color: var(--muted-on-ink);
-}
-
-.exp-place::before {
-  content: " / ";
-  color: var(--rule-on-ink);
-}
-
-.exp-summary {
-  font-size: 14px;
-  line-height: 1.6;
-  /* slightly dimmer than the standard --muted-on-ink secondary tone — the
-     long-form summary read as glary/washed-out at that weight */
-  color: color-mix(in srgb, var(--muted-on-ink) 75%, var(--ink) 25%);
-  margin: 0;
-}
-
-.exp-points {
+.lang-list,
+.soft-list {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 0.35rem;
-  font-size: 14px;
-  line-height: 1.6;
+  gap: var(--s3);
+}
+
+/* .skill-name / .skill-desc are authored for an ink surface (skills.css);
+   on paper they take the paper tokens */
+.about-rail .skill-name {
+  color: var(--ink);
+}
+
+.about-rail .skill-name::before {
+  color: var(--muted);
+}
+
+.about-rail .skill-desc {
+  color: var(--muted);
+}
+
+/* .rail-block--soft carries base .bar in markup for the ink spine */
+
+/* profile characteristics — filled label, inverted-block treatment (the
+   same idiom as base.css's .block), more contrast than a bare left rule */
+.soft-list .skill-name {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--radius);
+  padding: 0.1em 0.4em;
+}
+
+.soft-list .skill-name::before {
+  content: none; /* the "> " marker reads oddly inside a filled chip */
+}
+
+/* ==========================================================================
+   Tooling — a printed spec sheet, no card, no bar, no rail
+   ========================================================================== */
+
+/* ink-filled spec sheet — still no card border/radius-per-row, but the
+   whole table is one solid black block rather than ruled lines on paper */
+.tooling-list {
+  background: var(--ink);
+  color: var(--on-ink);
+  border-radius: var(--radius);
+  padding: 0 var(--s4);
+  margin: 0;
+}
+
+.tooling-row {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: var(--s2);
+  padding: var(--s3) 0;
+  border-top: 1px solid var(--rule-on-ink);
+}
+
+.tooling-row:first-child {
+  border-top: 0;
+}
+
+.tooling-row dt {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.8;
+  text-transform: uppercase;
   color: var(--muted-on-ink);
 }
 
-.exp-points li {
-  position: relative;
-  padding-left: 1.2em;
+.tooling-row dd {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--on-ink);
+  margin: 0;
 }
 
-/* plain ASCII bullet, brighter than the text it marks — same relationship
-   the bracket tags use ('[' is --on-ink, the label is --muted-on-ink).
-   '>' is deliberately not reused: skills.css already owns it for named items. */
-.exp-points li::before {
-  content: "-";
-  position: absolute;
-  left: 0;
-  color: var(--on-ink);
+.tooling-empty {
+  color: var(--muted-on-ink);
+  padding: var(--s3) 0;
+  margin: 0;
 }
 
 /* ==========================================================================
@@ -279,29 +293,29 @@
    ========================================================================== */
 
 @media (max-width: 720px) {
+  .about-lede {
+    grid-template-columns: 1fr;
+    gap: var(--s4);
+  }
+
+  .about-rail {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--gap-card);
+  }
+
   .education-list {
     --edu-gap: var(--s4);
   }
 }
 
 @media (max-width: 520px) {
-  .experience-list {
-    --rail-gutter: 20px;
-    --rail-x: 4px;
-  }
-
   .education-list {
     --edu-gutter: 20px;
     --edu-rail-x: 4px;
   }
 
-  .exp-card {
-    padding: var(--s3);
-  }
-
-  .exp-card .card-head {
-    flex-direction: column;
-    align-items: flex-start;
+  .tooling-row {
+    grid-template-columns: 1fr;
     gap: var(--s1);
   }
 }

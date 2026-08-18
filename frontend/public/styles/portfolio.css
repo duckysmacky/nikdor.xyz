@@ -17,17 +17,15 @@
   margin: 0;
 }
 
-/* scoped: `.meta` is a generic name and this page is its only consumer */
-.cert-card .meta,
-.event-card .meta {
+/* scoped: `.meta` is a generic name and this card is its only consumer */
+.cert-card .meta {
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.08em;
   color: var(--muted-on-ink);
 }
 
-.cert-card .small,
-.event-note {
+.cert-card .small {
   font-size: 14px;
   line-height: 1.6;
   color: var(--muted-on-ink);
@@ -45,14 +43,66 @@
   margin: 0;
 }
 
-/* ----- Events ----- */
+/* ==========================================================================
+   Events — paper annotations, black as decoration
+
+   Deliberately not a card: portfolio now leads with ink experience cards and
+   closes with an ink certificate grid, and a third slab between them would
+   read as one undifferentiated black page. Same family as the education
+   timeline on About — paper on an ink spine, black surfacing only as the
+   result chip and the tag brackets.
+   ========================================================================== */
 
 .event-list {
   display: grid;
-  gap: var(--gap-card);
+  gap: var(--s5); /* was --gap-card; annotations need the air the education
+                      list uses, not card-grid spacing */
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+/* .event-card carries base .bar for the 3px ink border + 10px padding */
+
+.event-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s2);
+  margin-bottom: var(--s2);
+}
+
+.event-date {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  /* also normalises this page's capitalised MONTHS against experience.js's
+     lowercase MONTHS — both go through this transform, so source case is
+     invisible and the two sections read consistently */
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.event-place {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: var(--s1) 0 0;
+}
+
+/* the loudest thing on a paper surface: the result, inverted */
+.event-result {
+  margin-top: var(--s2);
+}
+
+.event-note {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 60ch;
+  margin: var(--s2) 0;
 }
 
 /* ==========================================================================

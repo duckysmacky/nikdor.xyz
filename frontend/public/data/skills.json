@@ -1,0 +1,94 @@
+[
+  {
+    "title": "Programming Languages",
+    "skills": [
+      {
+        "name": "Rust",
+        "description": "CLI tooling, secure systems, automation. It is my go-to language for new projects and general applications (and also my favorite)."
+      },
+      {
+        "name": "Java",
+        "description": "Backend engineering, REST APIs and desktop applications. The language I am most proficient with."
+      },
+      {
+        "name": "C++",
+        "description": "Low-level development, performance-critical systems. This is the language I want to improve my skills at the most."
+      },
+      {
+        "name": "SQL (PostgreSQL)",
+        "description": "Basic schema design and queries for PostgreSQL databases. Used it in my backend projects."
+      }
+    ]
+  },
+  {
+    "title": "Tools & Technologies",
+    "skills": [
+      {
+        "name": "Git & Github",
+        "description": "Branching, pull requests, collaboration and CI pipelines. I use it in all of my projects for version control."
+      },
+      {
+        "name": "Docker",
+        "description": "Docker compose setups, containerization for development and deployment."
+      },
+      {
+        "name": "Build systems",
+        "description": "Maven, Gradle, Cargo, Make - familiar with various build tools across languages."
+      }
+    ]
+  },
+  {
+    "title": "Frameworks & Ecosystems",
+    "skills": [
+      {
+        "name": "Spring Boot",
+        "description": "Experience building backend services and REST APIs with Spring Boot, as well as integrating with databases and security."
+      },
+      {
+        "name": "JavaFX",
+        "description": "Built desktop applications with JavaFX, focusing on UI design and user experience."
+      },
+      {
+        "name": "Tokio",
+        "description": "Used it for asynchronous programming in Rust and building automated bots."
+      },
+      {
+        "name": "Windows API",
+        "description": "Familiar with low-level Windows programming using the Windows API for building utilities and system tools."
+      },
+      {
+        "name": "Minecraft Plugins",
+        "description": "Experience developing Minecraft server plugins using the Spigot API."
+      }
+    ]
+  },
+  {
+    "title": "Core Competencies",
+    "skills": [
+      {
+        "name": "Memory model",
+        "description": "Understanding of memory management concepts including stack vs heap, pointers, references, and ownership models."
+      },
+      {
+        "name": "Backend & API design",
+        "description": "Experience designing and implementing REST APIs, including routing, data serialization, and authentication."
+      },
+      {
+        "name": "Data structures & algorithms",
+        "description": "Good knowledge of common data structures (linked lists, trees, hash maps and sets, graphs) and algorithms (sorting, searching). Implemented my own versions from scratch."
+      },
+      {
+        "name": "Multithreading & async",
+        "description": "Familiar with concurrent programming concepts, thread safety, synchronization, and asynchronous programming paradigms."
+      },
+      {
+        "name": "OOP",
+        "description": "Strong understanding of object-oriented programming principles such as encapsulation, inheritance, and polymorphism. My primary paradigm when working with most of my languages."
+      },
+      {
+        "name": "Security basics",
+        "description": "Understanding of encryption algorithms, secure storage practices, and basic security principles in software development."
+      }
+    ]
+  }
+]

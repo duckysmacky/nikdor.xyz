@@ -1,0 +1,151 @@
+/* ==========================================================================
+   Experience — ink cards, dark dashed rail
+
+   Moved here from the About page (where it lived alongside education) —
+   experience is now on the Portfolio page, above certificates. It stays on
+   an ink surface, so every token here is unchanged from the original.
+   ========================================================================== */
+
+.experience-list {
+  --rail-x: 8px; /* rail offset from the section's left edge */
+  --rail-gutter: 30px; /* space reserved for the rail */
+
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 var(--rail-gutter);
+  display: grid;
+  gap: var(--gap-card);
+}
+
+/* Dark dashed rail: a plain border, rendered by every engine as a stack of
+   small rectangles (unlike `dotted`, which Blink draws as circles — this
+   system has no circles other than the halftone texture, which is a printed
+   tone, not a UI shape). Empty content + top/bottom stretches it to exactly
+   the list's own height, so it spans first-card-top to last-card-bottom and
+   can never overshoot. */
+.experience-list::before {
+  content: "";
+  position: absolute;
+  left: var(--rail-x);
+  top: 0;
+  bottom: 0;
+  border-left: var(--rule-w) dashed var(--ink);
+  pointer-events: none;
+}
+
+.exp-entry {
+  list-style: none;
+}
+
+.exp-empty {
+  color: var(--muted);
+  border-left: var(--rule-w) solid var(--ink);
+  padding-left: 10px;
+}
+
+.exp-card {
+  gap: var(--s2);
+  overflow-wrap: break-word;
+}
+
+.exp-role {
+  margin: 0; /* h3 already gives 17px / 700 / .01em */
+}
+
+/* employment kind — mirrors home's `.project-title .lang` suffix */
+.exp-kind {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--muted-on-ink);
+  margin-left: 0.6rem;
+}
+
+.exp-dates {
+  flex: none;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--muted-on-ink);
+  white-space: nowrap;
+}
+
+.exp-org {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.exp-company {
+  font-weight: 700;
+  color: var(--on-ink);
+}
+
+.exp-place {
+  color: var(--muted-on-ink);
+}
+
+.exp-place::before {
+  content: " / ";
+  color: var(--rule-on-ink);
+}
+
+.exp-summary {
+  font-size: 14px;
+  line-height: 1.6;
+  /* slightly dimmer than the standard --muted-on-ink secondary tone — the
+     long-form summary read as glary/washed-out at that weight */
+  color: color-mix(in srgb, var(--muted-on-ink) 75%, var(--ink) 25%);
+  margin: 0;
+}
+
+.exp-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted-on-ink);
+}
+
+.exp-points li {
+  position: relative;
+  padding-left: 1.2em;
+}
+
+/* plain ASCII bullet, brighter than the text it marks — same relationship
+   the bracket tags use ('[' is --on-ink, the label is --muted-on-ink).
+   '>' is deliberately not reused: the About page's skills section already
+   owns it for named items. */
+.exp-points li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  color: var(--on-ink);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 520px) {
+  .experience-list {
+    --rail-gutter: 20px;
+    --rail-x: 4px;
+  }
+
+  .exp-card {
+    padding: var(--s3);
+  }
+
+  .exp-card .card-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s1);
+  }
+}

@@ -40,11 +40,13 @@
   gap: var(--s3);
 }
 
-/* accent geometry — solid block */
+/* accent geometry — halftone field */
 .accent-block {
   width: 132px;
   height: 132px;
-  background: var(--accent-bg);
+  /* background-color, NOT the `background` shorthand — home.css loads after
+     base.css and the shorthand would wipe .halftone's background-image */
+  background-color: var(--paper);
   border: var(--accent-border);
   border-radius: var(--radius);
 }

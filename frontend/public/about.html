@@ -11,6 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/styles/skills.css" />
     <link rel="stylesheet" href="/styles/about.css" />
   </head>
   <body class="fade-ready">
@@ -19,7 +20,6 @@
         <a class="brand" href="/">NIKDOR</a>
         <ul class="nav-list">
           <li class="nav-item active"><a href="/about.html" data-link>about</a></li>
-          <li class="nav-item"><a href="/skills.html" data-link>skills</a></li>
           <li class="nav-item"><a href="/projects.html" data-link>projects</a></li>
           <li class="nav-item"><a href="/portfolio.html" data-link>portfolio</a></li>
           <li class="nav-item"><a href="/services.html" data-link>services</a></li>
@@ -31,63 +31,137 @@
       <p class="eyebrow">// profile</p>
       <h1>about me</h1>
 
-      <section class="about-intro">
-        <p class="bar">
-          My name is Nikita Doronin. I started programming in my early teens and
-          since then I've been building different tools, backend services and
-          other practical applications. I'm currently a Computer Science student
-          at the Moscow Polytechnical University, specializing in system
-          programming - which is my favorite area of IT.
+      <div class="about-lede">
+        <section class="about-intro">
+          <p class="bar">
+            Hi! My name is Nikita Doronin. I started programming in my early teens and since then I've been very passionate about software development and IT in general, constantly building various projects and learning new concepts along the way. I specialize in systems programming and low-level development, which is my favorite area of software engineering, as well as in automatization, high-load backend systems and cybersecurity. Recently I enrolled at the University of Vienna and moved to Austria, where I will be now studying and further improving myself as a software engineer.
+          </p>
+
+          <div class="about-body">
+            <p>
+			  As I mentioned above, I began my journey as a software engineer in my early teens being very enthusiastic about learning everything I can about this area. So over the past 4+ years I've been constantly studying, building and exploring all I can to improve my programming skills: I've taken many courses about software development (which you can view on the 'portfolio' page), developed many interesting and in-depth projects and in my high school years have participated in various national olympiads and programming competitions, reaching prize-winning places, as well as presented my projects on various IT conferences. 
+			</p>
+
+			<p>
+			I managed to get my first internship as a 'BIOS developer' in C at the start of the second semester of me studying systems development in Polytechnical University of Moscow. I worked at 'Aquarius' for almost half a year, being presented an offer to continue working there full-time, but had to unfortunately decline it due to moving to Austria, since I managed to enroll at University of Vienna to study software engineering there.
+			</p>
+
+			<p>
+			So for me this is an ongoing journey, which started way before I first enrolled in my first university, having already successfully completed an internship at a big company, now moved to Austria to continue my studies here.
+			</p>
+
+			<p>
+			Having said that all that, I am primarily interested in systems development and low-level software engineering, which includes development of operating systems, drivers, embedded systems and close-to-hardware scenarios. Additionally, I also have a strong interest in cybersecurity, backend and high-load systems development, automatization, crypto and game development. Currently, I am exploring various concepts from all these fields, like reverse-engineering, advanced debugging, embedding AI in common workflows, creating custom agents, writing smart contracts for blockchain and even working on my own small game using Godot. I believe that having a strong low-level background in specific is most beneficial to my abilities as a software engineer, as it allows me to view varous systems on a much deeper level than average developer.
+			</p>
+			
+			<p>
+              I'm most proficient in Rust, which is also my favorite programming language to use. I use it extensively to write programs in various areas, starting from backend systems and automated bots, to developer tooling and low-level appliations. I have studied Rust both through online courses and the official documentation. I'm familiar with most of the language's features, including multihreading, async programming, FFI and unsafe Rust, have used it in no-std environments and.
+            </p>
+
+            <p>
+              I also work with C and C++, mainly driven by my interest in low-level development and my desire to better understand these languages. In my experience, I have worked with the Windows API and QT6, developed UEFI systems using the EDK2 framework and wrote code for embedded systems. I do find using the two languages in different situations, with C being used in more bare-bones and lower-level scenarios, while leaving C++ for more native or speed-relient systems. I am currently very interested in further improving my skills in development using these languages.
+            </p>
+
+            <p>
+              My previous go-to language was Java, and I still posses strong knowledge of it, allthough it is no longer my primary focus due to my switch to lower-level system development. Having completed numerous online courses and worked on several personal projects using this language, I have hands-on experience with working using the Spring Boot framework, developing fast backend systems and contributing to enterprise code as part of my Freelance experience.
+            </p>
+
+			<p>
+			I am used to working with AI, leveraging and combining such tools as Claude (Claude Code) and ChatGPT (Codex) on daily basis, having also developed my own skills and agentic workflows. But I still believe that AI is just a tool - but one that being controlled and supervised in the hands of a professional provides much more value, compared to a mindless 'leave it all to AI' approach. Aditioanlly, I tend to stick to the following mental model: if it's a project that delivers a certain product, I try to leverage AI and its boost of efficiency to its fullest potential, but with me still being constantly involved in the development process (you will never see me 'vibe coding') in order to deliver a quality product; while in case of personal or educational projects, I prefer to do everything by hands to gain as much knowledge as I can - everything is a learning approtunity, after all. Again, I think that AI is a very powerfull tool and it's here to stay, but like with any other powerfull thing comes the responsiblity to use it wisely and know how to appropriately apply it to necessary areas.
+			</p>
+          </div>
+        </section>
+
+        <aside class="about-rail">
+          <section class="rail-block rail-block--lang">
+            <div class="lang-panel halftone">
+              <div class="lang-panel-inner">
+                <div class="rail-head">
+                  <h2 class="rail-title" id="rail-languages">languages</h2>
+                </div>
+                <ul class="lang-list" id="languages-list" role="list" aria-labelledby="rail-languages">
+                  <li class="lang-item">
+                    <div class="skill-name">Russian</div>
+                    <div class="skill-desc">Native proficiency (C2)</div>
+                  </li>
+                  <li class="lang-item">
+                    <div class="skill-name">English</div>
+                    <div class="skill-desc">Advanced (C1)</div>
+                  </li>
+                  <li class="lang-item">
+                    <div class="skill-name">German</div>
+                    <div class="skill-desc">Conversational (B1-B2)</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="rail-block rail-block--soft bar">
+            <div class="rail-head">
+              <h2 class="rail-title" id="rail-soft">profile</h2>
+            </div>
+            <ul class="soft-list" id="soft-list" role="list" aria-labelledby="rail-soft">
+              <li class="soft-item">
+                <div class="skill-name">Team leader</div>
+                <div class="skill-desc">
+                  Experience leading teams of various size in project development,
+                  coordinating tasks, and driving progress. My favourite role to
+                  take.
+                </div>
+              </li>
+              <li class="soft-item">
+                <div class="skill-name">Fast learner</div>
+                <div class="skill-desc">
+                  Strong ability to quickly learn new technologies, programming
+                  languages, and frameworks independently.
+                </div>
+              </li>
+              <li class="soft-item">
+                <div class="skill-name">Organizer</div>
+                <div class="skill-desc">
+                  Skilled in organizing digital workflows for efficiency and task
+                  management using tools like Trello and Jira.
+                </div>
+              </li>
+              <li class="soft-item">
+                <div class="skill-name">Passionate</div>
+                <div class="skill-desc">Software development isn't just my career - it's my hobby and I am very passionate about it.</div>
+              </li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+
+      <section class="skills">
+        <div class="section-head">
+          <h2>skills</h2>
+          <span class="section-count" id="skills-count">loading</span>
+        </div>
+
+        <p class="section-intro">
+          This section highlights my technical expertise, programming experience,
+          and complementary skills - from backend engineering and system
+          development to freelance capabilities and language proficiency.
         </p>
 
-        <div class="about-body">
-          <p>
-            Over the past 3+ years I studied and took a variety of courses on
-            programming languages, technologies, and areas of the IT field. In the
-            recent years I have also participated in national olympiads and IT
-            competitions, and various conferences where I presented different
-            projects. I am primarily interested in low-level programming,
-            including the development of drivers, operating systems, and embedded
-            systems. Additionally, I have a strong interest in backend and desktop
-            application development. I write code to solve real problems and learn
-            new concepts. Currently, my main languages are Java, Rust and C++.
-          </p>
-
-          <p>
-            I'm most proficient in Java: having completed numerous online courses
-            and worked on several personal projects using this language. I have
-            hands-on experience with the Spring Boot framework and its ecosystem.
-            I am comfortable working with build tools such as Gradle and Maven. In
-            addition, I have knowledge of working with SQL (PostgreSQL), as well
-            as REST APIs and the HTTP(s) protocol.
-          </p>
-          <p>
-            Rust is another language I use extensively, with most of my recent
-            projects developed in it. I have studied Rust both through online
-            courses and the official documentation. I'm familiar with most of the
-            language's features, including multihreading and asynchronous
-            programming.
-          </p>
-          <p>
-            I also work with C++, mainly driven by my interest in low-level
-            development. While my experience in C++ is slightly less extensive
-            than in Java and Rust, I have worked with the Windows API, GCC, and
-            MSVC compilers. I have good experience of writing Makefiles and
-            handling the compilation and linking process. Because of my interest
-            in low-level systems, I have a goal of becoming an advanced C++
-            developer and further improving my skills in this direction.
-          </p>
-        </div>
-      </section>
-
-      <section class="experience">
-        <div class="section-head">
-          <h2>experience</h2>
-          <span class="section-count" id="experience-count">loading</span>
+        <div class="skills-frame">
+          <div
+            class="skills-scroll"
+            tabindex="0"
+            role="region"
+            aria-label="skill categories, horizontally scrollable"
+          >
+            <!-- data-driven from data/skills.json, see scripts/skills.js -->
+            <ol class="skills-track" id="skills-list" role="list"></ol>
+          </div>
         </div>
 
-        <!-- data-driven from data/experience.json, see scripts/experience.js -->
-        <ol class="experience-list" id="experience-list" role="list"></ol>
+        <div class="skills-hint" aria-hidden="true">
+          <span class="skills-hint-rule"></span>
+          <span class="skills-hint-label">&lt; scroll sideways for all categories &gt;</span>
+          <span class="skills-hint-rule"></span>
+        </div>
       </section>
 
       <section class="education">
@@ -98,55 +172,60 @@
 
         <!-- entries ordered old (bottom) to new (top) -->
         <ol class="education-list" id="education-list" role="list">
-          <!-- PLACEHOLDER COPY: program and city are invented. Replace with
-               real facts. -->
           <li class="edu-entry">
             <p class="edu-dates">
-              <time datetime="2026">2026</time> / present
+              <time datetime="2026-10">2026</time> - present
             </p>
             <h3 class="edu-school">University of Vienna</h3>
             <p class="edu-meta">
-              <span class="edu-program">MSc Computer Science</span>
+              <span class="edu-program">BSc Computer Science</span>
               <span class="edu-place">Vienna, AT</span>
             </p>
             <p class="edu-desc">
-              Continuing studies in system programming and software
-              engineering.
+			  Focusing on advanced system programming, distributed systems, and software engineering methodologies.
             </p>
           </li>
 
           <li class="edu-entry">
             <p class="edu-dates">
-              <time datetime="2025-09">2025</time> /
-              <time datetime="2026">2026</time>
+              <time datetime="2025-09">2025</time> -
+              <time datetime="2026-07">2026</time>
             </p>
             <h3 class="edu-school">Moscow Polytechnical University</h3>
             <p class="edu-meta">
-              <span class="edu-program">BSc Computer Science</span>
+              <span class="edu-program">BSc Computer Science (Transferred)</span>
               <span class="edu-place">Moscow, RU</span>
             </p>
             <p class="edu-desc">
-              System Programming and Engineering track. Focus on OS concepts,
-              low-level systems and backend architecture.
+			  System Programming and Engineering track. Completed coursework in OS concepts, low-level systems, and backend architecture.
             </p>
           </li>
 
           <li class="edu-entry">
             <p class="edu-dates">
-              <time datetime="2022-09">2022</time> /
+              <time datetime="2022-09">2022</time> -
               <time datetime="2025-06">2025</time>
             </p>
-            <h3 class="edu-school">High School №1231</h3>
+            <h3 class="edu-school">High School no. 1231 (Gymnasium)</h3>
             <p class="edu-meta">
               <span class="edu-program">Specialized IT class</span>
               <span class="edu-place">Moscow, RU</span>
             </p>
             <p class="edu-desc">
-              Active participant in programming courses, national olympiads and
-              project competitions.
+			  Competed in national programming olympiads and tech project competitions. Completed advanced coursework in algorithms and mathematics.
             </p>
           </li>
         </ol>
+      </section>
+
+      <section class="tooling">
+        <div class="section-head">
+          <h2>tooling</h2>
+          <span class="section-count" id="tooling-count">loading</span>
+        </div>
+
+        <!-- data-driven from data/tooling.json, see scripts/tooling.js -->
+        <dl class="tooling-list" id="tooling-list"></dl>
       </section>
     </main>
 
@@ -158,7 +237,8 @@
     </footer>
 
     <script src="/scripts/site.js"></script>
-    <script src="/scripts/experience.js"></script>
+    <script src="/scripts/skills.js"></script>
+    <script src="/scripts/tooling.js"></script>
     <script src="/scripts/about.js"></script>
   </body>
 </html>
