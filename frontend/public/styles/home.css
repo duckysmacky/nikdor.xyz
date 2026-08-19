@@ -85,9 +85,10 @@
 }
 
 /* ==========================================================================
-   Meta strip — a black rule, then location (left) + open for work (right).
-   The rule is the hero/body break; the row itself carries no border of its
-   own, same relationship the old meta-strip had to the stats slab below it.
+   Meta strip — an inverted ink card: language/domain tags (left) + open for
+   work (right). Not .card--ink (no hover, no flex-column) — scoped color
+   overrides on top of the shared .tags/.tag/.kicker primitives instead,
+   same relationship .card--ink already has to those primitives.
    ========================================================================== */
 
 .meta-strip {
@@ -96,29 +97,29 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--s3);
-  margin-top: var(--s6);
-  padding-top: var(--s4);
-  border-top: var(--rule-w) solid var(--ink);
+  background: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.8rem;
 }
 
-/* .eyebrow register: 12px / 500 / .18em / upper / muted */
-.meta-location {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin: 0;
+.meta-strip .tag {
+  color: var(--muted-on-ink);
 }
 
-.meta-location-icon {
-  width: 14px;
-  height: 14px;
-  flex: none;
-  fill: var(--muted);
+.meta-strip .tag::before,
+.meta-strip .tag::after {
+  color: var(--on-ink);
+}
+
+.meta-strip .tag--lang {
+  color: var(--on-ink);
+  font-weight: 700;
+}
+
+.meta-strip .kicker {
+  background: var(--paper);
+  color: var(--ink);
 }
 
 /* ==========================================================================
@@ -168,80 +169,72 @@
 }
 
 /* ==========================================================================
-   Contact panel — hidden for now (placement undecided), markup kept for
-   reuse. Thinner than before: narrower max-width, tighter padding override
-   on top of .card--ink's default var(--s4).
+   Now — hand-edited annotation rows. Static content, edited directly here
+   on each refresh, not data-driven.
    ========================================================================== */
 
-.contact-panel {
-  max-width: 280px;
-  padding: var(--s3);
-  margin-top: var(--s5);
-}
-
-.contact-panel[hidden] {
-  display: none;
-}
-
-/* h3 (not h2): the base h3 register (17px/700/.01em/1.3) is already exactly
-   what a terminal-path title like "./contact_me" wants, and h3 carries no
-   "// " marker to suppress — a filled ink card already reads as a
-   container, so a marker would be redundant next to the "> " list rows. */
-
-.contact-list {
+.now-row {
   display: grid;
-  gap: 0.3rem;
+  grid-template-columns: 168px 1fr;
+  gap: 0 var(--s4);
+  padding: var(--s3) 0;
 }
 
-/* TUI selector row: a ">" marker + icon + label, no button chrome (no
-   border, no fill, no padding-box) — the marker is the affordance, same
-   relationship as skills.css's "> Rust" idiom */
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.3rem 0;
-  color: var(--on-ink);
-  font-size: 14px;
-  font-weight: 700;
-  text-decoration: none;
+.now-row + .now-row {
+  border-top: 1px solid var(--rule);
 }
 
-.contact-item::before {
-  content: "> ";
-  color: var(--muted-on-ink);
+.now-row-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.65;
 }
 
-.contact-item:hover {
-  opacity: 0.65;
-}
-
-.contact-item:focus-visible {
-  outline: 2px solid var(--on-ink);
-  outline-offset: 3px;
+.now-row-body {
+  margin: 0;
 }
 
 /* ==========================================================================
-   Now — hand-edited annotations. The kicker text is the switch; nothing
-   else in the block is project-specific.
+   Latest post — build it, keep it hidden until the blog exists.
    ========================================================================== */
 
-.now {
-  margin: var(--s6) 0;
+.latest-post {
+  margin: var(--s5) 0;
 }
 
-.now-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--gap-card);
-  align-items: start;
+.latest-post[hidden] {
+  display: none;
 }
 
-/* .bar (base.css) supplies the 3px ink spine + 10px padding */
+.latest-post-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s2) var(--s3);
+  margin-top: var(--s2);
+}
+
+.latest-post-meta {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   Currently building / freelance — standalone .bar annotations
+   ========================================================================== */
+
 .now-item {
   display: grid;
   justify-items: start;
   gap: var(--s2);
+  margin-top: var(--s6);
 }
 
 .now-title {
@@ -269,13 +262,133 @@
   margin-top: var(--s6);
 }
 
+.featured-more {
+  display: inline-flex;
+  margin-top: var(--s3);
+}
+
+/* paper annotation, not an ink card — bright fill, ink border, same
+   card-head/card-foot layout base.css already ships */
 .freelance-card {
-  margin-top: var(--s5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  background: var(--panel);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: var(--s4);
+  margin-top: var(--s6);
+  transition: box-shadow var(--t) var(--ease), transform var(--t) var(--ease);
+}
+
+.freelance-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--offset);
 }
 
 .freelance-desc {
-  color: var(--muted-on-ink);
+  color: var(--muted);
   margin: 0;
+}
+
+.freelance-card .card-foot {
+  border-top-color: var(--rule);
+}
+
+/* ==========================================================================
+   Setup — plain paper section, two 3-column rows of dev-environment facts
+   ========================================================================== */
+
+.setup-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-top: var(--s3);
+}
+
+.setup-grid--row2 {
+  margin-top: var(--s3);
+  padding-top: var(--s3);
+  border-top: 1px solid var(--rule);
+}
+
+.setup-cell + .setup-cell {
+  border-left: 1px solid var(--rule);
+  padding-left: var(--s4);
+}
+
+.setup-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.setup-value {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin-top: 0.5rem;
+  line-height: 1.3;
+}
+
+/* ==========================================================================
+   Contact — an ink card: a lead line, then a 3-column mail/telegram/
+   whatsapp grid. Buttons reuse base.css .btn.btn-invert as-is.
+   ========================================================================== */
+
+.contact-block {
+  background: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+}
+
+.contact-lead {
+  padding: 1.4rem var(--s4);
+  border-bottom: 1px solid var(--rule-on-ink);
+  color: var(--on-ink);
+  max-width: 66ch;
+  margin: 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.contact-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s2);
+  padding: var(--s4);
+}
+
+.contact-cell + .contact-cell {
+  border-left: 1px solid var(--rule-on-ink);
+}
+
+.contact-cell .btn {
+  margin-top: auto;
+}
+
+.contact-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted-on-ink);
+  line-height: 1;
+}
+
+.contact-handle {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--on-ink);
+  line-height: 1.3;
+  word-break: break-all;
 }
 
 /* links section — bottom of the page, own section-head like featured work */
@@ -356,8 +469,30 @@
     border-top: 1px solid var(--rule);
   }
 
-  .contact-panel {
-    max-width: none;
+  .now-row {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .setup-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .setup-cell + .setup-cell {
+    border-left: 0;
+    border-top: 1px solid var(--rule);
+    padding-left: 0;
+    padding-top: var(--s3);
+    margin-top: var(--s3);
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-cell + .contact-cell {
+    border-left: 0;
+    border-top: 1px solid var(--rule-on-ink);
   }
 }
 

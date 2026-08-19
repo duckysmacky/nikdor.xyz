@@ -40,12 +40,11 @@
 
           <div class="hero-copy">
             <p class="hero-subtitle">
-              I build secure, reliable, and efficient software - from backend
-              platforms to low-level developer tools that empower others.
+			  Student at University of Vienna, systems developer with 4+ years of programming experience and a freelancer in multiple development areas.
             </p>
 
             <p class="hero-description">
-              Passionate about performance, systems thinking, and clean architecture, I focus on creating tools that solve real engineering problems. I also freelance in digital operations and video editing, helping creators and small teams optimize their digital workflows.
+              Very passionate about programming, low-level systems and architecture design, focusing on creating tools that solve real engineering problems. Currently studying topics in cybersecutity, reverse-engineering and game development. 
             </p>
           </div>
 
@@ -62,21 +61,52 @@
       </section>
 
       <div class="meta-strip">
-        <p class="meta-location">
-          <svg
-            class="meta-location-icon"
-            viewBox="0 0 16 16"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <path
-              d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"
-            />
-          </svg>
-          Vienna, Austria
-        </p>
+        <div class="tags">
+          <span class="tag tag--lang">Rust</span>
+          <span class="tag tag--lang">C</span>
+          <span class="tag tag--lang">C++</span>
+        </div>
         <span class="kicker">open for work</span>
       </div>
+
+      <section class="now" aria-labelledby="now-head">
+        <div class="section-head">
+          <h2 id="now-head">status</h2>
+          <span class="section-count">updated 19 aug 2026</span>
+        </div>
+
+        <div class="now-row">
+          <span class="now-row-label">building</span>
+          <p class="now-row-body">
+            <strong>Umbra VPN</strong>, a distributed Rust platform that
+            coordinates user access and a growing fleet of independently
+            deployed VPN nodes.
+          </p>
+        </div>
+        <div class="now-row">
+          <span class="now-row-label">reading</span>
+          <p class="now-row-body">
+            Crafting Interpreters, slowly and out of order.
+          </p>
+        </div>
+        <div class="now-row">
+          <span class="now-row-label">avoiding</span>
+          <p class="now-row-body">
+            Rewriting my dotfiles again.
+            <span class="muted">Currently losing.</span>
+          </p>
+        </div>
+      </section>
+
+      <section class="latest-post bar" hidden>
+        <span class="kicker">latest post</span>
+        <div class="latest-post-row">
+          <a class="link-accent" href="/blog.html" data-link
+            >The Payeer API does not exist, so I rebuilt it</a
+          >
+          <span class="latest-post-meta">04 aug 2026 / 9 min</span>
+        </div>
+      </section>
 
       <section class="stats-row">
         <div class="stat">
@@ -93,78 +123,21 @@
         </div>
       </section>
 
-      <!-- hidden for now — undecided placement, keeping markup for later -->
-      <aside class="contact-panel card--ink" aria-labelledby="contact-panel-title" hidden>
-        <h3 class="contact-panel-title" id="contact-panel-title">./contact_me</h3>
-        <nav class="contact-list" aria-label="contact channels">
-          <a class="contact-item" href="https://t.me/nikita_ducky">
-            <svg
-              class="social-btn-icon"
-              viewBox="0 0 16 16"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"
-              />
-            </svg>
-            Telegram
-          </a>
-          <a class="contact-item" href="mailto:nikdorkir@gmail.com">
-            <svg
-              class="social-btn-icon"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                d="M19 4H5a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-.67 2L12 10.75 5.67 6zM19 18H5a1 1 0 0 1-1-1V7.25l7.4 5.55a1 1 0 0 0 .6.2 1 1 0 0 0 .6-.2L20 7.25V17a1 1 0 0 1-1 1z"
-              />
-            </svg>
-            Email
-          </a>
-          <a class="contact-item" href="https://wa.me/nikdor">
-            <svg
-              class="social-btn-icon"
-              viewBox="0 0 16 16"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"
-              />
-            </svg>
-            WhatsApp
-          </a>
-        </nav>
-      </aside>
-
-      <section class="now" aria-labelledby="now-head">
-        <h2 class="visually-hidden" id="now-head">now</h2>
-
-        <div class="now-grid">
-          <article class="now-item bar">
-            <span class="kicker">currently building</span>
-            <h3 class="now-title">Copper <span class="now-meta">Rust</span></h3>
-            <p class="now-body">
-              A lightweight build system for C/C++ projects. Unit-based
-              configuration (copper.toml) auto-discovers sources, manages
-              dependencies and produces reliable incremental builds.
-            </p>
-            <a class="link-accent" href="/projects.html" data-link>see details</a>
-          </article>
-
-          <article class="now-item bar">
-            <span class="kicker">currently learning</span>
-            <h3 class="now-title">Game development <span class="now-meta">Godot</span></h3>
-            <p class="now-body">
-              Building a small game from scratch to get hands-on with
-              real-time rendering, scene graphs and the engine's scripting
-              model.
-            </p>
-          </article>
-        </div>
-      </section>
+      <article class="now-item bar">
+        <span class="kicker">currently building</span>
+        <h3 class="now-title">Umbra VPN <span class="now-meta">Rust</span></h3>
+        <p class="now-body">
+          A distributed VPN platform with a central control plane, node-side
+          agents, automated access and subscription lifecycles, usage tracking,
+          and self-service account management.
+        </p>
+        <a
+          class="link-accent"
+          href="/projects.html?cat=featured#umbra-vpn"
+          data-link
+          >see details</a
+        >
+      </article>
 
       <section class="featured-projects">
         <div class="section-head">
@@ -172,67 +145,132 @@
           <span class="section-count" id="featured-count">loading</span>
         </div>
         <div class="projects-grid" id="featured-list"></div>
+        <a class="link-accent featured-more" href="/portfolio.html" data-link
+          >everything else lives in the portfolio</a
+        >
       </section>
 
-      <article class="freelance-card card--ink">
+      <article class="freelance-card">
         <div class="card-head">
-          <h3>Available for freelance tasks & hiring</h3>
+          <h3>Available for freelance work</h3>
         </div>
         <p class="freelance-desc">
-          Software development / Automation solutions / Server assistance / Video editing
+          Software development / Automation / Video editing
         </p>
         <div class="card-foot">
           <a class="link-accent" href="/services.html" data-link
-            >explore what I offer</a
+            >explore services</a
           >
         </div>
       </article>
 
+      <section class="setup">
+        <div class="section-head">
+          <h2>setup</h2>
+          <span class="section-count">04 items</span>
+        </div>
+        <div class="setup-grid">
+          <div class="setup-cell">
+            <div class="setup-label">os</div>
+            <div class="setup-value">Arch Linux / Windows 11</div>
+          </div>
+          <div class="setup-cell">
+            <div class="setup-label">window manager</div>
+            <div class="setup-value">Hyprland / Quickshell</div>
+          </div>
+          <div class="setup-cell">
+            <div class="setup-label">editor</div>
+            <div class="setup-value">Neovim</div>
+          </div>
+        </div>
+        <div class="setup-grid setup-grid--row2">
+          <div class="setup-cell">
+            <div class="setup-label">terminal</div>
+            <div class="setup-value">Foot + Fish</div>
+          </div>
+          <div class="setup-cell">
+            <div class="setup-label">agents</div>
+            <div class="setup-value">Claude code + Codex</div>
+          </div>
+          <div class="setup-cell">
+            <div class="setup-label">extra</div>
+            <div class="setup-value">tmux</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact">
+        <div class="section-head">
+          <h2>contact</h2>
+          <span class="section-count">03 ways</span>
+        </div>
+        <div class="contact-block">
+          <p class="contact-lead">
+            Telegram is the fastest way to reach me. Use mail for anything
+            with attachments, a scope or a contract in it.
+          </p>
+          <div class="contact-grid">
+            <div class="contact-cell">
+              <span class="contact-label">mail</span>
+              <span class="contact-handle">nikdorkir@gmail.com</span>
+              <a class="btn btn-invert" href="mailto:nikdorkir@gmail.com">
+                <svg
+                  class="social-btn-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M19 4H5a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-.67 2L12 10.75 5.67 6zM19 18H5a1 1 0 0 1-1-1V7.25l7.4 5.55a1 1 0 0 0 .6.2 1 1 0 0 0 .6-.2L20 7.25V17a1 1 0 0 1-1 1z"
+                  />
+                </svg>
+                ./send_mail
+              </a>
+            </div>
+            <div class="contact-cell">
+              <span class="contact-label">telegram</span>
+              <span class="contact-handle">@nikita_ducky</span>
+              <a class="btn btn-invert" href="https://t.me/nikita_ducky">
+                <svg
+                  class="social-btn-icon"
+                  viewBox="0 0 16 16"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"
+                  />
+                </svg>
+                ./message
+              </a>
+            </div>
+            <div class="contact-cell">
+              <span class="contact-label">whatsapp</span>
+              <span class="contact-handle">@nikdor</span>
+              <a class="btn btn-invert" href="https://wa.me/nikdor">
+                <svg
+                  class="social-btn-icon"
+                  viewBox="0 0 16 16"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"
+                  />
+                </svg>
+                ./message
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="links-section">
         <div class="section-head">
           <h2>links</h2>
-          <span class="section-count">07 channels</span>
+          <span class="section-count">04 channels</span>
         </div>
         <div class="social social--wide">
-          <a class="social-btn" href="https://t.me/nikita_ducky">
-            <svg
-              class="social-btn-icon"
-              viewBox="0 0 16 16"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"
-              />
-            </svg>
-            Telegram
-          </a>
-          <a class="social-btn" href="mailto:nikdorkir@gmail.com">
-            <svg
-              class="social-btn-icon"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                d="M19 4H5a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-.67 2L12 10.75 5.67 6zM19 18H5a1 1 0 0 1-1-1V7.25l7.4 5.55a1 1 0 0 0 .6.2 1 1 0 0 0 .6-.2L20 7.25V17a1 1 0 0 1-1 1z"
-              />
-            </svg>
-            Email
-          </a>
-          <a class="social-btn" href="https://wa.me/nikdor">
-            <svg
-              class="social-btn-icon"
-              viewBox="0 0 16 16"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"
-              />
-            </svg>
-            WhatsApp
-          </a>
           <a class="social-btn" href="https://github.com/duckysmacky">
             <svg
               class="social-btn-icon"

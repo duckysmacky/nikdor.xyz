@@ -59,14 +59,11 @@ window.NikdorProjects = (() => {
     .join('');
 
   // mode: 'open' (projects page — opens the modal) | 'link' (home page — deep link)
-  // the featured kicker only ever shows on the home page ('link' mode) — on
-  // /projects.html a featured project's card looks like every other card
   const renderCard = (project, position, mode = 'open', options = {}) => {
     const card = document.createElement('article');
     card.className = 'project card--ink';
     card.dataset.projectId = project.id || '';
 
-    const kicker = mode === 'link' && project.featured ? '<span class="kicker">featured</span>' : '';
     const status = project.status ? `<span class="tag">${esc(project.status)}</span>` : '';
     const category = options.showCategory && project.category
       ? `<span class="tag">${esc(project.category)}</span>`
@@ -77,7 +74,6 @@ window.NikdorProjects = (() => {
       : `<a class="project-open" href="/projects.html?cat=featured#${esc(project.id)}" data-link>${esc(project.title)}</a>`;
 
     card.innerHTML = `
-      ${kicker}
       <div class="card-head">
         <h3 class="project-name">${title}</h3>
         <span class="index-num">${pad(position)}</span>

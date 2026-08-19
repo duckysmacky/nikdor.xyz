@@ -1,5 +1,33 @@
 [
   {
+    "id": "umbra-vpn",
+    "title": "Umbra VPN",
+    "category": "product",
+    "featured": true,
+    "status": "active",
+    "year": "2026 / present",
+    "languages": [
+      "Rust"
+    ],
+    "summary": "Distributed VPN platform with automated access, subscriptions and node orchestration",
+    "description": "A private, subscription-based VPN platform built as a distributed Rust system rather than a single server application. A central control plane coordinates user accounts, access entitlements, subscriptions, usage accounting, notifications, and a fleet of independently deployed VPN nodes; lightweight node-side agents handle credential provisioning, service health, connection details, and usage collection close to the network services they manage. Users interact through a self-service bot for onboarding, account management, connection setup, subscription changes, and support workflows, while separate administrative tools expose operational controls without mixing them into the user experience. The codebase is organized as a modular Rust workspace with asynchronous services, authenticated HTTP and gRPC communication, shared Protobuf contracts, SQL-backed persistence, containerized deployments, and automated build and deployment pipelines. Sensitive infrastructure, security, payment, and provider-specific implementation details remain private.",
+    "highlights": [
+      "distributed control-plane and vpn-node architecture",
+      "automated access, subscription, usage and notification lifecycles",
+      "self-service user bot and operational tooling over shared rust services"
+    ],
+    "tags": [
+      "vpn",
+      "networking",
+      "distributed-systems",
+      "cybersecurity",
+      "microservices",
+      "grpc",
+      "protobuf",
+      "automation"
+    ]
+  },
+  {
     "id": "cogniflex",
     "title": "Cogniflex",
     "category": "product",
@@ -244,7 +272,6 @@
     "id": "copper",
     "title": "Copper",
     "category": "product",
-    "featured": true,
     "status": "wip",
     "year": "2025 / present",
     "languages": [

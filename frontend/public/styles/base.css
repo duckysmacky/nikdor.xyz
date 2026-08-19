@@ -9,7 +9,7 @@
   --paper: #fafafa; /* page background — the dominant surface */
   --panel: #f2f2f2; /* card / input fill, one step down from paper */
   --ink: #1a1a1a; /* all text, all borders, every inverted block */
-  --muted: #7d7d7d; /* secondary text, labels, captions */
+  --muted: #6e6e6e; /* secondary text, labels, captions */
   --rule: #cccccc; /* hairlines only — never text, never fills */
 
   /* On-ink variants — required because every card is inverted.
