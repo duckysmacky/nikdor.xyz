@@ -10,12 +10,37 @@
   padding: var(--s5) 0 var(--s6);
 }
 
-.hero-roles {
-  margin: 0 0 var(--s3);
+/* gap-only nesting, no margins (§6). The nesting buys differential rhythm:
+   s4 between blocks, s3 inside copy, s2 name-to-location. */
+.hero-body {
+  display: grid;
+  justify-items: start;
+  gap: var(--s4);
+}
+
+/* .kicker is line-height:1 / inline-block and assumes one short line. A
+   three-segment role line is neither, so it gets its own modifier — never
+   touch .kicker itself, it is shared with project-card.js, portfolio.js,
+   modal.css and the `open for work` / `now` blocks. */
+.kicker--role {
+  line-height: 1.5;
+  padding: 0.45rem 0.6rem;
+}
+
+/* the only break opportunities are the " / " separators */
+.kicker--role span {
+  white-space: nowrap;
 }
 
 .hero-title {
+  font-size: 48px; /* home-only step up from --h-size (34px) */
   margin: 0;
+}
+
+.hero-copy {
+  display: grid;
+  justify-items: start;
+  gap: var(--s3);
 }
 
 .hero-subtitle {
@@ -23,27 +48,35 @@
   font-weight: 400;
   line-height: 1.65;
   max-width: 46ch;
-  margin: var(--s3) 0 0;
+  margin: 0;
 }
 
 .hero-description {
   color: var(--muted);
   max-width: 46ch;
-  margin: var(--s3) 0 0;
+  margin: 0;
+}
+
+/* the terminal marker lives in CSS, same idiom as h2::before */
+.hero-description::before {
+  content: "// ";
+  color: var(--rule);
 }
 
 .hero-actions {
-  margin-top: var(--s4);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--s3);
 }
 
-/* accent geometry — halftone field */
+/* accent geometry — halftone field. Kept exactly as-is stylistically, just
+   larger — this is the one purely decorative element on the site and the
+   user likes it, so it stays a plain square rather than growing a fact
+   list or any other content. */
 .accent-block {
-  width: 132px;
-  height: 132px;
+  width: 220px;
+  height: 220px;
   /* background-color, NOT the `background` shorthand — home.css loads after
      base.css and the shorthand would wipe .halftone's background-image */
   background-color: var(--paper);
@@ -52,7 +85,9 @@
 }
 
 /* ==========================================================================
-   Meta strip
+   Meta strip — a black rule, then location (left) + open for work (right).
+   The rule is the hero/body break; the row itself carries no border of its
+   own, same relationship the old meta-strip had to the stats slab below it.
    ========================================================================== */
 
 .meta-strip {
@@ -61,12 +96,39 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--s3);
-  padding-top: var(--s3);
+  margin-top: var(--s6);
+  padding-top: var(--s4);
   border-top: var(--rule-w) solid var(--ink);
 }
 
+/* .eyebrow register: 12px / 500 / .18em / upper / muted */
+.meta-location {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+
+.meta-location-icon {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  fill: var(--muted);
+}
+
 /* ==========================================================================
-   Stats
+   Stats — an inverted slab, not a card.
+   Deliberately not .card--ink: that ships column direction, var(--s4)
+   padding, var(--s2) gap and a hover transform, all four of which would
+   have to be undone. Nothing in this row is clickable, so it must not move
+   on hover. The 2px border is invisible against its own ink fill and exists
+   only so the slab's outer box matches a .card--ink sitting elsewhere in
+   the same column.
    ========================================================================== */
 
 .stats-row {
@@ -80,7 +142,7 @@
 
 .stat {
   flex: 1;
-  padding: var(--s3) var(--s4);
+  padding: var(--s4) var(--s4); /* stepped up from s3 vertical — a bigger slab */
 }
 
 .stat + .stat {
@@ -106,55 +168,106 @@
 }
 
 /* ==========================================================================
-   Currently working on — annotation, not a card
+   Contact panel — hidden for now (placement undecided), markup kept for
+   reuse. Thinner than before: narrower max-width, tighter padding override
+   on top of .card--ink's default var(--s4).
    ========================================================================== */
 
-.current-project {
-  margin: var(--s6) 0;
-  padding-left: 10px;
-  border-left: var(--rule-w) solid var(--ink);
+.contact-panel {
+  max-width: 280px;
+  padding: var(--s3);
+  margin-top: var(--s5);
 }
 
-.project-title {
-  font-size: 17px;
+.contact-panel[hidden] {
+  display: none;
+}
+
+/* h3 (not h2): the base h3 register (17px/700/.01em/1.3) is already exactly
+   what a terminal-path title like "./contact_me" wants, and h3 carries no
+   "// " marker to suppress — a filled ink card already reads as a
+   container, so a marker would be redundant next to the "> " list rows. */
+
+.contact-list {
+  display: grid;
+  gap: 0.3rem;
+}
+
+/* TUI selector row: a ">" marker + icon + label, no button chrome (no
+   border, no fill, no padding-box) — the marker is the affordance, same
+   relationship as skills.css's "> Rust" idiom */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.3rem 0;
+  color: var(--on-ink);
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.01em;
-  margin: var(--s2) 0 0;
+  text-decoration: none;
 }
 
-.project-title::before {
-  content: none;
+.contact-item::before {
+  content: "> ";
+  color: var(--muted-on-ink);
 }
 
-.project-title .lang {
+.contact-item:hover {
+  opacity: 0.65;
+}
+
+.contact-item:focus-visible {
+  outline: 2px solid var(--on-ink);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   Now — hand-edited annotations. The kicker text is the switch; nothing
+   else in the block is project-specific.
+   ========================================================================== */
+
+.now {
+  margin: var(--s6) 0;
+}
+
+.now-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--gap-card);
+  align-items: start;
+}
+
+/* .bar (base.css) supplies the 3px ink spine + 10px padding */
+.now-item {
+  display: grid;
+  justify-items: start;
+  gap: var(--s2);
+}
+
+.now-title {
+  margin: 0; /* h3 already gives 17px / 700 / .01em */
+}
+
+.now-meta {
   font-size: 12px;
   font-weight: 500;
   color: var(--muted);
   margin-left: 0.6rem;
 }
 
-.project-desc {
+.now-body {
   color: var(--muted);
   max-width: 46ch;
-  margin: var(--s2) 0 var(--s3);
+  margin: 0;
 }
 
 /* ==========================================================================
-   Featured projects
+   Featured projects / freelance
    ========================================================================== */
 
 .featured-projects {
   margin-top: var(--s6);
 }
-
-.featured-more {
-  margin-top: var(--s3);
-  display: inline-flex;
-}
-
-/* ==========================================================================
-   Freelance card
-   ========================================================================== */
 
 .freelance-card {
   margin-top: var(--s5);
@@ -165,27 +278,73 @@
   margin: 0;
 }
 
-/* ==========================================================================
-   Connect
-   ========================================================================== */
-
-.connect {
+/* links section — bottom of the page, own section-head like featured work */
+.links-section {
   margin-top: var(--s6);
 }
 
 /* ==========================================================================
-   Responsive
+   Social variants — scoped modifiers, NOT restyles.
+   base.css .social / .social-btn are shared with services.html; this
+   modifier doesn't appear there, so Services is untouched by construction.
    ========================================================================== */
+
+/* the links row: centred, one step larger. Button design unchanged — same
+   1px ink border, --panel fill, 2px radius, same hover. */
+.social--wide {
+  justify-content: center;
+}
+
+.social--wide .social-btn {
+  font-size: 15px;
+  gap: 0.6rem;
+  padding: 0.7rem 0.75rem;
+}
+
+.social--wide .social-btn-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Upwork's mark is a two-tone badge (dark circle + a lighter cutout swoosh),
+   not a monochrome silhouette like the other icons — the cutout path takes
+   the button's own surface color so it reads as a hole through the ink
+   ellipse rather than merging into a solid blob. */
+.upwork-mark {
+  fill: var(--panel);
+}
+
+/* ==========================================================================
+   Responsive — 880 / 720 / 520, the site's only breakpoints
+   ========================================================================== */
+
+@media (max-width: 880px) {
+  .hero {
+    gap: var(--s4);
+  }
+
+  .hero-title {
+    font-size: 38px;
+  }
+
+  .accent-block {
+    width: 170px;
+    height: 170px;
+  }
+}
 
 @media (max-width: 720px) {
   .hero {
     grid-template-columns: 1fr;
-    gap: var(--s4);
+  }
+
+  .hero-title {
+    font-size: 34px;
   }
 
   .accent-block {
-    width: 88px;
-    height: 88px;
+    width: 150px;
+    height: 150px;
   }
 
   .stats-row {
@@ -195,5 +354,15 @@
   .stat + .stat {
     border-left: 0;
     border-top: 1px solid var(--rule);
+  }
+
+  .contact-panel {
+    max-width: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-title {
+    font-size: 28px;
   }
 }

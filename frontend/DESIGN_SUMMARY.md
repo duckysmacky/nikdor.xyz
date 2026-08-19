@@ -52,7 +52,7 @@ Loaded with `rel="preconnect"` to `fonts.googleapis.com` /
 
 | Element | Size | Weight | Tracking | Case |
 |---|---|---|---|---|
-| h1 (hero) | 34px (28px ≤880px) | 800 | -0.03em | none |
+| h1 (hero) | 34px (28px ≤880px); Home's hero runs 48 / 38 ≤880 / 34 ≤720 / 28 ≤520 via `.hero-title` | 800 | -0.03em | none |
 | h2 (section head) | 20px | 800 | -0.03em | none |
 | h3 / card title | 17px | 700 | 0.01em | none |
 | Body / paragraph | 16px | 400 | 0 | none |
@@ -63,6 +63,10 @@ Loaded with `rel="preconnect"` to `fonts.googleapis.com` /
 | Eyebrow (`// section`) | 12px | 500 | 0.18em | uppercase |
 | Kicker (inverted, e.g. `open for work`) | 12px | 800 | 0.14em | uppercase |
 | Meta / section count / index number | 11px | 500 | 0.16–0.18em | uppercase |
+
+`.kicker--role` (Home's hero role line) is the one multi-line kicker —
+`line-height: 1.5` instead of the base `1`, with each `/`-separated segment
+wrapped in a `nowrap` span so the line can only break at a `/`.
 
 `h1` caps at `max-width: 15ch` with `text-wrap: balance`. Section intros and
 hero copy cap at `46ch`; the About page's long-form bio runs `66ch`, wide
@@ -78,8 +82,8 @@ enough that 46ch would read as an unreadably narrow ribbon.
 - Borders: `1px solid var(--ink)` on paper controls (buttons, inputs,
   social buttons), `2px solid var(--ink)` on every inverted card, `3px
   solid var(--ink)` (`--rule-w`) on structural rules — the header bottom
-  edge, section-head underlines, the meta-strip top rule, the footer top
-  edge, the order-modal border.
+  edge, section-head underlines, the footer top edge, the order-modal
+  border.
 - No blur, no soft shadow. The only shadow in the system is
   `4px 4px 0 var(--rule)`, paired with a `translate(-2px, -2px)` on
   hover — used identically on every card, every button, every social
@@ -111,21 +115,22 @@ on Home and the Languages panel on About.
 
 Every card on the site inverts (solid `--ink` fill, `--on-ink` text,
 `--rule-on-ink` hairlines): project cards, service cards, skill cards,
-certificate cards, experience entries, the freelance card, the stats row.
+certificate cards, experience entries, the freelance card. The stats slab
+is also inverted but is not a card: no hover, since nothing in it is
+clickable.
 
 Also inverted: the `NIKDOR` brand mark, the footer slab, the primary
-button, the `open for work` / `currently working on` kicker, the hero
-accent block (halftone, not solid — see §3), and the order-form's
-error/success states (this system has no color for status — a message
-either inverts or it isn't shown).
+button, the `open for work` and `now` kickers, the hero accent block
+(halftone, not solid — see §3), and the order-form's error/success states
+(this system has no color for status — a message either inverts or it
+isn't shown).
 
 Not inverted: page background, the nav bar, all headings and prose on
-paper, the meta strip, the `current-project` annotation (paper with a 3px
-ink left-border, not a card), the education timeline (paper annotations
-on a left rule, same idea), the events list (paper annotations, black
-surfacing only as an inverted result chip and full-ink tags), form
-inputs, and the order/certificate modal surfaces (paper — the certificate
-modal wraps a white PDF).
+paper, the `now` annotations (paper on base's 3px `.bar`, not cards), the
+education timeline (paper annotations on a left rule, same idea), the
+events list (paper annotations, black surfacing only as an inverted
+result chip and full-ink tags), form inputs, and the order/certificate
+modal surfaces (paper — the certificate modal wraps a white PDF).
 
 A control that sits on top of an ink card (Order button, View button)
 uses `.btn-invert`: paper fill, ink text — the inverse of `.btn-primary`.
@@ -154,7 +159,16 @@ uses `.btn-invert`: paper fill, ink text — the inverse of `.btn-primary`.
   no other decoration. `.link-disabled` renders as `[ label ]` in muted
   text, not clickable (used for the one private/closed-source project).
 - **Social buttons** — inline SVG icons (no `<img>` + filter hacks) so
-  they inherit `currentColor` on both paper and the footer.
+  they inherit `currentColor` on both paper and the footer. Home's links
+  row is centred and one step larger (`.social--wide`: 15px label, 18px
+  icon); the base button is never restyled, because `.social-btn` is
+  shared with Services. Freelance marketplaces with no shipped brand mark
+  (EasyStaff) use the briefcase glyph; Upwork ships its real two-tone
+  badge mark (ink ellipse + a `var(--panel)`-filled cutout swoosh, so the
+  detail still resolves through a token rather than a literal hex value).
+- **Contact panel** — a `.card--ink` (solid ink fill), `./contact_me`
+  title, TUI-style `> ` selector rows. Currently `hidden` on Home (markup
+  kept, placement undecided) — not rendered in the live layout.
 - **Footer slab** — inverted, copyright left, email right, uppercase
   tracked.
 - **Timelines** — two deliberately unalike connectors, now on two
@@ -208,11 +222,17 @@ emoji.
 
 ## 8. Pages
 
-1. **Home** (`/`) — hero (eyebrow role line, h1, subtitle, description,
-   primary + text-link actions, ink accent block), meta strip (tag row +
-   `open for work` kicker), stats row (inverted, 3 stats), current-project
-   annotation, freelance card, links section (5 inline-SVG social
-   buttons).
+1. **Home** (`/`) — hero (role kicker, oversized h1, subtitle, `//`-marked
+   description, primary + text-link actions, halftone accent block); a
+   meta strip on a 3px top rule (pin-icon location left, `open for work`
+   kicker right); stats slab (inverted, 3 stats, stepped-up padding);
+   `now` annotations (hand-edited paper blocks on 3px bars, the kicker
+   text is the label); featured work (data-driven from
+   `data/projects.json`); the freelance card; a bottom links section
+   (standard `section-head`, 7 inline-SVG social buttons — Telegram,
+   Email, WhatsApp, GitHub, EasyStaff, LinkedIn, Upwork — centred and
+   enlarged). The contact panel exists in markup but is `hidden` —
+   placement undecided.
 2. **About** (`/about.html`) — eyebrow + h1, bio (lead paragraph on a 3px
    bar, remaining paragraphs on a hairline rail, 66ch) beside a right rail
    (Languages on a halftone panel, Soft Skills on an ink bar), skills
