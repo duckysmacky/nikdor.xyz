@@ -210,7 +210,7 @@ strong {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 1.1rem;
+  gap: 1.8rem;
   margin: 0;
   padding: 0;
 }
@@ -228,8 +228,8 @@ strong {
 }
 
 .nav-item a::before {
-  content: "/ ";
-  color: var(--rule);
+  content: "/";
+  color: currentColor;
 }
 
 .nav-item a:hover {
@@ -732,6 +732,6 @@ strong {
   }
 
   .nav-list {
-    gap: 0.9rem;
+    gap: 1.3rem;
   }
 }
