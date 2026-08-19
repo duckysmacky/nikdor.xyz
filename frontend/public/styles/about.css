@@ -1,8 +1,8 @@
 /* ==========================================================================
    About Page
 
-   Experience moved to Portfolio; this page keeps education, which is a
-   paper annotation on a solid rail that fades into the past.
+   Experience and education both moved to Portfolio; this page is bio + rail
+   (languages, profile traits) and skills only.
    ========================================================================== */
 
 /* ----- Bio + rail ----------------------------------------------------------
@@ -129,166 +129,6 @@
 }
 
 /* ==========================================================================
-   Tooling — a printed spec sheet, no card, no bar, no rail
-   ========================================================================== */
-
-/* ink-filled spec sheet — still no card border/radius-per-row, but the
-   whole table is one solid black block rather than ruled lines on paper */
-.tooling-list {
-  background: var(--ink);
-  color: var(--on-ink);
-  border-radius: var(--radius);
-  padding: 0 var(--s4);
-  margin: 0;
-}
-
-.tooling-row {
-  display: grid;
-  grid-template-columns: 140px minmax(0, 1fr);
-  gap: var(--s2);
-  padding: var(--s3) 0;
-  border-top: 1px solid var(--rule-on-ink);
-}
-
-.tooling-row:first-child {
-  border-top: 0;
-}
-
-.tooling-row dt {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  line-height: 1.8;
-  text-transform: uppercase;
-  color: var(--muted-on-ink);
-}
-
-.tooling-row dd {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--on-ink);
-  margin: 0;
-}
-
-.tooling-empty {
-  color: var(--muted-on-ink);
-  padding: var(--s3) 0;
-  margin: 0;
-}
-
-/* ==========================================================================
-   Education — paper annotations, solid rail with time direction
-   ========================================================================== */
-
-.education-list {
-  --edu-gap: var(--s5);
-  --edu-rail-x: 8px;
-  --edu-gutter: 30px;
-  --edu-node-y: 5px; /* optical centre of the first (dates) line */
-
-  list-style: none;
-  margin: 0;
-  padding: 0 0 0 var(--edu-gutter);
-  display: grid;
-  gap: var(--edu-gap);
-}
-
-.edu-entry {
-  position: relative;
-  overflow-wrap: break-word;
-
-  /* time direction without an arrow glyph: the rail and its tick step down
-     in weight as entries get older. Newest reads as "now". */
-  --edu-rail: var(--ink);
-}
-
-.edu-entry:nth-child(2) {
-  --edu-rail: var(--muted);
-}
-
-.edu-entry:nth-child(n + 3) {
-  --edu-rail: var(--rule);
-}
-
-/* vertical segment: this entry's top edge down into the gap below it.
-   The ::before is positioned against the entry's padding box, which starts
-   --edu-gutter in from the list edge, hence the negative left. */
-.edu-entry::before {
-  content: "";
-  position: absolute;
-  left: calc(var(--edu-rail-x) - var(--edu-gutter));
-  top: 0;
-  bottom: calc(var(--edu-gap) * -1);
-  border-left: var(--rule-w) solid var(--edu-rail);
-}
-
-/* trim both ends so the rail starts and stops at a node, never overshooting */
-.edu-entry:first-child::before {
-  top: var(--edu-node-y);
-}
-
-.edu-entry:last-child::before {
-  bottom: auto;
-  height: var(--edu-node-y);
-}
-
-.edu-entry:first-child:last-child::before {
-  display: none; /* a single entry has nothing to connect to */
-}
-
-/* horizontal tick joining the rail to the entry */
-.edu-entry::after {
-  content: "";
-  position: absolute;
-  left: calc(var(--edu-rail-x) - var(--edu-gutter));
-  top: var(--edu-node-y);
-  width: calc(var(--edu-gutter) - var(--edu-rail-x) - 8px);
-  border-top: var(--rule-w) solid var(--edu-rail);
-}
-
-.edu-dates {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  line-height: 1;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin: 0 0 var(--s2);
-}
-
-.edu-school {
-  margin: 0;
-}
-
-.edu-meta {
-  font-size: 14px;
-  line-height: 1.5;
-  margin: 0.35rem 0 0;
-}
-
-.edu-program {
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.edu-place {
-  color: var(--muted);
-}
-
-.edu-place::before {
-  content: " / ";
-  color: var(--rule);
-}
-
-.edu-desc {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--muted);
-  max-width: 60ch;
-  margin: var(--s2) 0 0;
-}
-
-/* ==========================================================================
    Responsive
    ========================================================================== */
 
@@ -301,21 +141,5 @@
   .about-rail {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: var(--gap-card);
-  }
-
-  .education-list {
-    --edu-gap: var(--s4);
-  }
-}
-
-@media (max-width: 520px) {
-  .education-list {
-    --edu-gutter: 20px;
-    --edu-rail-x: 4px;
-  }
-
-  .tooling-row {
-    grid-template-columns: 1fr;
-    gap: var(--s1);
   }
 }

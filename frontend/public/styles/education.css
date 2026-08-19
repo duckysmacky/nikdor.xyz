@@ -1,0 +1,131 @@
+/* ==========================================================================
+   Education — paper annotations, solid rail with time direction
+
+   Moved here from the About page (where it lived alongside experience) —
+   education is now on the Portfolio page, below experience.
+   ========================================================================== */
+
+.education-list {
+  --edu-gap: var(--s5);
+  --edu-rail-x: 8px;
+  --edu-gutter: 30px;
+  --edu-node-y: 5px; /* optical centre of the first (dates) line */
+
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 var(--edu-gutter);
+  display: grid;
+  gap: var(--edu-gap);
+}
+
+.edu-entry {
+  position: relative;
+  overflow-wrap: break-word;
+
+  /* time direction without an arrow glyph: the rail and its tick step down
+     in weight as entries get older. Newest reads as "now". */
+  --edu-rail: var(--ink);
+}
+
+.edu-entry:nth-child(2) {
+  --edu-rail: var(--muted);
+}
+
+.edu-entry:nth-child(n + 3) {
+  --edu-rail: var(--rule);
+}
+
+/* vertical segment: this entry's top edge down into the gap below it.
+   The ::before is positioned against the entry's padding box, which starts
+   --edu-gutter in from the list edge, hence the negative left. */
+.edu-entry::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--edu-rail-x) - var(--edu-gutter));
+  top: 0;
+  bottom: calc(var(--edu-gap) * -1);
+  border-left: var(--rule-w) solid var(--edu-rail);
+}
+
+/* trim both ends so the rail starts and stops at a node, never overshooting */
+.edu-entry:first-child::before {
+  top: var(--edu-node-y);
+}
+
+.edu-entry:last-child::before {
+  bottom: auto;
+  height: var(--edu-node-y);
+}
+
+.edu-entry:first-child:last-child::before {
+  display: none; /* a single entry has nothing to connect to */
+}
+
+/* horizontal tick joining the rail to the entry */
+.edu-entry::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--edu-rail-x) - var(--edu-gutter));
+  top: var(--edu-node-y);
+  width: calc(var(--edu-gutter) - var(--edu-rail-x) - 8px);
+  border-top: var(--rule-w) solid var(--edu-rail);
+}
+
+.edu-dates {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 var(--s2);
+}
+
+.edu-school {
+  margin: 0;
+}
+
+.edu-meta {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0.35rem 0 0;
+}
+
+.edu-program {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.edu-place {
+  color: var(--muted);
+}
+
+.edu-place::before {
+  content: " / ";
+  color: var(--rule);
+}
+
+.edu-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 60ch;
+  margin: var(--s2) 0 0;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 720px) {
+  .education-list {
+    --edu-gap: var(--s4);
+  }
+}
+
+@media (max-width: 520px) {
+  .education-list {
+    --edu-gutter: 20px;
+    --edu-rail-x: 4px;
+  }
+}
