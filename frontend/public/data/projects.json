@@ -1,5 +1,221 @@
 [
   {
+    "id": "cogniflex",
+    "title": "Cogniflex",
+    "category": "product",
+    "featured": true,
+    "status": "active",
+    "year": "2026 / present",
+    "languages": [
+      "Java",
+      "Python",
+      "TypeScript"
+    ],
+    "summary": "Full-stack platform for detecting AI-generated text, images and video",
+    "description": "A full-stack platform for detecting and explaining AI-generated content in real time, designed around probabilistic evidence rather than absolute claims. Cogniflex combines a configurable static-analysis engine with machine-learning inference: the Java and Spring Boot backend evaluates linguistic, structural, typographic, leakage, watermark, and stylometric signals, then fuses that evidence with confidence scores returned by a separate Python ML service over gRPC. A React and TypeScript browser extension brings analysis directly onto the page and also supports manual submissions, while PostgreSQL stores analysis history and Redis supports service infrastructure and rate limiting. The system includes shared Protobuf contracts, text preprocessing and locale detection, REST and OpenAPI endpoints, Docker Compose deployment, model research notebooks, and extensive tests across rules, preprocessing, orchestration, controllers, and service integration.",
+    "highlights": [
+      "hybrid static-analysis and machine-learning detection pipeline",
+      "spring boot backend and python inference service connected by grpc",
+      "browser extension, postgresql, redis, docker and extensive automated tests"
+    ],
+    "tags": [
+      "artificial-intelligence",
+      "machine-learning",
+      "content-detection",
+      "browser-extension",
+      "spring-boot",
+      "grpc",
+      "microservices",
+      "full-stack"
+    ],
+    "repositoryLink": "https://github.com/duckysmacky/cogniflex"
+  },
+  {
+    "id": "claude-usage-tray",
+    "title": "Claude Usage Tray",
+    "category": "product",
+    "status": "complete",
+    "year": "2026 / present",
+    "languages": [
+      "Rust"
+    ],
+    "summary": "Linux tray app for monitoring Claude limits, reset times and usage credits",
+    "description": "An unofficial, lightweight Linux tray application that keeps Claude subscription usage visible without opening another window. It reports five-hour and weekly limits, reset times, plan details, and optional credit balances, polling Anthropic's API with credentials from an existing Claude CLI or desktop login. The application integrates through the desktop-environment-agnostic D-Bus status notifier protocol, works across window managers, supports TOML-based display and polling configuration, and includes commands for installing its desktop entry and systemd user service.",
+    "highlights": [
+      "desktop-environment-agnostic tray integration over d-bus",
+      "configurable usage, limit, reset and credit reporting",
+      "cargo installation with desktop and systemd service setup"
+    ],
+    "tags": [
+      "linux",
+      "desktop",
+      "developer-tools",
+      "dbus",
+      "systemd",
+      "api-integration"
+    ],
+    "repositoryLink": "https://github.com/duckysmacky/claude-usage-tray"
+  },
+  {
+    "id": "macro-helper",
+    "title": "C Macro Helper",
+    "category": "product",
+    "status": "complete",
+    "year": "2026 / present",
+    "languages": [
+      "JavaScript"
+    ],
+    "summary": "Published VS Code extension for formatting multiline C and C++ macros",
+    "description": "A Visual Studio Code extension that removes the repetitive formatting work from multiline C and C++ macros. Its editor commands add, remove, and vertically align continuation backslashes for a selection or the macro under the cursor, while a configurable alignment gap keeps formatting consistent. The extension is distributed through the Visual Studio Marketplace and GitHub releases, exposes command-palette, context-menu, and keyboard-shortcut workflows, and includes automated tests and a GitHub Actions pipeline.",
+    "highlights": [
+      "published on the visual studio marketplace",
+      "selection-aware macro detection and backslash alignment",
+      "configurable formatting with automated tests and ci"
+    ],
+    "tags": [
+      "vscode-extension",
+      "developer-tools",
+      "c",
+      "cpp",
+      "formatting",
+      "automation"
+    ],
+    "repositoryLink": "https://github.com/duckysmacky/macro-helper"
+  },
+  {
+    "id": "cinema-db",
+    "title": "Cinema Management Database",
+    "category": "product",
+    "status": "complete",
+    "year": "2026",
+    "languages": [
+      "PL/pgSQL",
+      "SQL"
+    ],
+    "summary": "PostgreSQL cinema system with reservations, pricing, roles and lifecycle rules",
+    "description": "A complete PostgreSQL database design for operating a cinema chain, covering locations, halls, seats, films, customers, screenings, reservations, and tickets. Business rules live in database functions, procedures, triggers, and views: screenings cannot overlap within a hall, seats can only be sold once per screening, ticket prices are calculated dynamically, and ticket and reservation lifecycles are validated automatically. The project also defines role-based access for customers, organizers, managers, and administrators, and ships ordered initialization scripts, generated test data, rollback-safe tests, and cross-platform backup scripts.",
+    "highlights": [
+      "database-enforced screening, reservation and ticket rules",
+      "functions, procedures, triggers and reporting views",
+      "four-role access model with tests and backup tooling"
+    ],
+    "tags": [
+      "postgresql",
+      "database-design",
+      "plpgsql",
+      "sql",
+      "testing",
+      "access-control"
+    ],
+    "repositoryLink": "https://github.com/duckysmacky/cinema-db"
+  },
+  {
+    "id": "qt-chat-app",
+    "title": "Qt Chat App",
+    "category": "product",
+    "status": "complete",
+    "year": "2026 / present",
+    "languages": [
+      "C++",
+      "QML",
+      "SQL"
+    ],
+    "summary": "Cross-platform Qt 6 chat system with raw TCP, accounts, groups and Postgres",
+    "description": "A cross-platform client-server chat application built with C++20 and Qt 6 around a custom packet protocol over raw TCP. Its QML desktop client provides registration, login, profiles, private conversations, group creation, message history, and connection-state interfaces, while the server handles concurrent connections and persists users, chats, memberships, content, messages, and user statistics in PostgreSQL. A shared protocol library keeps packets and DTOs consistent across both applications, and ordered database migrations add lifecycle triggers, message search, private-chat creation, and statistics maintenance. CMake presets and a Justfile support Windows, Linux, and macOS builds; Docker Compose packages the server with PostgreSQL; and GoogleTest suites, GitHub Actions, architecture diagrams, and generated Doxygen documentation support ongoing development.",
+    "highlights": [
+      "custom tcp packet protocol shared by qt client and server",
+      "accounts, private chats, groups and persistent message history",
+      "cross-platform builds, docker deployment, tests and generated docs"
+    ],
+    "tags": [
+      "qt6",
+      "cpp20",
+      "qml",
+      "networking",
+      "tcp",
+      "postgresql",
+      "docker",
+      "desktop"
+    ],
+    "repositoryLink": "https://github.com/duckysmacky/qt-chat-app"
+  },
+  {
+    "id": "synco",
+    "title": "Synco",
+    "category": "experiment",
+    "status": "wip",
+    "year": "2026",
+    "languages": [
+      "Rust"
+    ],
+    "summary": "Minimal Rust async runtime with a custom executor, wakers and proc macros",
+    "description": "A from-scratch asynchronous runtime built to explore how Rust futures are scheduled beneath higher-level frameworks such as Tokio. Synco implements a task queue, spawner, executor, custom wakers, delayed futures, and a runtime that can block on asynchronous work using only the standard library for its core scheduling machinery. A companion procedural-macro crate provides #[synco::main] and #[synco::test] entry points, while integration tests exercise both the executor and runtime APIs.",
+    "highlights": [
+      "custom future executor and task wake-up queue",
+      "delay future and blocking runtime implementation",
+      "procedural macros for async main and tests"
+    ],
+    "tags": [
+      "async-runtime",
+      "futures",
+      "concurrency",
+      "procedural-macros",
+      "systems-programming"
+    ],
+    "repositoryLink": "https://github.com/duckysmacky/synco"
+  },
+  {
+    "id": "cspc",
+    "title": "C Smart Pointer Collection",
+    "category": "experiment",
+    "status": "wip",
+    "year": "2026 / present",
+    "languages": [
+      "C"
+    ],
+    "summary": "Reference-counted smart pointers and typed ownership helpers for C",
+    "description": "A low-level C library that explores bringing explicit, reference-counted shared ownership to a language without native smart pointers. The current shared_ptr implementation can copy values into a combined object-and-counter allocation or take ownership of an existing heap allocation, then tracks owners through explicit copy, move, validity, and release operations. Macros generate type-specific pointer structures and wrapper functions over the generic implementation, while optional GCC and Clang cleanup attributes provide automatic scope-exit release. The Make-based project produces static and shared libraries, publishes API documentation through Doxygen and GitHub Pages, and includes executable scenarios covering creation, copy chains, ownership transfer, reference-count changes, and final cleanup.",
+    "highlights": [
+      "reference-counted shared ownership with copy and move operations",
+      "type-specific apis generated from generic c macros",
+      "optional automatic cleanup plus static and shared library builds"
+    ],
+    "tags": [
+      "memory-management",
+      "smart-pointers",
+      "reference-counting",
+      "systems-programming",
+      "c-library",
+      "doxygen"
+    ],
+    "repositoryLink": "https://github.com/duckysmacky/cspc"
+  },
+  {
+    "id": "guitar-setup-skill",
+    "title": "Guitar Setup Skill",
+    "category": "ai",
+    "status": "complete",
+    "year": "2026",
+    "languages": [
+      "Markdown"
+    ],
+    "summary": "Reusable agent skill for matching guitar and amplifier settings to a song",
+    "description": "A reusable AI-agent skill that turns a target song and the player's available equipment into a practical guitar tone setup. It guides the agent through pickup selection, amplifier channel and EQ choices, gain and effects configuration, tone matching, and iterative refinement based on the player's feedback. The skill also defines a per-user equipment reference generated from a reusable template, allowing later recommendations to remain grounded in the instruments, amplifier, pedals, and controls the player actually owns.",
+    "highlights": [
+      "equipment-aware guitar and amplifier recommendations",
+      "structured tone-matching and feedback workflow",
+      "reusable per-user equipment reference template"
+    ],
+    "tags": [
+      "agent-skill",
+      "ai-agents",
+      "prompt-engineering",
+      "music",
+      "guitar"
+    ],
+    "repositoryLink": "https://github.com/duckysmacky/guitar-setup-skill"
+  },
+  {
     "id": "databoxer",
     "title": "Databoxer",
     "category": "product",
@@ -10,7 +226,7 @@
       "Rust"
     ],
     "summary": "Cross-platform CLI that encrypts files into a custom .box container format",
-    "description": "A cross-platform command-line file encryption utility focused on speed, safety, and usability. Files are encrypted into a custom .box file format with per-file nonces, checksums and additional security measures to ensure data integrity and confidentiality. Intended as a lightweight alternative for protecting local files, removable drives, and transferred data.",
+    "description": "A cross-platform command-line encryption utility for protecting local files, removable media, and data in transit on Linux, macOS, and Windows. Databoxer uses ChaCha20-Poly1305 with randomly generated 32-byte keys and a unique nonce per file, then stores encrypted content and optional encrypted metadata in a custom .box container. Its profile system lets users maintain multiple password-protected encryption identities and manage their keys, while the CLI supports multiple inputs, directories, recursive processing, custom destinations, and restoration of original names during decryption. The beta is published on crates.io and backed by platform-specific CI builds.",
     "highlights": [
       "per-file nonces and checksums for integrity",
       "custom .box container format",
@@ -29,13 +245,13 @@
     "title": "Copper",
     "category": "product",
     "featured": true,
-    "status": "active",
-    "year": "2024 / present",
+    "status": "wip",
+    "year": "2025 / present",
     "languages": [
       "Rust"
     ],
     "summary": "Single-file build system for C and C++, simpler than CMake or Make",
-    "description": "A lightweight build system for C and C++ projects designed as a simpler alternative to CMake and Makefiles. Copper uses a single configuration file and automatically discovers and compiles sources while still allowing detailed control over compilation and linking. Built around modular “units” to keep large projects readable and maintainable.",
+    "description": "A lightweight build system created to make C and C++ project configuration more direct than CMake, large Makefiles, or Visual Studio solutions. Copper reads a single copper.yaml file, discovers source files automatically, and translates project settings into compilation and linking steps for GCC, Clang, and MSVC. Projects are divided into independently configurable units that can produce binaries, static libraries, or dynamic libraries, allowing larger codebases to retain module-specific flags, include paths, output directories, and build rules. The Rust CLI can initialize a project, generate example configuration, add units, and build the whole project or selected targets.",
     "highlights": [
       "single configuration file per project",
       "automatic source discovery",
@@ -52,6 +268,7 @@
     "id": "signsense",
     "title": "Signsense",
     "category": "product",
+    "featured": true,
     "status": "complete",
     "year": "2023",
     "languages": [
@@ -59,7 +276,7 @@
       "Python"
     ],
     "summary": "Android app translating finger-spelling into text with an on-device ML model",
-    "description": "An Android mobile application that translates finger-spelling sign language into readable text using real-time camera recognition. The app uses a custom-trained machine learning model to detect dactyl hand gestures and converts recognized symbols into words directly on the device. Includes live detection, multilingual UI, and configurable recognition settings.",
+    "description": "An Android proof-of-concept that translates Russian dactyl finger spelling into readable text through the phone's live camera feed. A custom-trained machine-learning model recognizes individual hand signs, assembles them into words, detects pauses between words, and presents a running translation directly on the device. The translator works with front and rear cameras, includes a low-light flashlight control, and exposes recognition and application settings alongside light and dark themes and English and Russian interface languages. The project was developed with a dedicated model-training contributor and released as an installable APK for Android 8 through 12.",
     "highlights": [
       "custom-trained gesture recognition model",
       "on-device inference, no network round trip",
@@ -78,12 +295,12 @@
     "title": "Pasteshelf",
     "category": "product",
     "status": "complete",
-    "year": "2023",
+    "year": "2025",
     "languages": [
       "Java"
     ],
     "summary": "Pastebin-style REST backend with accounts, hash IDs and Postgres",
-    "description": "A Pastebin-style web backend that allows users to create accounts and store shareable text pastes identified by unique hash IDs. Exposes a REST API for creating, retrieving, and managing pastes with authentication and database persistence. Can run locally or through Docker with a bundled PostgreSQL instance.",
+    "description": "A lightweight Pastebin-inspired Spring Boot backend where registered users create, edit, store, and share text pastes through unique hash identifiers. Its REST API implements the paste CRUD lifecycle, public reads, account ownership, and HTTP Basic authentication, with PostgreSQL persistence and Flyway-managed schema migrations. Custom domain exceptions are handled through a global API error layer, and endpoint integration tests verify the main workflows. The service can run through Gradle against an existing database or as a Docker Compose stack with a preconfigured PostgreSQL container.",
     "highlights": [
       "unique hash IDs for shareable pastes",
       "account auth and paste ownership",
@@ -103,13 +320,14 @@
     "id": "bybit-bot",
     "title": "Bybit Bot",
     "category": "product",
+    "featured": true,
     "status": "complete",
     "year": "2025",
     "languages": [
       "Rust"
     ],
     "summary": "Bybit P2P trading bot with a reverse-engineered Payeer payment integration",
-    "description": "An automated crypto trading bot that streamlines Bybit P2P transactions by programmatically handling order processing and payment execution. The system connects to the official Bybit API to monitor incoming and outgoing P2P orders, extract transaction details, and automatically complete payments through Payeer. A key feature is a fully reverse-engineered Payeer integration, including manual reconstruction of private API endpoints, session handling, CSRF tokens, and signature generation. Designed for high reliability and asynchronous performance using Tokio.",
+    "description": "An automated crypto-trading service that connects Bybit's official API with Payeer to reduce manual work across P2P order processing and payment execution. It monitors incoming and outgoing orders, extracts the required transaction data, and coordinates payment completion through an asynchronous Rust pipeline built on Tokio. Because Payeer did not expose the needed public interface, the integration was reconstructed from its private web flow, including endpoint behavior, authenticated sessions, CSRF handling, and request-signature generation. The result demonstrates resilient third-party API orchestration across both documented and reverse-engineered systems.",
     "highlights": [
       "fully reverse-engineered payeer private api",
       "session handling, csrf tokens and signature generation",
@@ -128,16 +346,16 @@
     "id": "feather-chat",
     "title": "Feather Chat",
     "category": "learning",
-    "status": "wip",
-    "year": "2024",
+    "status": "archived",
+    "year": "2025 / present",
     "languages": [
       "Java"
     ],
     "summary": "Multithreaded TCP chat client and server built on raw sockets",
-    "description": "A lightweight multithreaded client-server chat application built on raw TCP sockets. A central server routes real-time messages between connected clients, supporting direct messaging and planned chat rooms and encryption. Designed to explore networking, concurrency, and scalable message handling without heavy frameworks.",
+    "description": "A lightweight Java client-server chat application built directly on TCP sockets to study networking and multithreaded message handling without a networking framework. The current implementation accepts multiple simultaneous clients and routes real-time broadcast messages through a central server, establishing the concurrency and protocol foundation for richer conversations. Direct user-to-user messages, chat rooms, account authentication, end-to-end encryption, and a desktop client interface remain planned work, so the repository documents both the working transport layer and the intended evolution of the system.",
     "highlights": [
       "raw TCP sockets, no networking framework",
-      "central server routing direct messages",
+      "central server broadcasting across concurrent clients",
       "chat rooms and encryption planned"
     ],
     "tags": [
@@ -153,13 +371,14 @@
     "id": "simple-rust-kernel",
     "title": "Simple Rust Kernel",
     "category": "learning",
+    "featured": true,
     "status": "archived",
-    "year": "2023",
+    "year": "2026",
     "languages": [
       "Rust"
     ],
     "summary": "Hobby OS kernel written in Rust, booting bare metal inside QEMU",
-    "description": "A hobby operating system kernel written entirely in Rust and runnable inside QEMU. The project explores low-level systems programming, memory handling, and boot processes using the Rust bootloader ecosystem and custom test runner. Demonstrates OS fundamentals including kernel startup, hardware abstraction, and bare-metal execution.",
+    "description": "A hobby operating-system kernel written in Rust for x86_64 bare-metal execution and developed with the Rust bootloader ecosystem. The project follows the core architecture introduced in Philipp Oppermann's OS-development series while incorporating independent additions and implementation choices as a practical study of kernel startup, hardware-facing code, and no-standard-library development. Cargo is configured to build a bootable image and launch it directly in QEMU, while a custom kernel-mode test runner reports integration and unit-test results and exits the virtual machine correctly on success or failure.",
     "highlights": [
       "bare-metal boot via the rust bootloader ecosystem",
       "custom test runner for kernel-mode tests",
@@ -178,13 +397,13 @@
     "id": "java-dsa",
     "title": "Java DSA",
     "category": "learning",
-    "status": "complete",
-    "year": "2022",
+    "status": "archived",
+    "year": "2025",
     "languages": [
       "Java"
     ],
     "summary": "Classical data structures and algorithms behind a custom interface hierarchy",
-    "description": "A study and reference project implementing classical data structures and algorithms with a custom interface hierarchy. Structures such as stacks, lists, and collections are implemented with multiple underlying representations (e.g., array-based and linked versions) to demonstrate design tradeoffs. Designed similarly to the Java Collections framework to emphasize abstraction and reusability.",
+    "description": "A study and reference library that implements classical data structures and algorithms in Java instead of delegating to the standard collections framework. A custom generic interface hierarchy separates abstractions such as Collection, LinearCollection, List, and Stack from concrete array-backed, singly linked, and doubly linked implementations. Keeping multiple representations behind shared contracts makes their memory, access, insertion, and traversal tradeoffs explicit while exercising reusable API design. The organization intentionally mirrors ideas from the Java Collections API while keeping the underlying algorithms visible and language-independent.",
     "highlights": [
       "array-based and linked implementations side by side",
       "interface hierarchy modeled on java collections",
@@ -208,7 +427,7 @@
       "C++"
     ],
     "summary": "Native Windows re-implementations of ls, grep, head and touch",
-    "description": "A collection of native Windows command-line utilities that re-implement popular UNIX tools such as ls, grep, head, and touch. Built directly on the Windows API to provide better performance and a more native experience than typical ports. Focuses on systems programming, performance, and platform-specific tooling.",
+    "description": "A collection of native Windows command-line utilities that brings familiar UNIX-style workflows to the platform through implementations of ls, grep, head, and touch. Each command is built directly on the Windows API rather than a POSIX compatibility layer, keeping platform behavior, performance, and executable size under direct control. The codebase evolved from C to primarily C++ to simplify ownership and reduce memory-safety risks while retaining low-level access to Win32. Visual Studio and MSBuild configurations produce both 32-bit and 64-bit binaries that can be placed on PATH as native command replacements.",
     "highlights": [
       "built directly on the windows api, no posix layer",
       "re-implements ls, grep, head and touch",
