@@ -137,7 +137,13 @@
    Project modal body
    ========================================================================== */
 
+.project-modal-description {
+  display: grid;
+  gap: var(--s3);
+}
+
 .project-modal-text {
+  margin: 0;
   font-size: 14px;
   line-height: 1.6;
   color: var(--muted-on-ink);

@@ -42,13 +42,21 @@
       ? `<ul class="project-modal-highlights">${highlights.map((item) => `<li>${api.esc(item)}</li>`).join('')}</ul>`
       : '';
 
+    const description = Array.isArray(project.description)
+      ? project.description
+      : [project.description];
+    const descriptionMarkup = description
+      .filter(Boolean)
+      .map((paragraph) => `<p class="project-modal-text">${api.esc(paragraph)}</p>`)
+      .join('');
+
     const metaRow = (label, value) => (value
       ? `<div><span class="eyebrow">// ${label}</span><span>${api.esc(value)}</span></div>`
       : '');
 
     return `
       <div class="tags project-modal-langs">${api.tagMarkup(project.languages, 'tag--lang')}</div>
-      <p class="project-modal-text">${api.esc(project.description || '')}</p>
+      <div class="project-modal-description">${descriptionMarkup}</div>
       ${highlightsMarkup}
       <div class="project-modal-meta">
         ${metaRow('status', project.status)}
