@@ -428,6 +428,29 @@
 }
 
 /* ==========================================================================
+   Resume modal — paper surface, mirrors .cert-frame/.cert-actions from
+   portfolio.css (kept as a page-scoped copy, same convention as the rest
+   of the site's per-page CSS)
+   ========================================================================== */
+
+.resume-frame {
+  width: 100%;
+  height: 60vh;
+  min-height: 260px;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.resume-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  padding-top: var(--s3);
+  border-top: 1px solid var(--rule);
+}
+
+/* ==========================================================================
    Responsive — 880 / 720 / 520, the site's only breakpoints
    ========================================================================== */
 

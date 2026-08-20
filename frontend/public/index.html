@@ -12,6 +12,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/styles/modal.css" />
     <link rel="stylesheet" href="/styles/project-card.css" />
     <link rel="stylesheet" href="/styles/home.css" />
   </head>
@@ -53,6 +54,9 @@
               view projects
               <span class="btn-cursor" aria-hidden="true"></span>
             </a>
+            <button class="btn btn-ghost" type="button" data-modal-open="resume">
+              resume
+            </button>
             <a class="link-accent" href="/about.html" data-link>about me</a>
           </div>
         </div>
@@ -344,8 +348,44 @@
       </div>
     </footer>
 
+    <div class="modal" id="resume-modal" aria-hidden="true" inert>
+      <div class="modal-backdrop" data-modal-close></div>
+      <div
+        class="modal-card modal-card--xl"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="resume-modal-title"
+      >
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow">// resume</p>
+            <h3 id="resume-modal-title">Nikita Doronin - Resume</h3>
+          </div>
+          <button class="modal-close" type="button" data-modal-close aria-label="close">
+            ✕
+          </button>
+        </div>
+        <div class="modal-body">
+          <iframe
+            class="resume-frame"
+            title="resume PDF preview"
+            src="/assets/resume.pdf"
+            loading="lazy"
+          ></iframe>
+          <div class="resume-actions">
+            <a class="btn btn-primary" href="/assets/resume.pdf" download>download</a>
+            <a class="btn" href="/assets/resume.pdf" target="_blank" rel="noopener noreferrer">
+              open in new tab
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="/scripts/site.js"></script>
     <script src="/scripts/project-card.js"></script>
     <script src="/scripts/home-projects.js"></script>
+    <script src="/scripts/modal.js"></script>
+    <script src="/scripts/resume.js"></script>
   </body>
 </html>
