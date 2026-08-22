@@ -476,5 +476,25 @@
     ],
     "tags": ["agent-skill", "ai-agents", "prompt-engineering", "music", "guitar"],
     "repositoryLink": "https://github.com/duckysmacky/guitar-setup-skill"
+  },
+  {
+    "id": "context-manager-skill",
+    "title": "Context Manager",
+    "category": "ai",
+    "status": "complete",
+    "year": "2026",
+    "languages": ["Markdown"],
+    "summary": "Agent skill for preserving engineering context across sessions and coding agents",
+    "description": [
+      "An agent skill for preserving engineering context across long-running tasks, sessions, and coding agents. It creates a self-contained `.context/<ISSUE-ID>/` workspace for each issue, with durable sources of truth for scope and acceptance criteria, findings, attempted approaches, decisions from human conversations, related issues, and the next handoff action.",
+      "The skill keeps essential status easy to reconstruct without relying on a single chat history, while optional folders retain supporting research, source material, and attachments. It can scaffold issue workspaces through a bundled helper and is installable for Claude Code as well as other supported coding agents through `npx skills`. The repository includes an anonymized real-world BIOS investigation demonstrating months of iterative research and cross-session handoffs."
+    ],
+    "highlights": [
+      "self-contained per-issue context workspace with explicit handoff state",
+      "durable records for scope, findings, attempts, conversations and related issues",
+      "works across long-running tasks, sessions and coding agents"
+    ],
+    "tags": ["agent-skill", "ai-agents", "context-management", "developer-tools"],
+    "repositoryLink": "https://github.com/duckysmacky/context-manager-skill"
   }
 ]
