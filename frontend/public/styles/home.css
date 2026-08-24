@@ -117,6 +117,12 @@
   font-weight: 700;
 }
 
+.meta-strip-kickers {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+}
+
 .meta-strip .kicker {
   background: var(--paper);
   color: var(--ink);
