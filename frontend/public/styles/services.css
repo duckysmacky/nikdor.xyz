@@ -51,13 +51,13 @@
   margin-top: auto;
 }
 
-.service-price {
+.service-payment {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
-.service-price-label {
+.service-payment-label {
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.18em;
@@ -65,7 +65,7 @@
   color: var(--muted-on-ink);
 }
 
-.service-price-value {
+.service-payment-value {
   font-size: 14px;
   font-weight: 700;
   color: var(--on-ink);
@@ -84,6 +84,39 @@
   flex-wrap: wrap;
   gap: 0.7rem;
   margin: var(--s3) 0;
+}
+
+/* ----- Custom order — a single full-width ink card, not a grid item ----- */
+
+.custom-order .service-desc {
+  max-width: 66ch;
+}
+
+.custom-order .card-foot {
+  justify-content: flex-end;
+}
+
+/* ----- Process — four paper steps, each on its own structural rule ----- */
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap-card);
+  margin: var(--s3) 0;
+}
+
+.process-step {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+.process-title {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin: 0;
 }
 
 /* ==========================================================================
@@ -184,7 +217,8 @@
 }
 
 .order-field input,
-.order-field textarea {
+.order-field textarea,
+.order-field select {
   background: var(--panel);
   border: 1px solid var(--ink);
   border-radius: var(--radius);
@@ -200,10 +234,29 @@
 }
 
 .order-field input:focus,
-.order-field textarea:focus {
+.order-field textarea:focus,
+.order-field select:focus {
   outline: none;
   border-width: 2px;
   padding: calc(0.65rem - 1px) calc(0.75rem - 1px);
+}
+
+/* flat caret drawn with a gradient pair — no icon file, no color */
+.order-field select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 2rem;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%),
+    linear-gradient(135deg, var(--ink) 50%, transparent 50%);
+  background-position: calc(100% - 15px) calc(50% + 1px),
+    calc(100% - 10px) calc(50% + 1px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.order-field select:focus {
+  padding-right: calc(2rem - 1px);
+  background-position: calc(100% - 14px) 50%, calc(100% - 9px) 50%;
 }
 
 .order-field--message textarea {
@@ -274,4 +327,16 @@
 
 .modal-open {
   overflow: hidden;
+}
+
+@media (max-width: 880px) {
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
 }

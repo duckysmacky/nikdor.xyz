@@ -13,9 +13,23 @@
 
     const submitButton = form.querySelector('button[type="submit"]');
     let storedBodyPadding = "";
+    let lastFocused = null;
+
+    const siblingLayers = () =>
+        Array.from(document.body.children).filter(
+            (el) => el !== modal && el.tagName !== "SCRIPT"
+        );
+
+    // The service field is a <select>: assigning an unknown value leaves it
+    // empty, so anything we cannot match falls back to "Other".
+    const selectService = (serviceName) => {
+        serviceInput.value = serviceName || "";
+        if (!serviceInput.value) serviceInput.value = "Other";
+    };
 
     const openModal = (serviceName) => {
-        serviceInput.value = serviceName || "";
+        lastFocused = document.activeElement;
+        selectService(serviceName);
         errorBox.classList.remove("is-visible");
         errorBox.textContent = "";
 
@@ -28,6 +42,8 @@
         }
 
         form.classList.remove("is-hidden");
+        modal.removeAttribute("inert");
+        modal.setAttribute("aria-hidden", "false");
         modal.classList.add("is-visible");
         document.body.classList.add("modal-open");
 
@@ -37,12 +53,22 @@
             storedBodyPadding = document.body.style.paddingRight;
             document.body.style.paddingRight = `${scrollbarWidth}px`;
         }
+
+        siblingLayers().forEach((el) => el.setAttribute("inert", ""));
+        serviceInput.focus({ preventScroll: true });
     };
 
     const closeModal = () => {
+        if (!modal.classList.contains("is-visible")) return;
+
         modal.classList.remove("is-visible");
+        modal.setAttribute("aria-hidden", "true");
+        modal.setAttribute("inert", "");
         document.body.classList.remove("modal-open");
         document.body.style.paddingRight = storedBodyPadding;
+
+        siblingLayers().forEach((el) => el.removeAttribute("inert"));
+
         form.reset();
         errorBox.classList.remove("is-visible");
         errorBox.textContent = "";
@@ -56,6 +82,10 @@
         }
 
         form.classList.remove("is-hidden");
+
+        if (lastFocused && typeof lastFocused.focus === "function") {
+            lastFocused.focus({ preventScroll: true });
+        }
     };
 
     const showError = (message) => {
