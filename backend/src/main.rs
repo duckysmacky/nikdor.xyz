@@ -4,11 +4,13 @@ mod error;
 mod model;
 mod handlers;
 mod bot;
+mod socials;
 
-use axum::{Router, routing::{delete, get, post}};
+use axum::{Router, routing::get};
 use teloxide::types::UserId;
 use std::{env, sync::Arc};
 use tower_http::cors::{Any, CorsLayer};
+use log::{error, info};
 
 struct BotConfig {
     target_user_id: UserId
@@ -18,7 +20,8 @@ struct BotConfig {
 struct AppState {
     db_pool: sqlx::PgPool,
     tg_bot: teloxide::Bot,
-    bot_config: BotConfig
+    bot_config: BotConfig,
+    socials: socials::SocialsCache,
 }
 
 #[tokio::main]
@@ -38,7 +41,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let tg_bot = match bot::init_bot().await {
         Ok(bot) => bot,
         Err(err) => {
-            eprintln!("Failed to initialize Telegram bot: {}", err);
+            error!("Failed to initialize Telegram bot: {}", err);
             std::process::exit(1);
         }
     };
@@ -46,7 +49,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let db_pool = match db::init_pool().await {
         Ok(pool) => pool,
         Err(err) => {
-            eprintln!("Failed to initialize database pool: {}", err);
+            error!("Failed to initialize database pool: {}", err);
             std::process::exit(1);
         }
     };
@@ -56,7 +59,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         tg_bot,
         bot_config: BotConfig {
             target_user_id: user_id,
-        }
+        },
+        socials: socials::SocialsCache::default(),
     });
 
     let app = create_app(state);
@@ -69,7 +73,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     };
 
     let listener = TcpListener::bind(addr).await.expect("Failed to bind to address");
-    println!("Listening on port {}", addr.port());
+    info!("Listening on port {}", addr.port());
 
     axum::serve(listener, app).await?;
 
@@ -83,10 +87,9 @@ fn create_app(state: Arc<AppState>) -> Router {
         .allow_headers(Any);
 
     axum::Router::new()
-        .route("/api/orders", get(handlers::get_orders))
-        .route("/api/orders/{id}", get(handlers::get_order))
-        .route("/api/orders", post(handlers::create_order))
-        .route("/api/orders/{id}", delete(handlers::delete_order))
+        .route("/api/orders", get(handlers::get_orders).post(handlers::create_order))
+        .route("/api/orders/{id}", get(handlers::get_order).delete(handlers::delete_order))
+        .route("/api/socials", get(socials::get_socials))
         .layer(cors)
         .with_state(state)
 }
