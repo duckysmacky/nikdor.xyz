@@ -206,6 +206,48 @@
     "repositoryLink": "https://github.com/duckysmacky/pasteshelf"
   },
   {
+    "id": "jigsaw",
+    "title": "Jigsaw",
+    "category": "learning",
+    "status": "wip",
+    "year": "2026 / present",
+    "languages": ["Rust"],
+    "summary": "From-scratch BitTorrent client built as both a protocol study and a complete product",
+    "description": [
+      "A from-scratch BitTorrent client being developed as both a serious networking study and a complete, usable product. Instead of wrapping an existing torrent implementation, Jigsaw builds the protocol stack itself so that metainfo decoding, tracker communication, peer discovery, peer-to-peer messaging, piece transfer, verification, and session management can be understood and controlled at each layer.",
+      "The codebase is divided into a Cargo workspace with separate `bencode`, `core`, and `cli` crates. Its custom Bencode library parses integers, byte strings, lists, and dictionaries, validates malformed input, and preserves the original encoded bytes needed to compute the exact SHA-1 info hash. The core converts `.torrent` metainfo into typed single-file or multi-file structures, extracts piece hashes and metadata, generates BitTorrent-compatible peer IDs, performs percent-encoded HTTP tracker announces, and decodes compact IPv4 peer lists.",
+      "Torrent sessions run asynchronously on Tokio. A session performs its initial tracker announce, keeps shared progress and peer state, refreshes the peer list according to the tracker's interval, and responds to commands over an asynchronous channel without blocking the runtime. The CLI currently supports inspecting Bencoded torrent files, testing tracker announces, and starting and stopping session loops. Direct peer connections, BitTorrent peer-wire messaging, piece scheduling and transfer, integrity verification, persistence, and a fuller user-facing client are active development areas on the path from the working protocol foundation to the complete product."
+    ],
+    "highlights": [
+      "custom bencode parser preserving exact bytes for sha-1 info hash",
+      "async tracker announces and session management with tokio",
+      "modular cargo workspace split into bencode, core and cli crates"
+    ],
+    "tags": ["networking", "peer-to-peer", "async", "protocol-design", "systems-programming", "rust", "bittorrent"],
+    "repositoryLink": "https://github.com/duckysmacky/jigsaw"
+  },
+  {
+    "id": "push",
+    "title": "Push",
+    "category": "learning",
+    "status": "wip",
+    "year": "2026 / present",
+    "languages": ["C++"],
+    "summary": "Custom Linux shell written in modern C++ to learn OS process and parsing interfaces",
+    "description": [
+      "A custom Linux command shell written in modern C++ to learn operating-system interfaces by implementing the shell loop and command-processing pipeline directly. Push is intended to grow into a genuinely useful interactive shell while providing hands-on practice with processes, system calls, command grammars, tokenization, parsing, and the boundary between a shell and the operating system.",
+      "The current REPL reads commands from standard input, passes each line through a purpose-built tokenizer and parser, and builds an argument vector for execution. The tokenizer recognizes ordinary and single- or double-quoted words as well as the operators needed for input and output redirection, append redirection, background jobs, pipelines, conditional execution, and command sequences: `<`, `>`, `>>`, `&`, `&&`, `|`, `||`, and `;`. This creates the lexical foundation for a richer grammar without delegating parsing to an existing shell.",
+      "For executable commands, Push uses `fork()` to create a child, constructs the null-terminated `argv` representation expected by the operating system, and calls `execvpe()` so programs can be resolved through `PATH` while inheriting the environment. The parent waits with `waitpid()`, interprets normal exits and signal termination, and returns shell-style error codes for missing or non-executable commands. A minimal `exit` built-in and simple command parsing work today; redirection, pipelines, conditional chains, background execution, expanded built-ins, and more complete shell syntax remain active development work."
+    ],
+    "highlights": [
+      "custom tokenizer and parser building a shell command grammar",
+      "fork/execvpe process execution with posix exit-status handling",
+      "repl foundation ahead of redirection, pipelines and conditional chains"
+    ],
+    "tags": ["linux", "shell", "systems-programming", "cpp", "parsing", "process-management"],
+    "repositoryLink": "https://github.com/duckysmacky/push"
+  },
+  {
     "id": "bybit-bot",
     "title": "Bybit Trading Bot",
     "category": "product",
