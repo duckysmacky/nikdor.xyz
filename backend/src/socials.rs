@@ -9,7 +9,7 @@ use tokio::sync::Mutex;
 
 use super::AppState;
 
-const CACHE_TTL: Duration = Duration::from_secs(5);
+const CACHE_TTL: Duration = Duration::from_secs(300);
 
 #[derive(Debug, Clone, Serialize)]
 pub struct SocialsResponse {
