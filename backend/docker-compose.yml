@@ -1,17 +1,6 @@
 services:
-  db:
-    image: postgres:17
-    container_name: nikdor.xyz-db
+  backend:
+    image: ghcr.io/duckysmacky/nikdorxyz-backend:latest
+    container_name: nikdor.xyz-backend
     env_file: .env
-    environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-    ports:
-      - "5432:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
     restart: unless-stopped
-
-volumes:
-  pgdata:

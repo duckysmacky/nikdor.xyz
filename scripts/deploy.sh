@@ -6,5 +6,7 @@ set -euo pipefail
 cd "$DEPLOY_PATH"
 git fetch origin master
 git reset --hard origin/master
-cargo build --release --manifest-path backend/Cargo.toml
-systemctl --user restart nikdor.xyz-backend.service
+
+cd backend
+docker compose pull
+docker compose up -d
