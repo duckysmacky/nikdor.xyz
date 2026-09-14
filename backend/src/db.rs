@@ -2,13 +2,16 @@ use sqlx::{PgPool, postgres::{PgConnectOptions, PgPoolOptions}};
 use std::{env, time::Duration};
 
 pub async fn init_pool() -> Result<PgPool, sqlx::Error> {
+    let db_host = env::var("DB_HOST").expect("DB_HOST is not set");
+    let db_port = env::var("DB_PORT").expect("DB_PORT is not set")
+        .parse().expect("DB_PORT is not a valid integer");
     let db_name = env::var("DB_NAME").expect("DB_NAME is not set");
     let db_username = env::var("DB_USER").expect("DB_USER is not set");
     let db_password = env::var("DB_PASSWORD").expect("DB_PASSWORD is not set");
 
     let options = PgConnectOptions::new()
-        .host("127.0.0.1")
-        .port(5432)
+        .host(db_host.as_str())
+        .port(db_port)
         .username(db_username.as_str())
         .password(db_password.as_str())
         .database(db_name.as_str());
