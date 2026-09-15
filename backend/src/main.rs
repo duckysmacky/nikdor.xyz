@@ -66,10 +66,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let app = create_app(state);
 
     let addr = {
+        let host = env::var("APP_HOST")
+            .unwrap_or("127.0.0.0".to_string());
         let port = env::var("APP_PORT")
             .map(|port| port.parse().expect("APP_PORT is not a valid integer"))
             .unwrap_or(8000);
-        SocketAddr::from(([127, 0, 0, 1], port))
+        format!("{host}:{port}").parse::<SocketAddr>().expect("invalid host")
     };
 
     let listener = TcpListener::bind(addr).await.expect("Failed to bind to address");
