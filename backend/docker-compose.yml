@@ -3,4 +3,6 @@ services:
     image: ghcr.io/duckysmacky/nikdorxyz-backend:latest
     container_name: nikdor.xyz-backend
     env_file: .env
+    ports:
+      - "127.0.0.1:${APP_PORT}:${APP_PORT}"
     restart: unless-stopped
