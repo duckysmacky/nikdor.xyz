@@ -1,5 +1,28 @@
 [
   {
+    "id": "loom",
+    "title": "Loom",
+    "category": "product",
+    "featured": true,
+    "status": "complete",
+    "year": "2026",
+    "languages": ["Rust", "TypeScript", "Svelte"],
+    "summary": "Self-hosted graph tracker for projects, studies and ideas with dependencies and staleness",
+    "description": [
+      "A self-hosted web app for tracking projects, studies, and ideas as one connected graph rather than a task list, built to fight the context-switching overload of juggling several parallel pursuits at once. It supports multiple accounts through sign-up, with single-user operation as an optional, locked-down mode rather than a hard constraint. Nodes come in four kinds (ideas, projects, studies, and nested learning paths), each tracking what only that kind needs, and can be promoted from a loose idea into a committed node in place without losing its connections or history.",
+      "Directed edges express real relationships instead of manual status labels: `requires` edges block a dependent node until its dependency is done, `related` edges form soft non-blocking associations, and containment edges nest nodes inside a path. A separate \"poke\" action logs that a node was worked on today independently of any field edit, so nodes left untouched for 14 days surface as stale on the dashboard instead of silently rotting.",
+      "The backend is a Rust API built on Axum and Tokio, with SQLx against PostgreSQL, JWT-based authentication and rate limiting on auth endpoints. The frontend is a SvelteKit app covering a dashboard, an organized card board, a draggable canvas graph view, and a timeline view, all sharing one filter and search bar, plus quick capture, a command palette, and a deep-linkable node detail panel. The project ships as versioned Docker images with Docker Compose deployment and documented VPS self-hosting, and reached a published 1.0.0 release under AGPL-3.0.",
+      "The backend also exposes an MCP server directly at `/mcp`, letting AI agents read and manipulate the node graph: creating, querying, and updating nodes and connections, and helping a user scaffold a whole Loom workspace from a conversation. Authentication runs through a custom OAuth flow or a Loom-issued API token, and the endpoint is bundled together with a companion skill as a Claude plugin, so it connects to the Claude app or website in one step instead of manual MCP client configuration."
+    ],
+    "highlights": [
+      "graph-based tracking with blocking dependencies and soft associations",
+      "rust/axum/sqlx backend with jwt auth and a sveltekit frontend",
+      "built-in mcp endpoint and skill bundled as a one-step claude plugin with oauth/token auth"
+    ],
+    "tags": ["full-stack", "self-hosted", "rust", "svelte", "postgresql", "productivity", "docker", "mcp", "ai-agents"],
+    "repositoryLink": "https://github.com/duckysmacky/loom"
+  },
+  {
     "id": "umbra-vpn",
     "title": "Umbra VPN",
     "category": "product",
