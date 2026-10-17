@@ -44,7 +44,7 @@ window.NikdorProjects = (() => {
     const response = await fetch(DATA_URL, { cache: 'no-cache' });
     if (!response.ok) throw new Error(`Failed to load projects (${response.status})`);
     const data = await response.json();
-    return Array.isArray(data) ? data : [];
+    return Array.isArray(data) ? data.filter((project) => project.enabled !== false) : [];
   };
 
   const matchesSegment = (segment, project) => (

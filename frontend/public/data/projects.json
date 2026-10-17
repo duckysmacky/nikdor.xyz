@@ -229,6 +229,71 @@
     "repositoryLink": "https://github.com/duckysmacky/pasteshelf"
   },
   {
+    "id": "combat-drones",
+    "title": "Combat Drones",
+    "category": "product",
+    "enabled": false,
+    "status": "active",
+    "year": "2026 / present",
+    "languages": ["Java"],
+    "summary": "Forge 1.12.2 PvP mod adding FPV drones, loitering munitions, armed planes and a cruise missile",
+    "description": [
+      "A Minecraft 1.12.2 Forge mod for PvP servers that adds eleven flyable vehicles in three families: hand-flown multirotors (FPV racers and a camera quadcopter that drops bombs), ramp-launched fixed-wing units (loitering munitions, strike and attack planes, a gunship and a recon UAV), and a vertically launched cruise missile. Players pilot them in first person through FPV goggles with an analog-style HUD, signal range and battery drain, or plan waypoint routes on a tactical Mission Planner map, launch from linked ramps from anywhere, re-route units in flight, and watch through their cameras or take over. Recon units mark enemies for the pilot's scoreboard team and locked targets stay tracked out of sight. Counterplay is built in: every vehicle is loud and can be shot down, and remote pilots leave a vulnerable body behind that gives off radio static. It is inspired by the FPV Drones mod for 1.20.1.",
+      "The mod is built around server-authoritative state: position, orientation, battery, fuel, ammo, payload and route data all live on the server, clients send only intent as rate-limited packets, and every packet is validated and clamped against config bounds. The common/client/server split is strict so a dedicated server never loads client classes, and a reobfuscated-jar server run is used as a leak check. Flight, guidance and autopilot math (hand-flown and fixed-wing flight, cruise missile stages, route autopilot, lock tracking) is pure Java with no Minecraft imports and covered by JUnit 5 tests. Vehicle types and variants are data-driven JSON definitions rather than a Java class each, and all balance numbers live in one TOML config that can be reloaded in game. Models are rendered with GeckoLib from Bedrock geo.json, and map, recon and team features integrate with vanilla scoreboard teams for friendly fire and shared intel.",
+      "The project builds on RetroFuturaGradle with a JDK 8 game toolchain and a JDK 21 Gradle daemon, ships a player-facing changelog, and publishes jars through GitHub Actions release workflow. It is at version 0.2.0 (Gunship, howitzer, cruise missile and Mission Planner ramp linking added in the latest release); a CurseForge and Modrinth release is planned but not yet published."
+    ],
+    "highlights": [
+      "eleven flyable vehicles with fpv piloting and a waypoint mission planner",
+      "server-authoritative design with validated packets and a clean client/server split",
+      "pure-java flight and autopilot physics with junit tests and data-driven vehicle types"
+    ],
+    "tags": ["java", "modding", "game-development", "forge", "minecraft", "multiplayer", "server-authoritative", "physics", "networking"],
+    "repositoryLink": "https://github.com/duckysmacky/combat-drones-mod"
+  },
+  {
+    "id": "guncore",
+    "title": "Guncore",
+    "category": "product",
+    "enabled": false,
+    "status": "active",
+    "year": "2025 / present",
+    "languages": ["Java"],
+    "summary": "Forge game-control mod for gun PvP servers with gamemodes, loadouts and live stats, on two Minecraft versions",
+    "description": [
+      "A Forge mod that adds a full game-control layer to gun PvP servers and modpacks. It does not add guns itself; it manages the match around a separate weapon mod: round-based gamemodes (Free-for-All, Team Deathmatch and Hostage) with time, lives or kill-target win conditions, a loadout system, live kills, deaths and lives tracking shown through a HUD sidebar and tab scoreboard, and an in-game GUI menu for players and admins. Admin commands control rounds, gamemodes, player stats and spawnpoints, and team modes create vanilla teams automatically and show glowing outlines for teammates. It is both a client and server mod, with all configuration kept server-side as JSON catalogs and game settings that are reloadable at runtime and pushed to every connected client over the network.",
+      "Guncore is developed on two parallel version branches that target different Minecraft versions and different weapon mods, so they share a concept but not a codebase. The 1.12.2 branch builds on Vic's Modern Warfare 2.0 for guns and ammo and on CSG Kits for premade loadouts, referencing both by item registry IDs, and supports two switchable equipment modes: kit-based, and a build-a-class mode where players pick every slot (primary and secondary weapon, lethal, tactical, gadget, utilities, consumable and armor set) from configurable catalogs. The 1.20.1 branch is a larger rewrite on newer Forge: it compiles directly against the TACZ API to build gun and ammo items and to listen for gun kills, owns the whole custom build-a-class equipment system itself, and covers the same gamemodes, lives toggle, spawnpoint utilities and HUD.",
+      "Both branches are actively maintained, with recent work on the build-a-class system, team handling and the scoreboard overlay, and releases are published per branch on GitHub."
+    ],
+    "highlights": [
+      "round-based ffa, team deathmatch and hostage gamemodes with live stats and gui menu",
+      "two parallel versions: 1.12.2 on vics modern warfare and csg kits, 1.20.1 on tacz",
+      "server-side json catalogs hot-reloaded and synced to all clients"
+    ],
+    "tags": ["java", "modding", "game-development", "forge", "minecraft", "multiplayer", "gun-pvp", "gamemodes", "networking", "gui"],
+    "repositoryLink": "https://github.com/duckysmacky/guncore-mod"
+  },
+  {
+    "id": "item-asylum-plugin",
+    "title": "Item Asylum Plugin",
+    "category": "product",
+    "enabled": false,
+    "status": "archived",
+    "year": "2024",
+    "languages": ["Java"],
+    "summary": "Spigot 1.12.2 minigame plugin that hands every player randomized weapons and items on each respawn",
+    "description": [
+      "A Spigot server plugin for Minecraft 1.12.2 that implements an \"Item Asylum\" minigame, inspired by the game of the same name: every time a player spawns they receive three randomized items, one melee weapon, one ranged weapon and one utility item. Each item has a rarity and can range from useless to game-breaking, so every life is decided by the random draw. The items come from three catalogs (melee, ranged and miscellaneous) of roughly 65 to 75 entries each, defined in code with a name, item ID, rarity, optional enchantments and durability, and including items from other mods.",
+      "The plugin is built on the Spigot API with Maven and split into a game package that manages the match, an items package with a catalog and item controller, and listeners for respawns and kills. Server commands control the game (/game), reroll a player's items (/reroll) and browse the catalog (/catalog). Several gamemodes change how items are rolled (classic, random, balanced, kill-reroll and no-reroll), and the game goal can be set to deaths, kills or time. Two further modes (knockout and teams) were planned but never finished, and the project has been inactive since 2024."
+    ],
+    "highlights": [
+      "randomized three-item loadout on every respawn from rarity-weighted catalogs",
+      "multiple gamemodes and configurable goals controlled through in-game commands",
+      "spigot 1.12.2 plugin built with maven"
+    ],
+    "tags": ["java", "plugin", "spigot", "minecraft", "game-development", "minigame", "event-driven", "maven"],
+    "repositoryLink": "https://github.com/duckysmacky/item-asylum-plugin"
+  },
+  {
     "id": "jigsaw",
     "title": "Jigsaw",
     "category": "learning",
@@ -443,25 +508,6 @@
     ],
     "tags": ["algorithms", "cpp", "backtracking", "constraint-solving", "cli"],
     "repositoryLink": "https://github.com/duckysmacky/sudoker"
-  },
-  {
-    "id": "minecraft-projects",
-    "title": "Minecraft Mods and Plugins",
-    "category": "learning",
-    "status": "archived",
-    "year": "2024 / 2025",
-    "languages": ["Java"],
-    "summary": "Forge mods and Spigot plugins implementing custom Minecraft mechanics",
-    "description": [
-      "A collection of Java projects built against the Minecraft Forge and Spigot APIs, including the Guncore mod and the Project-G and Item Asylum server plugins. The work spans custom items and gameplay mechanics, minigame and server-side logic, event-driven integrations, Gradle-based mod builds, and the practical constraints of extending a large third-party codebase. Most of the collection targeted Minecraft 1.12.2, while Guncore was later revisited on a newer branch."
-    ],
-    "highlights": [
-      "custom forge mod items and gameplay mechanics",
-      "event-driven spigot server plugins and minigames",
-      "integration with large version-sensitive third-party apis"
-    ],
-    "tags": ["java", "minecraft", "forge", "spigot", "game-development", "event-driven"],
-    "repositoryLink": "https://github.com/duckysmacky/guncore-mod"
   },
   {
     "id": "synco",
