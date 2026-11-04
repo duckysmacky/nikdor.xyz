@@ -44,6 +44,42 @@
     "tags": ["vpn", "networking", "distributed-systems", "cybersecurity", "microservices", "grpc", "protobuf", "automation"]
   },
   {
+    "id": "carat",
+    "title": "Carat",
+    "category": "services",
+    "status": "wip",
+    "year": "2026 / present",
+    "languages": [
+      "Python",
+      "TypeScript"
+    ],
+    "summary": "Explainable validation service for product cards in the Honest Sign marking system",
+    "description": [
+      "A service that checks product cards for the Honest Sign (Честный Знак) national marking system before they reach moderation, focused on the perfumery category. A card is a set of attributes (name, brand, perfumery type, volume, TN VED code, GTIN, country, packaging) plus product photos. Carat runs a set of independent checks on it and returns one result per check: `PASS`, `WARNING`, `REVIEW`, `NOT_CHECKED` or `ERROR`, together with a reason code, a plain-language explanation in Russian, and references to the card fields the verdict is based on. It never accepts or rejects a card itself; the consumer applies its own policy. It is built for the two sides of card submission: sellers and producers who fill in cards and want mistakes caught before submitting, and moderators and Honest Sign services who need consistent, explainable, machine-readable verdicts instead of manual review of every card.",
+      "The checks come from customer requirements and are prioritized by how often each mistake occurs in real Honest Sign data. Text checks compare the brand attribute with the brand in the product name (the most common real error), compare the name with the declared perfumery type, reject the placeholder brand value \"Без товарного знака\", and compare the declared volume with the volume written in the name, parsing units such as ml, l and g. Identifier checks validate the GTIN format and checksum and the TN VED code against the product type. Photo checks decode the barcode printed on the product photo and compare it with the declared GTIN, read the label text with OCR, and assess photo quality and background. When a rule cannot decide, it returns `REVIEW` instead of a guess, so a false warning does not teach users to ignore warnings. Every result stores the algorithm version it was produced with, so an old verdict stays explainable after a rule changes.",
+      "The repository is a monorepo of independently typed and tested parts. The `algorithms` library is pure Python with no server, database or network access: a check is a small class with a stable `check_id`, an `algorithm_version` and a `run(card)` method, registered in one place, with Pydantic as the only core dependency and heavy libraries (Pillow and zxing-cpp for vision, EasyOCR on CPU PyTorch for text recognition) isolated in optional extras. The `backend` is a FastAPI REST API that imports the library in-process, stores cards in PostgreSQL through SQLAlchemy with an entity-attribute-value layout and Alembic migrations (a new card attribute needs no schema change), keeps photos in S3-compatible storage, validates uploaded image bytes, and runs checks through a runner bounded by a concurrency semaphore that turns a crashing check into an `ERROR` result instead of a failed request. The `frontend` is a React 19 and TypeScript app built with Vite and Tailwind, with a product catalog, a card form validated with React Hook Form and Zod, photo upload, and check results highlighted on the fields they refer to. A separate `model` workspace holds research, training and evaluation notebooks and is never deployed or imported. The whole stack starts with Docker Compose, model weights are mounted instead of committed, and CI runs ruff, pyright in strict mode and pytest per project, with versioned release images.",
+      "Carat started as a fork of Cogniflex, the AI-content detector. The Java backend and detection code were removed in a full Python rewrite, and the last state of that code is kept under the `legacy/java-backend` tag."
+    ],
+    "highlights": [
+      "explainable, versioned check results with reason codes instead of accept/reject verdicts",
+      "pure-python checks library consumed in-process by a fastapi backend",
+      "barcode decoding, ocr and text-consistency checks on product cards and photos"
+    ],
+    "tags": [
+      "backend",
+      "python",
+      "fastapi",
+      "computer-vision",
+      "ocr",
+      "validation",
+      "data-quality",
+      "react",
+      "docker",
+      "team-project"
+    ],
+    "repositoryLink": "https://github.com/carat-team/carat"
+  },
+  {
     "id": "cogniflex",
     "title": "Cogniflex",
     "category": "services",
