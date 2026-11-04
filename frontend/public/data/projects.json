@@ -151,7 +151,6 @@
     "id": "databoxer",
     "title": "Databoxer",
     "category": "product",
-    "featured": true,
     "status": "active",
     "year": "2024 / present",
     "languages": ["Rust"],
