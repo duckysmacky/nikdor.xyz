@@ -9,28 +9,43 @@ window.NikdorProjects = (() => {
     {
       slug: 'all',
       label: 'all',
-      description: 'Everything in one list, across every category.',
+      description: 'Every project in one list',
       filter: () => true,
     },
     {
-      slug: 'product',
-      label: 'products',
-      description: 'Original tools built to be used, not just written. Each one solves a problem end to end.',
+      slug: 'systems',
+      label: 'systems',
+      description: 'Low-level projects, built from scratch or close to the hardware',
+    },
+    {
+      slug: 'services',
+      label: 'services',
+      description: 'Real running systems, platforms and bots',
+    },
+    {
+      slug: 'tools',
+      label: 'tools',
+      description: 'Various utilities, CLIs and day to day tools',
+    },
+    {
+      slug: 'apps',
+      label: 'apps',
+      description: 'User-facing GUI, like web, desktop or mobile applications',
+    },
+    {
+      slug: 'ai',
+      label: 'ai',
+      description: 'Tooling built for agents to use',
+    },
+    {
+      slug: 'gaming',
+      label: 'gaming',
+      description: 'Minecraft mods and plugins',
     },
     {
       slug: 'learning',
       label: 'learning',
       description: 'Built to learn a domain. The understanding is the goal, the code is the byproduct.',
-    },
-    {
-      slug: 'experiment',
-      label: 'experiments',
-      description: 'Built because the idea was interesting. No roadmap, no users, still worth showing.',
-    },
-    {
-      slug: 'ai',
-      label: 'ai',
-      description: 'Tooling built for models to use: agent skills, MCP servers, and the automation around them.',
     },
   ];
 
@@ -74,19 +89,25 @@ window.NikdorProjects = (() => {
       : `<a class="project-open" href="/projects.html#${esc(project.id)}" data-link>${esc(project.title)}</a>`;
 
     if (options.wide) {
-      // wide variant: story on the left, facts in a side column
+      // wide variant: story on the left, labelled facts in a side column
+      const fact = (label, value) => (value
+        ? `<div class="project-fact"><dt>${label}</dt><dd>${value}</dd></div>`
+        : '');
       card.innerHTML = `
         <div class="project-main">
-          <h3 class="project-name">${title}</h3>
+          <div class="card-head">
+            <h3 class="project-name">${title}</h3>
+            <span class="index-num">${pad(position)}</span>
+          </div>
           <p class="project-summary">${esc(project.summary || '')}</p>
           <div class="tags">${tagMarkup(project.tags)}</div>
         </div>
-        <div class="project-side">
-          <span class="index-num">${pad(position)}</span>
-          <div class="tags">${status}${category}</div>
-          <div class="tags">${tagMarkup(project.languages, 'tag--lang')}</div>
-          ${project.year ? `<span class="index-num">${esc(project.year)}</span>` : ''}
-        </div>
+        <dl class="project-side">
+          ${fact('status', status)}
+          ${fact('category', project.category ? `<span class="tag">${esc(project.category)}</span>` : '')}
+          ${fact('stack', `<div class="tags">${tagMarkup(project.languages, 'tag--lang')}</div>`)}
+          ${fact('year', project.year ? `<span class="project-year">${esc(project.year)}</span>` : '')}
+        </dl>
       `;
       return card;
     }

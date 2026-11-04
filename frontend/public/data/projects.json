@@ -2,7 +2,7 @@
   {
     "id": "loom",
     "title": "Loom",
-    "category": "product",
+    "category": "apps",
     "featured": true,
     "status": "complete",
     "year": "2026",
@@ -25,7 +25,7 @@
   {
     "id": "umbra-vpn",
     "title": "Umbra VPN",
-    "category": "product",
+    "category": "services",
     "featured": true,
     "status": "active",
     "year": "2026 / present",
@@ -46,7 +46,7 @@
   {
     "id": "cogniflex",
     "title": "Cogniflex",
-    "category": "product",
+    "category": "services",
     "featured": true,
     "status": "active",
     "year": "2026 / present",
@@ -69,7 +69,7 @@
   {
     "id": "claude-usage-tray",
     "title": "Claude Usage Tray",
-    "category": "product",
+    "category": "tools",
     "status": "complete",
     "year": "2026 / present",
     "languages": ["Rust"],
@@ -88,7 +88,7 @@
   {
     "id": "macro-helper",
     "title": "C Macro Helper",
-    "category": "product",
+    "category": "tools",
     "status": "complete",
     "year": "2026 / present",
     "languages": ["JavaScript"],
@@ -128,7 +128,7 @@
   {
     "id": "qt-chat-app",
     "title": "Qt Chat App",
-    "category": "product",
+    "category": "apps",
     "status": "complete",
     "year": "2026 / present",
     "languages": ["C++", "QML", "SQL"],
@@ -150,7 +150,7 @@
   {
     "id": "databoxer",
     "title": "Databoxer",
-    "category": "product",
+    "category": "tools",
     "status": "active",
     "year": "2024 / present",
     "languages": ["Rust"],
@@ -170,7 +170,7 @@
   {
     "id": "copper",
     "title": "Copper",
-    "category": "product",
+    "category": "tools",
     "status": "wip",
     "year": "2025 / present",
     "languages": ["Rust"],
@@ -190,7 +190,7 @@
   {
     "id": "signsense",
     "title": "Signsense",
-    "category": "product",
+    "category": "apps",
     "featured": true,
     "status": "complete",
     "year": "2023",
@@ -230,8 +230,7 @@
   {
     "id": "combat-drones",
     "title": "Combat Drones",
-    "category": "product",
-    "enabled": false,
+    "category": "gaming",
     "status": "active",
     "year": "2026 / present",
     "languages": ["Java"],
@@ -252,8 +251,7 @@
   {
     "id": "guncore",
     "title": "Guncore",
-    "category": "product",
-    "enabled": false,
+    "category": "gaming",
     "status": "active",
     "year": "2025 / present",
     "languages": ["Java"],
@@ -274,8 +272,7 @@
   {
     "id": "item-asylum-plugin",
     "title": "Item Asylum Plugin",
-    "category": "product",
-    "enabled": false,
+    "category": "gaming",
     "status": "archived",
     "year": "2024",
     "languages": ["Java"],
@@ -295,7 +292,7 @@
   {
     "id": "jigsaw",
     "title": "Jigsaw",
-    "category": "learning",
+    "category": "systems",
     "status": "wip",
     "year": "2026 / present",
     "languages": ["Rust"],
@@ -316,7 +313,7 @@
   {
     "id": "push",
     "title": "Push",
-    "category": "learning",
+    "category": "systems",
     "status": "wip",
     "year": "2026 / present",
     "languages": ["C++"],
@@ -337,7 +334,7 @@
   {
     "id": "bybit-bot",
     "title": "Bybit Trading Bot",
-    "category": "product",
+    "category": "services",
     "featured": true,
     "status": "complete",
     "year": "2025",
@@ -355,6 +352,7 @@
     "tags": ["fintech", "automation", "crypto", "trading", "api-integration", "reverse-engineering"]
   },
   {
+	"enabled": false,
     "id": "feather-chat",
     "title": "Feather Chat",
     "category": "learning",
@@ -376,7 +374,7 @@
   {
     "id": "simple-rust-kernel",
     "title": "Simple Rust Kernel",
-    "category": "learning",
+    "category": "systems",
     "featured": true,
     "status": "archived",
     "year": "2026",
@@ -452,6 +450,7 @@
     "repositoryLink": "https://github.com/duckysmacky/mathlib"
   },
   {
+	"enabled": false,
     "id": "screenway",
     "title": "Screenway",
     "category": "learning",
@@ -511,7 +510,7 @@
   {
     "id": "synco",
     "title": "Synco",
-    "category": "experiment",
+    "category": "systems",
     "status": "wip",
     "year": "2026",
     "languages": ["Rust"],
@@ -531,7 +530,7 @@
   {
     "id": "cspc",
     "title": "C Smart Pointer Collection",
-    "category": "experiment",
+    "category": "systems",
     "status": "wip",
     "year": "2026 / present",
     "languages": ["C"],
@@ -551,7 +550,7 @@
   {
     "id": "win-tools",
     "title": "Win-Tools",
-    "category": "experiment",
+    "category": "systems",
     "status": "wip",
     "year": "2024",
     "languages": ["C", "C++"],

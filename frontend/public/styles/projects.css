@@ -199,3 +199,17 @@
   flex-wrap: wrap;
   gap: 0.6rem;
 }
+
+/* ==========================================================================
+   Project list — two wide cards per row
+   ========================================================================== */
+
+.page--projects .projects-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 720px) {
+  .page--projects .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
