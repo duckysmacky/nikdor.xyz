@@ -74,3 +74,54 @@
   transform: translate(-2px, -2px);
   box-shadow: var(--offset);
 }
+
+/* wide variant — one per row on /projects.html: main column + facts side column */
+.project--wide {
+  flex-direction: row;
+  align-items: stretch;
+  gap: var(--s5);
+  padding: var(--s5);
+}
+
+.project-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+
+.project--wide .project-name {
+  font-size: 22px;
+}
+
+.project--wide .project-summary {
+  font-size: 15px;
+  max-width: 62ch;
+}
+
+.project-side {
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s3);
+  padding-left: var(--s5);
+  border-left: 1px solid var(--rule-on-ink);
+}
+
+@media (max-width: 720px) {
+  .project--wide {
+    flex-direction: column;
+    gap: var(--s3);
+    padding: var(--s4);
+  }
+
+  .project-side {
+    flex-basis: auto;
+    padding: var(--s3) 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--rule-on-ink);
+    align-self: stretch;
+  }
+}

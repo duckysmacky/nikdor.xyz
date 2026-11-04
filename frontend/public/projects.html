@@ -34,9 +34,22 @@
       <h1>projects</h1>
 
       <p class="section-intro">
-        Personal and open-source work, grouped by what each project is for.
-        Pick a category below, then open a card for the full write-up.
+        Personal and open-source work. The best of it is featured first, the rest
+        is grouped by category below. Open a card for the full write-up.
       </p>
+
+      <section class="featured-section" id="featured-section" hidden>
+        <div class="section-head">
+          <h2>featured</h2>
+          <span class="section-count" id="featured-count">loading</span>
+        </div>
+        <div class="featured-grid" id="featured-list"></div>
+      </section>
+
+      <div class="section-head">
+        <h2>all projects</h2>
+        <span class="section-count" id="projects-count">loading</span>
+      </div>
 
       <div class="cat-select">
         <div
@@ -44,92 +57,15 @@
           id="cat-track"
           role="tablist"
           aria-label="project categories"
-          style="--cat-count: 5; --cat-index: 2;"
-        >
-          <span class="cat-thumb" aria-hidden="true"></span>
-
-          <button
-            class="cat-seg"
-            type="button"
-            role="tab"
-            id="cat-tab-product"
-            data-category="product"
-            aria-selected="false"
-            aria-controls="projects-list"
-            tabindex="-1"
-          >
-            products <span class="cat-num" data-count="product">00</span>
-          </button>
-
-          <button
-            class="cat-seg"
-            type="button"
-            role="tab"
-            id="cat-tab-learning"
-            data-category="learning"
-            aria-selected="false"
-            aria-controls="projects-list"
-            tabindex="-1"
-          >
-            learning <span class="cat-num" data-count="learning">00</span>
-          </button>
-
-          <button
-            class="cat-seg"
-            type="button"
-            role="tab"
-            id="cat-tab-featured"
-            data-category="featured"
-            aria-selected="true"
-            aria-controls="projects-list"
-            tabindex="0"
-          >
-            featured <span class="cat-num" data-count="featured">00</span>
-          </button>
-
-          <button
-            class="cat-seg"
-            type="button"
-            role="tab"
-            id="cat-tab-experiment"
-            data-category="experiment"
-            aria-selected="false"
-            aria-controls="projects-list"
-            tabindex="-1"
-          >
-            experiments <span class="cat-num" data-count="experiment">00</span>
-          </button>
-
-          <button
-            class="cat-seg"
-            type="button"
-            role="tab"
-            id="cat-tab-ai"
-            data-category="ai"
-            aria-selected="false"
-            aria-controls="projects-list"
-            tabindex="-1"
-          >
-            ai <span class="cat-num" data-count="ai">00</span>
-          </button>
-        </div>
+        ></div>
       </div>
 
-      <p class="cat-desc" id="cat-desc">
-        <span class="eyebrow">// featured</span>
-        Hand-picked best of the above. The work worth reading first.
-      </p>
-
-      <div class="section-head">
-        <h2>selected work</h2>
-        <span class="section-count" id="projects-count">loading</span>
-      </div>
+      <p class="cat-desc" id="cat-desc"></p>
 
       <section
         class="projects-grid"
         id="projects-list"
         role="tabpanel"
-        aria-labelledby="cat-tab-featured"
         tabindex="0"
       ></section>
 

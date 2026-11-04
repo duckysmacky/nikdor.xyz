@@ -4,7 +4,10 @@
   const track = document.getElementById('cat-track');
   if (!api || !grid || !track) return;
 
-  const segments = Array.from(track.querySelectorAll('.cat-seg'));
+  const featuredSection = document.getElementById('featured-section');
+  const featuredGrid = document.getElementById('featured-list');
+  const featuredCount = document.getElementById('featured-count');
+  let segments = [];
   const countLabel = document.getElementById('projects-count');
   const descBox = document.getElementById('cat-desc');
   const status = document.getElementById('projects-status');
@@ -23,7 +26,7 @@
   const modal = window.NikdorModal.create(modalRoot, { onClose: stripHash });
 
   const categoryLabel = (slug) => {
-    const segment = api.SEGMENTS.find((s) => s.slug === slug && !s.filter);
+    const segment = api.SEGMENTS.find((s) => s.slug === slug);
     return segment ? segment.label : slug;
   };
 
@@ -110,7 +113,7 @@
     if (list.length === 0) {
       grid.innerHTML = '<p class="projects-empty">Nothing here yet. This category is reserved for work in progress.</p>';
     } else {
-      list.forEach((project, i) => grid.appendChild(api.renderCard(project, i + 1, 'open', { showCategory: slug === 'featured' })));
+      list.forEach((project, i) => grid.appendChild(api.renderCard(project, i + 1, 'open', { showCategory: slug === 'all' })));
     }
 
     countLabel.textContent = `${api.pad(list.length)} items`;
@@ -142,13 +145,29 @@
     if (seg) select(seg.dataset.category, { focus: true });
   });
 
-  grid.addEventListener('click', (event) => {
+  const onCardClick = (event) => {
     const trigger = event.target.closest('[data-project-open]');
     if (trigger) openProject(trigger.getAttribute('data-project-open'));
-  });
+  };
+  grid.addEventListener('click', onCardClick);
+  featuredGrid.addEventListener('click', onCardClick);
+
+  const buildSegments = () => {
+    track.style.setProperty('--cat-count', String(api.SEGMENTS.length));
+    track.insertAdjacentHTML('beforeend', '<span class="cat-thumb" aria-hidden="true"></span>');
+    api.SEGMENTS.forEach((segment) => {
+      track.insertAdjacentHTML('beforeend', `
+        <button class="cat-seg" type="button" role="tab" id="cat-tab-${segment.slug}"
+          data-category="${segment.slug}" aria-selected="false" aria-controls="projects-list" tabindex="-1">
+          ${api.esc(segment.label)} <span class="cat-num" data-count="${segment.slug}">00</span>
+        </button>`);
+    });
+    segments = Array.from(track.querySelectorAll('.cat-seg'));
+  };
 
   const setUnavailable = () => {
     countLabel.textContent = 'unavailable';
+    featuredSection.hidden = true;
     if (status) status.textContent = 'projects are unavailable right now';
     grid.innerHTML = '<p class="projects-empty">Projects are unavailable right now. Please try again later.</p>';
     segments.forEach((seg) => {
@@ -158,6 +177,7 @@
   };
 
   const load = async () => {
+    buildSegments();
     try {
       const projects = await api.fetchProjects();
 
@@ -169,6 +189,13 @@
       projects.forEach((project) => {
         if (project.id) byId.set(project.id, project);
       });
+
+      const featured = projects.filter((project) => project.featured);
+      featured.forEach((project, i) => featuredGrid.appendChild(
+        api.renderCard(project, i + 1, 'open', { wide: true, showCategory: true }),
+      ));
+      featuredCount.textContent = `${api.pad(featured.length)} items`;
+      featuredSection.hidden = featured.length === 0;
 
       segments.forEach((seg) => {
         const slug = seg.dataset.category;
@@ -182,12 +209,9 @@
       const hashId = location.hash ? location.hash.slice(1) : '';
       const hashProject = hashId ? byId.get(hashId) : null;
 
-      let initial = 'featured';
-      if (requestedCat && api.SEGMENTS.some((s) => s.slug === requestedCat)) {
-        initial = requestedCat;
-      } else if (hashProject) {
-        initial = hashProject.featured ? 'featured' : hashProject.category;
-      }
+      const initial = requestedCat && api.SEGMENTS.some((s) => s.slug === requestedCat)
+        ? requestedCat
+        : 'all';
 
       select(initial, { push: false });
 

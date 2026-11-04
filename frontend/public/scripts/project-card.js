@@ -3,9 +3,15 @@
 window.NikdorProjects = (() => {
   const DATA_URL = '/data/projects.json';
 
-  // "featured" is not a `category` value in the data — it cross-cuts every
-  // category via its own predicate, all other segments match on category.
+  // "all" matches every project via its own predicate, all other segments
+  // match on `category`. Featured projects get their own page section.
   const SEGMENTS = [
+    {
+      slug: 'all',
+      label: 'all',
+      description: 'Everything in one list, across every category.',
+      filter: () => true,
+    },
     {
       slug: 'product',
       label: 'products',
@@ -15,12 +21,6 @@ window.NikdorProjects = (() => {
       slug: 'learning',
       label: 'learning',
       description: 'Built to learn a domain. The understanding is the goal, the code is the byproduct.',
-    },
-    {
-      slug: 'featured',
-      label: 'featured',
-      description: 'Hand-picked best of the above. The work worth reading first.',
-      filter: (project) => Boolean(project.featured),
     },
     {
       slug: 'experiment',
@@ -61,7 +61,7 @@ window.NikdorProjects = (() => {
   // mode: 'open' (projects page — opens the modal) | 'link' (home page — deep link)
   const renderCard = (project, position, mode = 'open', options = {}) => {
     const card = document.createElement('article');
-    card.className = 'project card--ink';
+    card.className = options.wide ? 'project project--wide card--ink' : 'project card--ink';
     card.dataset.projectId = project.id || '';
 
     const status = project.status ? `<span class="tag">${esc(project.status)}</span>` : '';
@@ -71,7 +71,25 @@ window.NikdorProjects = (() => {
 
     const title = mode === 'open'
       ? `<button class="project-open" type="button" data-project-open="${esc(project.id)}">${esc(project.title)}</button>`
-      : `<a class="project-open" href="/projects.html?cat=featured#${esc(project.id)}" data-link>${esc(project.title)}</a>`;
+      : `<a class="project-open" href="/projects.html#${esc(project.id)}" data-link>${esc(project.title)}</a>`;
+
+    if (options.wide) {
+      // wide variant: story on the left, facts in a side column
+      card.innerHTML = `
+        <div class="project-main">
+          <h3 class="project-name">${title}</h3>
+          <p class="project-summary">${esc(project.summary || '')}</p>
+          <div class="tags">${tagMarkup(project.tags)}</div>
+        </div>
+        <div class="project-side">
+          <span class="index-num">${pad(position)}</span>
+          <div class="tags">${status}${category}</div>
+          <div class="tags">${tagMarkup(project.languages, 'tag--lang')}</div>
+          ${project.year ? `<span class="index-num">${esc(project.year)}</span>` : ''}
+        </div>
+      `;
+      return card;
+    }
 
     card.innerHTML = `
       <div class="card-head">

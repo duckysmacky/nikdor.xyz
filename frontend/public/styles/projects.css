@@ -3,6 +3,20 @@
    ========================================================================== */
 
 /* ==========================================================================
+   Featured section — wide cards above the selector
+   ========================================================================== */
+
+.featured-section {
+  margin-bottom: var(--s6);
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap-card);
+}
+
+/* ==========================================================================
    Category selector — segmented slider
    ========================================================================== */
 
@@ -109,7 +123,7 @@
   margin-bottom: 0.35rem;
 }
 
-@media (max-width: 560px) {
+@media (max-width: 860px) {
   .cat-track {
     overflow-x: auto;
     overflow-y: hidden;
