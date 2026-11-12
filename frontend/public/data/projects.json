@@ -23,6 +23,28 @@
     "repositoryLink": "https://github.com/duckysmacky/loom"
   },
   {
+    "id": "mcp-hub",
+    "title": "MCP Hub",
+    "category": "services",
+    "featured": true,
+    "status": "complete",
+    "year": "2026",
+    "languages": ["Rust", "TypeScript", "Svelte"],
+    "summary": "Self-hosted multi-user gateway that turns local MCP servers into per-user remote endpoints with OAuth 2.1",
+    "description": [
+      "A self-hosted, multi-user gateway that turns local MCP servers, which normally only talk over stdio on the machine they are installed on, into per-user remote endpoints reachable from anywhere. An operator publishes a catalog of allowed servers (the examples are Taiga and Firefly III); a user signs in, picks one, enters their own credentials, and gets an endpoint at `/mcp/<slug>` that works from Claude Desktop, Claude Code, claude.ai, and the mobile apps without installing or configuring anything on each device. Slugs are unique per user, so one person can run several instances of the same server, for example for work and personal accounts.",
+      "The backend is a Rust server built on Axum and Tokio with SQLx against PostgreSQL. Requests are resolved through the authenticated user, and the hub starts or reuses a child process with that user's decrypted environment, over stdio or through a per-instance HTTP proxy. Child processes start with a cleared environment holding only the variables their catalog entry declares, never through a shell string, with limits on processes, sessions, and spawn rate. The catalog is a TOML file with pinned versions across four runtimes (Node, Bun, uv for Python, and native binaries) and a lockfile that freezes each server's full dependency tree with hashes, so packages are installed ahead of time with install scripts off and nothing is fetched at request time. The hub is its own OAuth 2.1 authorization server with discovery, dynamic client registration, PKCE, token rotation with reuse detection, and a consent page, and every approved client is listed and revocable.",
+      "Credentials are encrypted per user: each user has a random data encryption key that is only stored wrapped under keys derived from their password, web session, or OAuth token (ChaCha20-Poly1305, Argon2, HKDF), so a database dump alone reveals nothing, and secrets are write-only through every API. Tokens are stored only as SHA-256 hashes, URL values pass an SSRF guard that rejects loopback and private addresses, and the hub never passes its own tokens to upstream servers. The frontend is a SvelteKit single-page app (Svelte 5, TypeScript) served by the backend itself, covering instances, typed environment forms, a per-instance tool filter, connected apps, and English and Russian localization. It ships as a single Docker image with Docker Compose deployment, an optional bundled PostgreSQL, an operator CLI for users, invites, and catalog locking, CI and release workflows, and a self-hosting guide, and reached a 1.0.0 release. The README states its known limits plainly, notably that stdio processes share one OS user and have no per-process sandbox or resource limits yet, so it is meant for invite-only use among trusted people."
+    ],
+    "highlights": [
+      "per-user remote mcp endpoints behind a built-in oauth 2.1 authorization server",
+      "rust/axum/sqlx backend with per-user envelope encryption and write-only secrets",
+      "pinned, locked catalog of servers with a security-first process model and a sveltekit ui"
+    ],
+    "tags": ["full-stack", "self-hosted", "rust", "svelte", "postgresql", "mcp", "ai-agents", "oauth", "encryption", "docker", "security"],
+    "repositoryLink": "https://github.com/duckysmacky/mcp-hub"
+  },
+  {
     "id": "umbra-vpn",
     "title": "Umbra VPN",
     "category": "services",
@@ -371,7 +393,6 @@
     "id": "bybit-bot",
     "title": "Bybit Trading Bot",
     "category": "services",
-    "featured": true,
     "status": "complete",
     "year": "2025",
     "languages": ["Rust"],
@@ -641,5 +662,45 @@
     ],
     "tags": ["agent-skill", "ai-agents", "context-management", "developer-tools"],
     "repositoryLink": "https://github.com/duckysmacky/context-manager-skill"
+  },
+  {
+    "id": "german-mode-skill",
+    "title": "German Mode",
+    "category": "ai",
+    "status": "complete",
+    "year": "2026",
+    "languages": ["Markdown"],
+    "summary": "Agent skill that turns any AI conversation into German practice without interrupting the work",
+    "description": [
+      "An agent skill that switches an ongoing conversation to German at the user's chosen level (A1 to C2), so hours spent chatting with an AI about real work double as reading and writing practice. Harder words are translated inline into the user's own language or languages, and each reply ends with a short summary of new vocabulary, one grammar point, and corrections to the user's German. Code, commands, commit messages and file contents are left untouched, so it works in the middle of coding or debugging sessions.",
+      "Level, translation languages and an optional regional variety (standard, Austrian or Swiss German) are asked once on first use and saved to a small TOML file. It ships as a plugin for Claude Code, the Claude app, Codex and the ChatGPT app through a plugin marketplace, and as a plain skill for other agents through `npx skills`."
+    ],
+    "highlights": [
+      "german replies at a chosen cefr level with inline translations",
+      "vocabulary, grammar and correction summary after every reply",
+      "leaves code and work output unchanged"
+    ],
+    "tags": ["agent-skill", "ai-agents", "prompt-engineering", "language-learning", "german"],
+    "repositoryLink": "https://github.com/duckysmacky/german-mode-skill"
+  },
+  {
+    "id": "lid-guard-plugin",
+    "title": "Lid Guard",
+    "category": "ai",
+    "status": "complete",
+    "year": "2026",
+    "languages": ["Markdown", "Shell"],
+    "summary": "Plugin that keeps laptop awake with the lid closed while an AI coding agent works",
+    "description": [
+      "A plugin that keeps a Linux laptop from suspending when the lid is closed while an AI coding agent is still working. It takes a systemd-logind inhibitor lock through `systemd-inhibit` using agent hooks (prompt submit, tool use, stop, session end), with an `off` mode, a `task` mode that holds the lock only while a prompt runs, and a `session` mode that holds it until the agent exits. Task locks are short renewable leases so a crash or interrupt cannot leak them, session locks are tied to the agent process, and parallel agents each get their own lock.",
+      "It ships as a plugin with hooks for Claude Code and Codex, including a `/lid-guard` command and a small Claude Code dashboard mod written in TypeScript that shows the lock status with clickable mode toggles. Other agents can use the same bundled shell script through a skill installed with `npx skills`, or a wrapper that holds the lock for the whole agent process."
+    ],
+    "highlights": [
+      "systemd-logind inhibitor locks driven by agent hooks",
+      "off, task and session modes with leased, per-session locks",
+      "plugin for claude code and codex, skill and script for other agents"
+    ],
+    "tags": ["agent-skill", "ai-agents", "linux", "systemd", "shell", "developer-tools"],
+    "repositoryLink": "https://github.com/duckysmacky/lid-guard-plugin"
   }
 ]
